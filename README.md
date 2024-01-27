@@ -12,6 +12,8 @@
 
 ### Project description and details:
 
+## Use snake case for all variables, file names, and github branches (everything!)
+
 #### Provide a description of the project you are going to undertake
 
 * MyDiscussionForum Website: The MyDiscussionForum website will allow registered users to engage in online discussions and unregistered users to view discussions similar to forums such as Reddit. The goal is to produce a similar type service that allows users to register, post stories and make comments on items.   Additionally, unregistered users must be able to search and view the content but will not be able to edit or comment on posts. Registered users should be able to leave comments/feedback. Functionality must exist for searching/categorizing items.
@@ -43,3 +45,4 @@
   * Edit/remove posts items or complete posts
   * Enable/disable users
   * Visual display of updates, site usage charts, etc
+
