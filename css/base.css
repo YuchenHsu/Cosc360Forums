@@ -47,7 +47,7 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
-/* Centered section inside the top navigation */
+  /* Centered section inside the top navigation */
 @media screen and (max-width: 30em) {
     .topnav a, .topnav-right {
         float: none;
