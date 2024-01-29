@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loginForm.style.display = "none";
         registerForm.style.display = "none";
     }
+
     // Toggle the login form
     function toggleLoginForm() {
         const loginForm = document.getElementById("login-form");
@@ -19,41 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
             loginForm.style.display = "none";
         }
     }
-    // Toggles the posts content
-    function togglePostsContent() {
-        const postsContainer = document.querySelector(".posts");
-        if (postsContainer.style.display === "none") {
-            postsContainer.style.display = "block";
-            fetch("posts.html")
-                .then(response => response.text())
-                .then(html => {
-                    postsContainer.innerHTML = html;
-                })
-                .catch(error => {
-                    console.error("Error loading posts:", error);
-                });
-        } else {
-            postsContainer.style.display = "none";
-        }
-    }
-    // Toggles the register form
-    function toggleRegisterForm() {
-        const registerForm = document.getElementById("register-form");
-        if (registerForm.style.display === "none") {
-            registerForm.style.display = "block";
-        } else {
-            registerForm.style.display = "none";
-        }
-    }
-    // Toggle the search form
-    function toggleSearchForm() {
-        const searchForm = document.getElementById("search-form");
-        if (searchForm.style.display === "none") {
-            searchForm.style.display = "block";
-        } else {
-            searchForm.style.display = "none";
-        }
-    }
+
+    const userBtn = document.getElementById("login-btn-1");
+    userBtn.addEventListener("click", function () {
+        toggleOff();
+        toggleLoginForm();
+    });
+
+    const userPageBtn = document.getElementById("user-btn");
+    userPageBtn.addEventListener("click", function () {
+        toggleOff();
+        toggleLoginForm();
+    });
+
     // Keep the function and event listener that handle the login logic
     function handleLogin(event) {
         // Prevent the default form submission behavior
@@ -72,17 +51,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    const userBtn = document.getElementById("login-btn-1");
-    userBtn.addEventListener("click", function () {
-        toggleOff();
-        toggleLoginForm();
+    const loginBtn = document.getElementById("login-btn");
+    loginBtn.addEventListener("click", function (event) {
+        // Call the login function
+        handleLogin(event);
     });
 
-    const userPageBtn = document.getElementById("user-btn");
-    userPageBtn.addEventListener("click", function () {
-        toggleOff();
-        toggleLoginForm();
-    });
+    // Toggles the posts content
+    function togglePostsContent() {
+        const postsContainer = document.querySelector(".posts");
+        if (postsContainer.style.display === "none") {
+            postsContainer.style.display = "block";
+            fetch("posts.html")
+                .then(response => response.text())
+                .then(html => {
+                    postsContainer.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error("Error loading posts:", error);
+                });
+        } else {
+            postsContainer.style.display = "none";
+        }
+    }
 
     const homeBtn = document.getElementById("home-btn");
     homeBtn.addEventListener("click", function () {
@@ -90,17 +81,31 @@ document.addEventListener("DOMContentLoaded", function () {
         togglePostsContent();
     });
 
+    // Toggle the search form
+    function toggleSearchForm() {
+        const searchForm = document.getElementById("search-form");
+        if (searchForm.style.display === "none") {
+            searchForm.style.display = "block";
+        } else {
+            searchForm.style.display = "none";
+        }
+    }
+
     const searchBtn = document.getElementById("search-btn");
     searchBtn.addEventListener("click", function () {
         toggleOff();
         toggleSearchForm();
     });
 
-    const loginBtn = document.getElementById("login-btn");
-    loginBtn.addEventListener("click", function (event) {
-        // Call the login function
-        handleLogin(event);
-    });
+    // Toggles the register form
+    function toggleRegisterForm() {
+        const registerForm = document.getElementById("register-form");
+        if (registerForm.style.display === "none") {
+            registerForm.style.display = "block";
+        } else {
+            registerForm.style.display = "none";
+        }
+    }
 
     const registerBtn = document.getElementById("register-btn");
     registerBtn.addEventListener("click", function () {
