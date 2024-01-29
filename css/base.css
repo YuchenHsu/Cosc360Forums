@@ -29,6 +29,24 @@
 .topnav-right {
     float: right;
 }
+/* The dropdown container */
+.dropdown {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    color: whitesmoke;
+  }
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: rgba(0,0,0,1);
+    min-width: 160px;
+    z-index: 1;
+  }
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 /* Centered section inside the top navigation */
 @media screen and (max-width: 30em) {
     .topnav a, .topnav-right {
