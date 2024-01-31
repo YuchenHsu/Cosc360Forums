@@ -7,9 +7,9 @@
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 1em 2em;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1.25em;
 }
 .topnav a:hover {
     background-color: #ddd;
@@ -30,7 +30,7 @@
     float: right;
 }
 /* Centered section inside the top navigation */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 30em) {
     .topnav a, .topnav-right {
         float: none;
         display: block;
@@ -43,14 +43,34 @@
     }
 }
 .posts {
-    margin: 20px;
-    padding: 10px;
+    margin: 2em;
+    padding: 1em;
     border: 0.25em solid black;
     background-color: #046aaa;
+    text-align: center;
 }
-.post {
-    margin: 20px;
-    padding: 10px;
+
+.post, .form-container {
+    margin: 2em;
+    padding: 1em;
     border: 0.25em solid black;
     background-color: #b0bbd7;
+    text-align: center;
+}
+
+button {
+    background-color: #046aaa;
+    color: white;
+    padding: 1em 2em;
+    margin: 1em 0;
+    border: none;
+    cursor: pointer;
+}
+
+h3, span {
+    text-align: center;
+    margin: 1em;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.5em;
 }
