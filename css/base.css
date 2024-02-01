@@ -79,8 +79,8 @@
 button {
     background-color: #046aaa;
     color: white;
-    padding: 1em 2em;
-    margin: 1em 0;
+    padding: 10px 20px;
+    margin: 5%;
     border: none;
     cursor: pointer;
 }
