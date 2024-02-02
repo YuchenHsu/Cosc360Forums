@@ -59,6 +59,12 @@
     <div class="posts" style="display: none;">
         <!-- Posts content will be loaded dynamically -->
     </div>
-    <script src="../javascript/common.js"></script> <!-- Include your common JavaScript file -->
+    <script src="../javascript/common.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(function(){
+        $("#navbar").load("navbar.html");
+    });
+    </script>
 </body>
 </html>
