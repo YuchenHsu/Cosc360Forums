@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const searchForm = document.getElementById("search-form");
         const loginForm = document.getElementById("login-form");
         const registerForm = document.getElementById("register-form");
+        const notificationsContainer = document.getElementById("notification");
         postsContainer.style.display = "none";
         searchForm.style.display = "none";
         loginForm.style.display = "none";
         registerForm.style.display = "none";
+        notificationsContainer.style.display = "none";
     }
 
     // Toggle the login form
