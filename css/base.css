@@ -1,6 +1,24 @@
+html {
+    background-color: #415a77;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #415a77;
+    color: #0d1b2a;
+}
+/*
+--rich-black: #0d1b2aff;
+--oxford-blue: #1b263bff;
+--yinmn-blue: #415a77ff;
+--white: #ffffffff;
+--bittersweet: #ff6f59ff;
+
+"0d1b2a","1b263b","415a77","ffffff","ff6f59"
+*/
 .topnav {
     position: relative;
-    background-color: #333;
+    background-color: #0D1B2A;
     overflow: hidden;
 }
 .topnav a {
@@ -12,11 +30,11 @@
     font-size: 1.25em;
 }
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: #ffffff;
     color: black;
 }
 .topnav a.active {
-    background-color: #046aaa;
+    background-color: #0D1B2A;
     color: white;
 }
 .topnav-centered a {
@@ -64,7 +82,8 @@
     margin: 2em;
     padding: 1em;
     border: 0.25em solid black;
-    background-color: #046aaa;
+    background-color: #0d1b2a;
+    color: #f2f2f2;
     text-align: center;
 }
 
@@ -73,6 +92,7 @@
     padding: 1em;
     border: 0.25em solid black;
     background-color: #b0bbd7;
+    color: #0d1b2a;
     text-align: center;
 }
 
