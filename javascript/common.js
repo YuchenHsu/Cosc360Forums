@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const searchForm = document.getElementById("search-form");
         const loginForm = document.getElementById("login-form");
         const registerForm = document.getElementById("register-form");
+        const notificationsContainer = document.getElementById("notification");
         postsContainer.style.display = "none";
         searchForm.style.display = "none";
         loginForm.style.display = "none";
         registerForm.style.display = "none";
+        notificationsContainer.style.display = "none";
     }
 
     // Toggle the login form
@@ -111,5 +113,21 @@ document.addEventListener("DOMContentLoaded", function () {
     registerBtn.addEventListener("click", function () {
         toggleOff();
         toggleRegisterForm();
+    });
+
+    // Toggle the notification page
+    function toggleNotifications() {
+        const notificationsContainer = document.getElementById("notification");
+        if (notificationsContainer.style.display === "none") {
+            notificationsContainer.style.display = "block";
+        } else {
+            notificationsContainer.style.display = "none";
+        }
+    }
+
+    const notificationsBtn = document.getElementById("notif-btn");
+    notificationsBtn.addEventListener("click", function () {
+        toggleOff();
+        toggleNotifications();
     });
 });

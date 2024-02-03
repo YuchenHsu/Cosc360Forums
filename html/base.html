@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Blog</title>
+        <title>Forum</title>
         <link rel="stylesheet" href="../css/base.css">
     </head>
     <body>
@@ -13,7 +13,7 @@
             <a href="#home" id="home-btn" class="active">Home</a>
             <a href="#search" class="active" id="search-btn">Search</a>
             <div class="topnav-right">
-                <a href="#notification" class="active">Notification</a>
+                <a href="#notification" class="active" id="notif-btn">Notification</a>
                 <div class="dropdown">
                     <a class = "active">
                         User &#9660;
@@ -29,27 +29,44 @@
         </div> -->
         <!-- Make a invisible login form that's toggled by the js -->
         <form id="login-form" class="form-container" style="display: none;">
-            <label for="username"><h3>Username:</h3></label><br>
-            <input id="username" type="text" name="username" required><br>
-            <label for="password"><h3>Password</h3></label><br>
-            <input id="password" type="password" name="password" required><br><br><br>
-            <h3>
-                <input id="remember" type="checkbox" name="remember">
-                <label for="remember">Remember me</label><br>
-            </h3>
-            <button id="login-btn" type="submit">Login</button>
+            <button id="login-btn" type="button">Login</button>
             <button id="register-btn" type="button">Register</button>
+            <div class="username">
+                <label for="username">Username: </label>
+                <input id="username" type="text" name="username" required>
+            </div>
+            <div class="password">
+                <label for="password">Password: </label>
+                <input id="password" type="password" name="password" required>
+            </div>
+            <div class="remember" style="display: none;">
+                <input id="remember" type="checkbox" name="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <button id="login-btn" type="submit">Submit</button>
         </form>
         <!-- Make a invisible register form that's toggled by the js -->
         <form id="register-form" class="form-container" style="display: none;">
-            <label for="username"><h3>Username:</h3></label><br>
-            <input id="username" type="text" name="username" required><br>
-            <label for="password"><h3>Password</h3></label><br>
-            <input id="password" type="password" name="password" required><br>
-            <label for="password"><h3>Confirm Password</h3></label><br>
-            <input id="password" type="password" name="password" required><br>
             <button id="login-btn-1" type="button">Login</button>
-            <button id="register-btn" type="submit">Register</button>
+            <button id="register-btn" type="button">Register</button>
+            <div class="email">
+                <label for="email">Email: </label>
+                <input id="email" type="email" name="email" required>
+            </div>
+            <div class="username">
+                <label for="username">Username: </label>
+                <input id="username" type="text" name="username" required>
+            </div>
+            <div class="password">
+                <label for="password">Password: </label>
+                <input id="password" type="password" name="password" required>
+            </div>
+            <div class="confirm">
+                <label for="password">Confirm Password:</label>
+                <input id="password" type="password" name="password" required>
+            </div>
+            <br>
+            <button id="register-btn" type="submit">Submit</button>
         </form>
 
         <!-- Make a invisible Search bar that's toggled by the js -->
@@ -65,16 +82,23 @@
             <button id="search-btn" type="submit">Search</button>
         </form>
 
+        <!-- Make a invisible notification page that's toggled by the js -->
+        <div id="notification" class="form-container" style="display: none;">
+            <h3>Notification</h3>
+            <p>Notification 1</p>
+            <p>Notification 2</p>
+            <p>Notification 3</p>
+        </div>
+
         <div class="posts" style="display: none;">
             <!-- Posts content will be loaded dynamically -->
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../javascript/common.js"></script>
+        <script src="../javascript/jquery-3.7.1.js"></script>
         <script>
-        $( document ).ready(function(){
+        $(function(){
             $("#navbar").load("navbar.html");
-            $.getScript("../javascript/common.js");
         });
         </script>
-        <!-- <script src="../javascript/common.js"></script> -->
     </body>
 </html>
