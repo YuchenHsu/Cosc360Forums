@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="../css/base.css">
     </head>
     <body>
-        <!-- <div id="navbar"></div> -->
-        <div class="topnav">
+        <div id="navbar"></div>
+        <!-- <div class="topnav">
             <a href="#home" id="home-btn" class="active">Home</a>
             <a href="#search" class="active" id="search-btn">Search</a>
             <div class="topnav-right">
@@ -23,10 +23,10 @@
                         <a href="#admin">Admin</a>
                         <a href="#register">Register</a>
                         <a href="#logout">Logout</a>
-                </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Make a invisible login form that's toggled by the js -->
         <form id="login-form" class="form-container" style="display: none;">
             <label for="username"><h3>Username:</h3></label><br>
@@ -68,12 +68,13 @@
         <div class="posts" style="display: none;">
             <!-- Posts content will be loaded dynamically -->
         </div>
-        <script src="../javascript/common.js"></script>
-    <script src="../javascript/jquery-3.7.1.js"></script>
-    <script>
-    $(function(){
-        $("#navbar").load("navbar.html");
-    });
-    </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+        $( document ).ready(function(){
+            $("#navbar").load("navbar.html");
+            $.getScript("../javascript/common.js");
+        });
+        </script>
+        <!-- <script src="../javascript/common.js"></script> -->
     </body>
 </html>
