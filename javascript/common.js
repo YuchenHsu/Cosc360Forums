@@ -112,4 +112,20 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleOff();
         toggleRegisterForm();
     });
+
+    // Toggle the notification page
+    function toggleNotifications() {
+        const notificationsContainer = document.getElementById("notification");
+        if (notificationsContainer.style.display === "none") {
+            notificationsContainer.style.display = "block";
+        } else {
+            notificationsContainer.style.display = "none";
+        }
+    }
+
+    const notificationsBtn = document.getElementById("notif-btn");
+    notificationsBtn.addEventListener("click", function () {
+        toggleOff();
+        toggleNotifications();
+    });
 });

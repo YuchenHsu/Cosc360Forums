@@ -117,3 +117,26 @@ h3, span {
     text-decoration: none;
     font-size: 1.5em;
 }
+
+label {
+    margin: 1em;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: right;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.username, .password, .remember, .confirm, .email {
+    margin: 1em;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: bold;
+}
