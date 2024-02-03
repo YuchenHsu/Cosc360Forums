@@ -20,6 +20,8 @@ body {
     position: relative;
     background-color: #0D1B2A;
     overflow: hidden;
+    display: flex;
+    justify-content: space-between;
 }
 .topnav a {
     float: left;
@@ -37,35 +39,37 @@ body {
     background-color: #0D1B2A;
     color: white;
 }
-.topnav-centered a {
-    float: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* .topnav-centered a {
+float: none;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
+
 .topnav-right {
-    float: right;
-}
+float: right;
+} */
+
 /* The dropdown container */
 .dropdown {
     float: left;
     overflow: hidden;
     position: relative;
     color: whitesmoke;
-  }
+}
 .dropdown-content {
     display: none;
     position: fixed;
     background-color: rgba(0,0,0,1);
     min-width: 160px;
     z-index: 1;
-  }
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
     display: block;
-  }
-  /* Centered section inside the top navigation */
+}
+/* Centered section inside the top navigation */
 @media screen and (max-width: 30em) {
     .topnav a, .topnav-right {
         float: none;
