@@ -103,8 +103,8 @@ float: right;
 button {
     background-color: #046aaa;
     color: white;
-    /* padding: 10px 20px;
-    margin: 5%; */
+    padding: 10px 20px;
+    margin: 5%;
     font-size: 1em;
     border: none;
     cursor: pointer;
