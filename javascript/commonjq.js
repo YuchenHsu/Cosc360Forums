@@ -116,5 +116,21 @@ $(document).ready( function() {
         toggleOff();
         toggleRegisterForm();
     });
+
+    // Toggle the notification
+    function toggleNotification() {
+        const notification = $( "#notification" );
+        if (notification.css( "display" ) === "none") {
+            notification.css( "display", "block" );
+        } else {
+            notification.css( "display", "none" );
+        }
+    }
+
+    const notificationBtn = $( "#notif-btn" );
+    notificationBtn.on("click", function () {
+        toggleOff();
+        toggleNotification();
+    });
 });
 

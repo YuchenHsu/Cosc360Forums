@@ -115,29 +115,29 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleRegisterForm();
     });
 
-    // Handle the registration logic
-    function handleRegistration(event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
-        // Get the username and password values
-        const username = document.getElementById("new-username").value;
-        const password = document.getElementById("new-password").value;
-        // Check if the username is already taken
-        if (username === "user") {
-            // If yes, display an error message
-            alert("Username already taken!");
-        } else {
-            // If no, display a success message and reload the page
-            alert("Registration successful!");
-            window.location.reload();
-        }
-    }
+    // // Handle the registration logic
+    // function handleRegistration(event) {
+    //     // Prevent the default form submission behavior
+    //     event.preventDefault();
+    //     // Get the username and password values
+    //     const username = document.getElementById("new-username").value;
+    //     const password = document.getElementById("new-password").value;
+    //     // Check if the username is already taken
+    //     if (username === "user") {
+    //         // If yes, display an error message
+    //         alert("Username already taken!");
+    //     } else {
+    //         // If no, display a success message and reload the page
+    //         alert("Registration successful!");
+    //         window.location.reload();
+    //     }
+    // }
 
-    const submitBtn = document.getElementById("register-btn");
-    submitBtn.addEventListener("click", function (event) {
-        // Call the registration function
-        handleRegistration(event);
-    });
+    // const submitBtn = document.getElementById("register-btn");
+    // submitBtn.addEventListener("click", function (event) {
+    //     // Call the registration function
+    //     handleRegistration(event);
+    // });
 
     // Toggle the notification page
     function toggleNotifications() {
