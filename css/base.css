@@ -118,6 +118,30 @@ h3, span {
     font-size: 1.5em;
 }
 
+.create_post {
+    text-align: left;
+}
+.create_post input, .create_post textarea {
+    margin: 10px 0 0 0;
+    width: 100%;
+    min-height: 2em;
+}
+
+.create_post legend {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.create_post label {
+    display: block;
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+fieldset {
+    border: none;
+}
+
 label {
     margin: 1em;
     padding: 1em;
