@@ -1,7 +1,27 @@
+html {
+    background-color: #415a77;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #415a77;
+    color: #0d1b2a;
+}
+/*
+--rich-black: #0d1b2aff;
+--oxford-blue: #1b263bff;
+--yinmn-blue: #415a77ff;
+--white: #ffffffff;
+--bittersweet: #ff6f59ff;
+
+"0d1b2a","1b263b","415a77","ffffff","ff6f59"
+*/
 .topnav {
     position: relative;
-    background-color: #333;
+    background-color: #0D1B2A;
     overflow: hidden;
+    display: flex;
+    justify-content: space-between;
 }
 .topnav a {
     float: left;
@@ -12,22 +32,42 @@
     font-size: 1.25em;
 }
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: #ffffff;
     color: black;
 }
 .topnav a.active {
-    background-color: #046aaa;
+    background-color: #0D1B2A;
     color: white;
 }
-.topnav-centered a {
-    float: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* .topnav-centered a {
+float: none;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
+
 .topnav-right {
-    float: right;
+float: right;
+} */
+
+/* The dropdown container */
+.dropdown {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    color: whitesmoke;
+}
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: rgba(0,0,0,1);
+    min-width: 160px;
+    z-index: 1;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 /* Centered section inside the top navigation */
 @media screen and (max-width: 30em) {
@@ -46,7 +86,8 @@
     margin: 2em;
     padding: 1em;
     border: 0.25em solid black;
-    background-color: #046aaa;
+    background-color: #0d1b2a;
+    color: #f2f2f2;
     text-align: center;
 }
 
@@ -55,14 +96,16 @@
     padding: 1em;
     border: 0.25em solid black;
     background-color: #b0bbd7;
+    color: #0d1b2a;
     text-align: center;
 }
 
 button {
     background-color: #046aaa;
     color: white;
-    padding: 1em 2em;
-    margin: 1em 0;
+    padding: 10px 20px;
+    margin: 5%;
+    font-size: 1em;
     border: none;
     cursor: pointer;
 }
@@ -73,4 +116,51 @@ h3, span {
     padding: 1em;
     text-decoration: none;
     font-size: 1.5em;
+}
+
+.create_post {
+    text-align: left;
+}
+.create_post input, .create_post textarea {
+    margin: 10px 0 0 0;
+    width: 100%;
+    min-height: 2em;
+}
+
+.create_post legend {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.create_post label {
+    display: block;
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+fieldset {
+    border: none;
+}
+
+label {
+    margin: 1em;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: right;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.username, .password, .remember, .confirm, .email {
+    margin: 1em;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: bold;
 }
