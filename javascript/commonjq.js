@@ -5,10 +5,12 @@ $(document).ready( function() {
         const searchForm = $( "#search-form" );
         const loginForm = $( "#login-form" );
         const registerForm = $( "#register-form" );
+        const notificationsContainer = $( "#notification" );
         postsContainer.css( "display", "none" );
         searchForm.css( "display", "none" );
         loginForm.css( "display", "none" );
         registerForm.css( "display", "none" );
+        notificationsContainer.css( "display", "none" );
     }
 
 
