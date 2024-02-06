@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const searchForm = document.getElementById("search-form");
         const loginForm = document.getElementById("login-form");
         const registerForm = document.getElementById("register-form");
+        const notificationsContainer = document.getElementById("notification");
         postsContainer.style.display = "none";
         searchForm.style.display = "none";
         loginForm.style.display = "none";
         registerForm.style.display = "none";
+        notificationsContainer.style.display = "none";
     }
 
     // Toggle the login form
@@ -111,5 +113,45 @@ document.addEventListener("DOMContentLoaded", function () {
     registerBtn.addEventListener("click", function () {
         toggleOff();
         toggleRegisterForm();
+    });
+
+    // // Handle the registration logic
+    // function handleRegistration(event) {
+    //     // Prevent the default form submission behavior
+    //     event.preventDefault();
+    //     // Get the username and password values
+    //     const username = document.getElementById("new-username").value;
+    //     const password = document.getElementById("new-password").value;
+    //     // Check if the username is already taken
+    //     if (username === "user") {
+    //         // If yes, display an error message
+    //         alert("Username already taken!");
+    //     } else {
+    //         // If no, display a success message and reload the page
+    //         alert("Registration successful!");
+    //         window.location.reload();
+    //     }
+    // }
+
+    // const submitBtn = document.getElementById("register-btn");
+    // submitBtn.addEventListener("click", function (event) {
+    //     // Call the registration function
+    //     handleRegistration(event);
+    // });
+
+    // Toggle the notification page
+    function toggleNotifications() {
+        const notificationsContainer = document.getElementById("notification");
+        if (notificationsContainer.style.display === "none") {
+            notificationsContainer.style.display = "block";
+        } else {
+            notificationsContainer.style.display = "none";
+        }
+    }
+
+    const notificationsBtn = document.getElementById("notif-btn");
+    notificationsBtn.addEventListener("click", function () {
+        toggleOff();
+        toggleNotifications();
     });
 });
