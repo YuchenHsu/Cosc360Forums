@@ -166,13 +166,11 @@ input[type=text], input[type=password], input[type=email] {
 }
 #sidebar{
     float: left;
-    width: auto;
     margin: 1em;
     color: whitesmoke;
     background-color: #0D1B2A;
 }
 li {
-    width: 100%;
     font-size: 1em;
     list-style-type: none;
     padding: 0.5em 0.5em;
@@ -183,7 +181,6 @@ li {
     padding: 1em 2em;
     text-decoration: none;
     font-size: 1.25em;
-    text-align: left;
 }
 #sidebar a:hover {
     background-color: #ffffff;
