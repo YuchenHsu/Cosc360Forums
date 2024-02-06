@@ -117,20 +117,20 @@ $(document).ready( function() {
         toggleRegisterForm();
     });
 
-    // Toggle the notification
-    function toggleNotification() {
-        const notification = $( "#notification" );
-        if (notification.css( "display" ) === "none") {
-            notification.css( "display", "block" );
+    // Toggle the notification page
+    function toggleNotifications() {
+        const notificationsContainer = $( "#notification" );
+        if (notificationsContainer.css( "display" ) === "none") {
+            notificationsContainer.css( "display", "block" );
         } else {
-            notification.css( "display", "none" );
+            notificationsContainer.css( "display" , "none");
         }
     }
 
-    const notificationBtn = $( "#notif-btn" );
-    notificationBtn.on("click", function () {
+    const notificationsBtn = $( "#notif-btn" );
+    notificationsBtn.on("click", function () {
         toggleOff();
-        toggleNotification();
+        toggleNotifications();
     });
 });
 
