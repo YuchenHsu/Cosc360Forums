@@ -164,3 +164,17 @@ input[type=text], input[type=password], input[type=email] {
     font-size: 1.25em;
     font-weight: bold;
 }
+
+#upvote:hover {
+    background-color: green;
+    transition-property: background-color;
+    transition-duration: 0.15s;
+    transition-timing: linear;
+}
+
+#downvote:hover {
+    background-color: red;
+    transition-property: background-color;
+    transition-duration: 0.15s;
+    transition-timing: linear;
+}
