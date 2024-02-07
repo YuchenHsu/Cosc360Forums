@@ -9,7 +9,18 @@
     </head>
     <body>
         <div id="navbar"></div>
-        <div id="postcontent"></div>
+        <div class="post">
+            <div id="post_content"></div>
+            <div class="post_interaction">
+                <span class="votes">
+                    <button type="submit">↑</button> 
+                    <button type="submit">↓</button> 
+                </span>
+                <span class="report">
+                    <button type="submit">Report</button> 
+                </span>
+            </div>
+        </div>
         <script>
         $(function(){
             $("#navbar").load("navbar.html");
@@ -17,7 +28,7 @@
             $.getScript("../javascript/commonjq.js");
             let post_id = "posts.html #post" + (Math.floor(Math.random() * 9) + 1);
             console.log(post_id);
-            $("#postcontent").load( post_id );
+            $("#post_content").load( post_id );
         });
         </script>
     </body>
