@@ -10,16 +10,14 @@
     <body>
         <div id="navbar"></div>
         <div id="postcontent"></div>
-
-
-
-        
         <script>
         $(function(){
             $("#navbar").load("navbar.html");
             // $.getScript("../javascript/common.js");
             $.getScript("../javascript/commonjq.js");
-            $("#postcontent").load( "posts.html #post2" )
+            let post_id = "posts.html #post" + (Math.floor(Math.random() * 9) + 1);
+            console.log(post_id);
+            $("#postcontent").load( post_id );
         });
         </script>
     </body>
