@@ -204,9 +204,10 @@ input[type=text], input[type=password], input[type=email] {
     margin: 0;
 }
 
-.report {
+.report_post {
     float: right;
-    margin: 0;
+    margin: 1em;
+    font-size: 1.5em;
 }
 
 .comment_container {
