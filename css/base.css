@@ -220,6 +220,7 @@ input[type=text], input[type=password], input[type=email] {
     border: 1px solid #000;
     width: auto; 
     padding: 1em;
+    position: relative;
 }
 
 .comment_header{
@@ -235,4 +236,11 @@ input[type=text], input[type=password], input[type=email] {
 
 .comment_body {
     margin: 0.5rem;
+}
+
+.report_comment {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
 }

@@ -34,7 +34,9 @@
             let post_id = "posts.html #post" + (Math.floor(Math.random() * 9) + 1);
             console.log(post_id);
             $("#post_content").load( post_id );
-            $("#comment_content").load( "comments.html" );
+            $("#comment_content").load( "comments.html", function() {
+                $(".comment").append("<button type=\"submit\" class=\"report_comment\">Report</button>");
+            });
         });
         </script>
     </body>
