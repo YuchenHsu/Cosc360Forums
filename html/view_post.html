@@ -19,7 +19,10 @@
                 <span class="report">
                     <button type="submit">Report</button> 
                 </span>
-                <div id="comment_content"></div>
+                <section class="comment_container">
+                    <h2>Comments</h2>
+                    <div id="comment_content"></div>
+                </section>
             </div>
         </div>
         <script>
@@ -27,6 +30,7 @@
             $("#navbar").load("navbar.html");
             // $.getScript("../javascript/common.js");
             $.getScript("../javascript/commonjq.js");
+            // pick a random post from the comments file
             let post_id = "posts.html #post" + (Math.floor(Math.random() * 9) + 1);
             console.log(post_id);
             $("#post_content").load( post_id );

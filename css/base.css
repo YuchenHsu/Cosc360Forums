@@ -209,6 +209,30 @@ input[type=text], input[type=password], input[type=email] {
     margin: 0;
 }
 
-#comment_content {
+.comment_container {
+    /* places below the vote and report buttons */
     clear: both;
+    text-align: left;
+    padding: 2em;
+}
+
+.comment {
+    border: 1px solid #000;
+    width: auto; 
+    padding: 1em;
+}
+
+.comment_header{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+.comment_header span {
+    margin: 0.5rem;
+    padding: 0;
+}
+
+.comment_body {
+    margin: 0.5rem;
 }
