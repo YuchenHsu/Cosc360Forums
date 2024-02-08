@@ -98,6 +98,7 @@ float: right;
     background-color: #b0bbd7;
     color: #0d1b2a;
     text-align: center;
+    overflow: auto;
 }
 
 button {
@@ -165,16 +166,45 @@ input[type=text], input[type=password], input[type=email] {
     font-weight: bold;
 }
 
+.post-interaction {
+    margin: 1em
+}
+
 #upvote:hover {
     background-color: green;
     transition-property: background-color;
     transition-duration: 0.15s;
-    transition-timing: linear;
+    transition-timing-function: linear;
 }
 
 #downvote:hover {
     background-color: red;
     transition-property: background-color;
     transition-duration: 0.15s;
-    transition-timing: linear;
+    transition-timing-function: linear;
+}
+
+.votes {
+    float: left;
+    width: 20%;
+    position: relative;
+    padding: 0;
+    /* margin: 0; */
+}
+
+.votes button {
+    display: inline;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.votes span {
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+}
+
+.report {
+    float: right;
+    margin: 0;
 }
