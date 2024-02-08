@@ -170,6 +170,8 @@ input[type=text], input[type=password], input[type=email] {
     color: whitesmoke;
     background-color: #0D1B2A;
     display: block;
+    padding-bottom: 0.7em;
+    padding-left: 0.3em;
 }
 li {
     font-size: 1em;
