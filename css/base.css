@@ -208,3 +208,7 @@ input[type=text], input[type=password], input[type=email] {
     float: right;
     margin: 0;
 }
+
+#comment_content {
+    clear: both;
+}
