@@ -189,3 +189,10 @@ li {
     color: black;
     width: 50%;
 }
+#moderating div h3{
+    border: 1px solid #0D1B2A;
+    border-collapse: collapse;
+    background-color: #b0bbd7;
+    float: left;
+    font-size: 1em;
+}
