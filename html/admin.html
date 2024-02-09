@@ -13,7 +13,7 @@
                     <li><a href="#analytics">Analytics</a></li>
                     <li><a href="#reports">Reports</a></li>
             </div>
-            <div id="moderating" >
+            <div id="moderating" style="display: none">
                 <h2>Moderating</h2>
                 <p>Here you can moderate the forums. You can delete posts, ban users, and more.</p>
                 <div>
@@ -27,9 +27,18 @@
                 </div>
                 
             </div>
-            <div id="users" style="display: none">
+            <div id="users" >
                 <h2>Users</h2>
                 <p>Here you can view all the users and their information. You can also ban users.</p>
+                <form method="POST">
+                    <input type="text" name="search" placeholder="Search users" id="search">
+                    <button type="submit">Search</button>
+                </form>
+                <div class="user_disp">
+                    <p>User 1</p>
+                    <button>View</button>
+                    <button>Disable</button>
+                </div>
             </div>
             <div id="analytics" style="display: none">
                 <h2>Analytics</h2>

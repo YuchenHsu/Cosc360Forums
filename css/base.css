@@ -196,3 +196,15 @@ li {
     float: left;
     font-size: 1em;
 }
+#search{
+    width: 50%;
+}
+.user_disp{
+   justify-content: center;
+   display: flex;
+   background-color: #b0bbd7;
+   width: 50%;
+}
+.user_disp p{
+    
+}
