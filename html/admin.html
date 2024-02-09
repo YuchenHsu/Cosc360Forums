@@ -13,18 +13,20 @@
                     <li><a href="#analytics">Analytics</a></li>
                     <li><a href="#reports">Reports</a></li>
             </div>
-            <div id="moderating" style="display: none">
+            <div id="moderating" >
                 <h2>Moderating</h2>
                 <p>Here you can moderate the forums. You can delete posts, ban users, and more.</p>
-                <div>
-                    <h3>Reported Posts</h3>
-                </div>
-               <div>
-                    <h3>Reported Users</h3>
-               </div>
-                <div>
-                    <h3>Conflicts</h3>
-                </div>
+                <table>
+                    <tr>
+                        <th>Reported Posts</th>
+                        <th>Reported Users</th>
+                        <th>Conflicts</th>
+                    </tr>
+                    <tr>
+                        <td>Post 1<button>Remove</button></td>
+                        <td>User 1<button>Disable</button></td>
+                        <td>Conflict 1</td>
+                </table>
                 
             </div>
             <div id="users" style="display: none">
@@ -51,7 +53,7 @@
                     <h4>Top Post</h4>
                 </div>
             </div>
-            <div id="reports" >
+            <div id="reports" style="display: none">
                 <h2>Reports</h2>
                 <p>Here you can view the reports for the forum.</p>
                 <figure>
