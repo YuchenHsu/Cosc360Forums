@@ -98,6 +98,7 @@ float: right;
     background-color: #b0bbd7;
     color: #0d1b2a;
     text-align: center;
+    overflow: auto;
 }
 
 button {
@@ -164,6 +165,86 @@ input[type=text], input[type=password], input[type=email] {
     font-size: 1.25em;
     font-weight: bold;
 }
+
+.post-interaction {
+    margin: 1em
+}
+
+#upvote:hover {
+    background-color: green;
+    transition-property: background-color;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+}
+
+#downvote:hover {
+    background-color: red;
+    transition-property: background-color;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+}
+
+.votes {
+    float: left;
+    width: 20%;
+    position: relative;
+    padding: 0;
+    /* margin: 0; */
+}
+
+.votes button {
+    display: inline;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.votes span {
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+}
+
+.report_post {
+    float: right;
+    margin: 1em;
+    font-size: 1.5em;
+}
+
+.comment_container {
+    /* places below the vote and report buttons */
+    clear: both;
+    text-align: left;
+    padding: 2em;
+}
+
+.comment {
+    border: 1px solid #000;
+    width: auto; 
+    padding: 1em;
+    position: relative;
+}
+
+.comment_header{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+.comment_header span {
+    margin: 0.5rem;
+    padding: 0;
+}
+
+.comment_body {
+    margin: 0.5rem;
+}
+
+.report_comment {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+}
 #sidebar{
     float: left;
     margin: 1em;
@@ -206,5 +287,7 @@ li {
    width: 50%;
 }
 .user_disp p{
-    
+    margin: 1.1em;
+    padding: 0.5em;
+    font-size: 1.5em;
 }
