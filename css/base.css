@@ -279,11 +279,13 @@ li {
 }
 #search{
     width: 50%;
+    border: 1px solid #0D1B2A;
 }
 .user_disp{
    justify-content: center;
    display: flex;
    background-color: #b0bbd7;
+   border: 1px solid #0D1B2A;
    width: 50%;
 }
 .user_disp p{
