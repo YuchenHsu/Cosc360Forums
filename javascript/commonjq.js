@@ -6,11 +6,13 @@ $(document).ready( function() {
         const loginForm = $( "#login-form" );
         const registerForm = $( "#register-form" );
         const notificationsContainer = $( "#notification" );
+        const profileContainer = $( "#profile" );
         postsContainer.css( "display", "none" );
         searchForm.css( "display", "none" );
         loginForm.css( "display", "none" );
         registerForm.css( "display", "none" );
         notificationsContainer.css( "display", "none" );
+        profileContainer.css( "display", "none" );
     }
 
 
@@ -38,6 +40,24 @@ $(document).ready( function() {
         toggleLoginForm();
     });
 
+    function toggleErrorLogin() {
+        const errorMessages = $( ".error" );
+        if (errorMessages.css( "display" ) === "none") {
+            errorMessages.css( "display", "block" );
+        } else {
+            errorMessages.css( "display", "none" );
+        }
+    }
+
+    function toggleErrorRegister() {
+        const errorMessages = $( ".error-register" );
+        if (errorMessages.css( "display" ) === "none") {
+            errorMessages.css( "display", "block" );
+        } else {
+            errorMessages.css( "display", "none" );
+        }
+    }
+
     // Keep the function and event listener that handle the login logic
     function handleLogin(event) {
         // Prevent the default form submission behavior
@@ -52,11 +72,12 @@ $(document).ready( function() {
             window.location.reload();
         } else {
             // If no, display an error message
-            alert("Invalid username or password!");
+            toggleErrorLogin();
+            // alert("Invalid username or password!");
         }
     }
 
-    const loginBtn = $( "#login-btn" );
+    const loginBtn = $( "#login-submit" );
     loginBtn.on("click", function (event) {
         // Call the login function
         handleLogin(event);
@@ -85,7 +106,20 @@ $(document).ready( function() {
     homeBtn.on("click", function () {
         toggleOff();
         togglePostsContent();
+
+        // when the posts are toggled, load the pages from ../html/posts.html
+        fetch("posts.html")
+            .then(response => response.text())
+            .then(html => {
+                $( ".posts" ).html(html);
+            })
+            .catch(error => {
+                console.error("Error loading posts:", error);
+            }
+        );
     });
+
+
 
     // Toggle the search form
     function toggleSearchForm() {
@@ -119,6 +153,32 @@ $(document).ready( function() {
         toggleRegisterForm();
     });
 
+    // Handle the registration logic
+    function handleRegistration(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        // Get the username and password values
+        const username = $( "#reg-username" ).val();
+        const password = $( "#reg-password" ).val();
+        const confirmPassword = $( "#confirm-password" ).val();
+        // Check if they match some predefined values
+        if (password === confirmPassword) {
+            // If yes, display a success message and reload the page
+            alert("Registration successful!");
+            window.location.reload();
+        } else {
+            // If no, display an error message
+            toggleErrorRegister();
+            alert("Passwords do not match!");
+        }
+    }
+
+    const regBtn = $( "#register-submit" );
+    regBtn.on("click", function (event) {
+        // Call the registration function
+        handleRegistration(event);
+    });
+
     // Toggle the notification page
     function toggleNotifications() {
         const notificationsContainer = $( "#notification" );
@@ -133,6 +193,31 @@ $(document).ready( function() {
     notificationsBtn.on("click", function () {
         toggleOff();
         toggleNotifications();
+    });
+
+    // Toggle the profile page
+    function toggleProfile() {
+        const profileContainer = $( "#profile" );
+        if (profileContainer.css( "display" ) === "none") {
+            profileContainer.css( "display", "block" );
+        } else {
+            profileContainer.css( "display" , "none");
+        }
+    }
+
+    const profileBtn = $( "#profile-btn" );
+    profileBtn.on("click", function () {
+        toggleOff();
+        toggleProfile();
+        fetch("posts.html")
+            .then(response => response.text())
+            .then(html => {
+                $( ".profile-posts" ).html(html);
+            })
+            .catch(error => {
+                console.error("Error loading posts:", error);
+            }
+        );
     });
 });
 

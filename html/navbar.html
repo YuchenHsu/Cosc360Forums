@@ -8,9 +8,9 @@
                 User &#9660;
             </a>
             <div class="dropdown-content">
-                <a href="#user" id="user-btn">Profile</a>
+                <a href="#user" id="profile-btn">Profile</a>
                 <a href="admin.html" >Admin</a>
-                <a href="#register">Register</a>
+                <a href="#register" id="user-btn">Register</a>
                 <a href="#logout">Logout</a>
         </div>
         </div>
@@ -31,7 +31,7 @@
         <input id="remember" type="checkbox" name="remember">
         <label for="remember">Remember me</label>
     </div>
-    <button id="login-btn" type="submit">Submit</button>
+    <button id="login-submit" type="submit">Submit</button>
 </form>
 <!-- Make a invisible register form that's toggled by the js -->
 <form id="register-form" class="form-container" style="display: none;">
@@ -54,7 +54,7 @@
         <input id="password" type="password" name="password" required>
     </div>
     <br>
-    <button id="register-btn" type="submit">Submit</button>
+    <button id="register-submit" type="submit">Submit</button>
 </form>
 
 <!-- Make a invisible Search bar that's toggled by the js -->
@@ -76,4 +76,34 @@
     <p>Notification 1</p>
     <p>Notification 2</p>
     <p>Notification 3</p>
+</div>
+
+<!-- make an invisible error message for login -->
+<div id="error-login" class="form-container" style="display: none;">
+    <h3>Error</h3>
+    <p>Invalid username or password</p>
+</div>
+<!-- make an invisible error message for register -->
+<div id="error-register" class="form-container" style="display: none;">
+    <h3>Error</h3>
+    <p>Invalid username or password</p>
+</div>
+
+<!-- make an invisible profile page that's toggled by the js -->
+<div id="profile" class="form-container" style="display: none;">
+    <div class="profile-container">
+        <div class="profile">
+            <!-- Profile section -->
+            <img class="profile-pic" src="../images/social/twitter_16.png" alt="Profile Picture">
+            <h2>User Profile</h2>
+            <p><strong>Username:</strong> <!-- Add username here --></p>
+            <p><strong>Email:</strong> <!-- Add email here --></p>
+        </div>
+        <div class="profile-posts">
+            <!-- Posts section -->
+            <h2 class="profile-posts">Posts</h2>
+            <!-- Add your posts here -->
+        </div>
+
+    </div>
 </div>
