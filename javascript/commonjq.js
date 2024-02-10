@@ -112,8 +112,8 @@ $(document).ready( function() {
         }
     }
 
-    const homeBtn = $( "#home-btn" );
-    homeBtn.on("click", function () {
+    const postBtn = $( "#post-btn" );
+    postBtn.on("click", function () {
         toggleOff();
         togglePostsContent();
 
@@ -129,22 +129,22 @@ $(document).ready( function() {
         );
     });
 
-    const homeBtn1 = $( "#home-btn-1" );
-    homeBtn1.on("click", function () {
-        toggleOff();
-        togglePostsContent();
-
-        // when the posts are toggled, load the pages from ../html/posts.html
-        fetch("posts.html")
-            .then(response => response.text())
-            .then(html => {
-                $( ".posts" ).html(html);
-            })
-            .catch(error => {
-                console.error("Error loading posts:", error);
-            }
-        );
-    });
+    // const homeBtn1 = $( "#home-btn-1" );
+    // homeBtn1.on("click", function () {
+    //     toggleOff();
+    //     togglePostsContent();
+    //
+    //     // when the posts are toggled, load the pages from ../html/posts.html
+    //     fetch("posts.html")
+    //         .then(response => response.text())
+    //         .then(html => {
+    //             $( ".posts" ).html(html);
+    //         })
+    //         .catch(error => {
+    //             console.error("Error loading posts:", error);
+    //         }
+    //     );
+    // });
 
 
 
