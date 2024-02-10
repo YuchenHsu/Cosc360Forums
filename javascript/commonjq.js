@@ -7,12 +7,14 @@ $(document).ready( function() {
         const registerForm = $( "#register-form" );
         const notificationsContainer = $( "#notification" );
         const profileContainer = $( "#profile" );
+        const adminContainer = $( "#admin" );
         postsContainer.css( "display", "none" );
         searchForm.css( "display", "none" );
         loginForm.css( "display", "none" );
         registerForm.css( "display", "none" );
         notificationsContainer.css( "display", "none" );
         profileContainer.css( "display", "none" );
+        adminContainer.css( "display", "none" );
     }
 
 
@@ -219,5 +221,22 @@ $(document).ready( function() {
             }
         );
     });
+
+    // Toggle the User moderation page in the admin
+    function toggleAdmin() {
+        const adminContainer = $( "#mod-user" );
+        if (adminContainer.css( "display" ) === "none") {
+            adminContainer.css( "display", "block" );
+        } else {
+            adminContainer.css( "display" , "none");
+        }
+    }
+
+    const modUserBtn = $( "#users" );
+    modUserBtn.on("click", function () {
+        toggleOff();
+        toggleAdmin();
+    });
+
 });
 
