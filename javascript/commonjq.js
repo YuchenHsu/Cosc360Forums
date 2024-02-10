@@ -7,14 +7,22 @@ $(document).ready( function() {
         const registerForm = $( "#register-form" );
         const notificationsContainer = $( "#notification" );
         const profileContainer = $( "#profile" );
-        const adminContainer = $( "#admin" );
+        const sidebar = $( "#sidebar" );
+        const modContainer = $( "#moderating" );
+        const modUserContainer = $( "#mod-user" );
+        const analyticsContainer = $( "#mod-analytics" );
+        const reportsContainer = $( "#mod-reports" );
         postsContainer.css( "display", "none" );
         searchForm.css( "display", "none" );
         loginForm.css( "display", "none" );
         registerForm.css( "display", "none" );
         notificationsContainer.css( "display", "none" );
         profileContainer.css( "display", "none" );
-        adminContainer.css( "display", "none" );
+        sidebar.css( "display", "none" );
+        modContainer.css( "display", "none" );
+        modUserContainer.css( "display", "none" );
+        analyticsContainer.css( "display", "none" );
+        reportsContainer.css( "display", "none" );
     }
 
 
@@ -249,8 +257,8 @@ $(document).ready( function() {
         }
     }
 
-    const modUserBtn = $( "#admin-btn" );
-    modUserBtn.on("click", function () {
+    const adminBtn = $( "#admin-btn" );
+    adminBtn.on("click", function () {
         toggleOff();
         toggleAdmin();
     });
@@ -268,7 +276,59 @@ $(document).ready( function() {
     const modBtn = $( "#mod-btn" );
     modBtn.on("click", function () {
         toggleOff();
+        toggleAdmin();
         toggleModerater();
+    });
+    
+    // Toggle the moderater user page
+    function toggleModeraterUser() {
+        const modUserContainer = $( "#mod-user" );
+        if (modUserContainer.css( "display" ) === "none") {
+            modUserContainer.css( "display", "block" );
+        } else {
+            modUserContainer.css( "display" , "none");
+        }
+    }
+    
+    const modUserBtn = $( "#mod-users-btn" );
+    modUserBtn.on("click", function () {
+        toggleOff();
+        toggleAdmin();
+        toggleModeraterUser();
+    });
+
+    // Toggle the Analytics page
+    function toggleAnalytics() {
+        const analyticsContainer = $( "#mod-analytics" );
+        if (analyticsContainer.css( "display" ) === "none") {
+            analyticsContainer.css( "display", "block" );
+        } else {
+            analyticsContainer.css( "display" , "none");
+        }
+    }
+
+    const analyticsBtn = $( "#mod-analytics-btn" );
+    analyticsBtn.on("click", function () {
+        toggleOff();
+        toggleAdmin();
+        toggleAnalytics();
+    });
+
+    // Toggle the Reports page
+    function toggleReports() {
+        const reportsContainer = $( "#mod-reports" );
+        if (reportsContainer.css( "display" ) === "none") {
+            reportsContainer.css( "display", "block" );
+        } else {
+            reportsContainer.css( "display" , "none");
+        }
+    }
+
+    const reportsBtn = $( "#mod-reports-btn" );
+    reportsBtn.on("click", function () {
+        toggleOff();
+        toggleAdmin();
+        toggleReports();
     });
 });
 
