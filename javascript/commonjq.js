@@ -121,6 +121,23 @@ $(document).ready( function() {
         );
     });
 
+    const homeBtn1 = $( "#home-btn-1" );
+    homeBtn1.on("click", function () {
+        toggleOff();
+        togglePostsContent();
+
+        // when the posts are toggled, load the pages from ../html/posts.html
+        fetch("posts.html")
+            .then(response => response.text())
+            .then(html => {
+                $( ".posts" ).html(html);
+            })
+            .catch(error => {
+                console.error("Error loading posts:", error);
+            }
+        );
+    });
+
 
 
     // Toggle the search form
@@ -222,9 +239,9 @@ $(document).ready( function() {
         );
     });
 
-    // Toggle the User moderation page in the admin
+    // Toggle the admin sidebar
     function toggleAdmin() {
-        const adminContainer = $( "#mod-user" );
+        const adminContainer = $( "#sidebar" );
         if (adminContainer.css( "display" ) === "none") {
             adminContainer.css( "display", "block" );
         } else {
@@ -232,11 +249,26 @@ $(document).ready( function() {
         }
     }
 
-    const modUserBtn = $( "#users" );
+    const modUserBtn = $( "#admin-btn" );
     modUserBtn.on("click", function () {
         toggleOff();
         toggleAdmin();
     });
 
+    // Toggle the moderater page
+    function toggleModerater() {
+        const modContainer = $( "#moderating" );
+        if (modContainer.css( "display" ) === "none") {
+            modContainer.css( "display", "block" );
+        } else {
+            modContainer.css( "display" , "none");
+        }
+    }
+
+    const modBtn = $( "#mod-btn" );
+    modBtn.on("click", function () {
+        toggleOff();
+        toggleModerater();
+    });
 });
 
