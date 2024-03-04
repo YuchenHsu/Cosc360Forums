@@ -21,10 +21,10 @@ CREATE TABLE IF NOT EXISTS post (
     title VARCHAR(255) NOT NULL,
     content TEXT,
     image BLOB,
-    upvotes DOUBLE;
-    downvotes DOUBLE;
-    reported BOOLEAN;
-    pinned BOOLEAN;
+    upvotes DOUBLE,
+    downvotes DOUBLE,
+    reported BOOLEAN,
+    pinned BOOLEAN,
     user_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES forum_user(user_id)
@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS comment (
     post_id INT,
     user_id INT,
     content TEXT NOT NULL,
-    reported BOOLEAN;
+    reported BOOLEAN,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (post_id) REFERENCES post(post_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
+    FOREIGN KEY (user_id) REFERENCES forum_user(user_id)
 );
 
