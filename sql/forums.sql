@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS statistic (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     usernameNew DOUBLE,
     postNew DOUBLE,
-    upvotes INT,
-    downvotes INT,
+    upvotes DOUBLE,
+    downvotes DOUBLE,
     loggedIn DOUBLE,
     topPost DOUBLE,
     FOREIGN KEY (post_id) REFERENCES post(post_id)
