@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS post (
 -- Table for storing posts (replies)
 CREATE TABLE IF NOT EXISTS comment (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
-    post_id INT,
-    username VARCHAR(50),
+    post_id INT NOT NULL,
+    username VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
     reported BOOLEAN,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS conflict (
     username2 INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     info TEXT,
-    status BOOLEAN,
+    resolved BOOLEAN,
     FOREIGN KEY (username1) REFERENCES user(username),
     FOREIGN KEY (username2) REFERENCES user(username)
 );
@@ -67,6 +67,6 @@ CREATE TABLE IF NOT EXISTS statistic (
     upvotes DOUBLE,
     downvotes DOUBLE,
     loggedIn DOUBLE,
-    topPost INT,
+    topPost INT NOT NULL,
     FOREIGN KEY (topPost) REFERENCES post(post_id)
 );
