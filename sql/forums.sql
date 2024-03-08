@@ -60,3 +60,16 @@ CREATE TABLE IF NOT EXISTS conflict (
     FOREIGN KEY (user_id1) REFERENCES user(user_id),
     FOREIGN KEY (user_id2) REFERENCES user(user_id)
 );
+
+CREATE TABLE IF NOT EXISTS statistic (
+    stat_id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    usernameNew DOUBLE,
+    postNew DOUBLE,
+    upvotes INT,
+    downvotes INT,
+    loggedIn DOUBLE,
+    topPost DOUBLE,
+    FOREIGN KEY (post_id) REFERENCES post(post_id)
+);
