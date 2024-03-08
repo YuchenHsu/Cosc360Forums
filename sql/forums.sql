@@ -4,10 +4,9 @@ USE forums;
 
 -- Table for storing user information
 CREATE TABLE IF NOT EXISTS user (
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    full_name VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL PRIMARY KEY,
+    full_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
     admin BOOLEAN,
     disabled BOOLEAN,
@@ -25,51 +24,49 @@ CREATE TABLE IF NOT EXISTS post (
     downvotes DOUBLE,
     reported BOOLEAN,
     pinned BOOLEAN,
-    user_id INT,
+    username VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
+    FOREIGN KEY (username) REFERENCES user(username)
 );
 
 -- Table for storing posts (replies)
 CREATE TABLE IF NOT EXISTS comment (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
     post_id INT,
-    user_id INT,
+    username VARCHAR(50),
     content TEXT NOT NULL,
     reported BOOLEAN,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (post_id) REFERENCES post(post_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
+    FOREIGN KEY (username) REFERENCES user(username)
 );
 
 CREATE TABLE IF NOT EXISTS notification (
     notification_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    username VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     content TEXT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
+    FOREIGN KEY (username) REFERENCES user(username)
 );
 
 CREATE TABLE IF NOT EXISTS conflict (
     conflict_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id1 INT NOT NULL,
-    user_id2 INT NOT NULL,
+    username1 INT NOT NULL,
+    username2 INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     info TEXT,
     status BOOLEAN,
-    FOREIGN KEY (user_id1) REFERENCES user(user_id),
-    FOREIGN KEY (user_id2) REFERENCES user(user_id)
+    FOREIGN KEY (username1) REFERENCES user(username),
+    FOREIGN KEY (username2) REFERENCES user(username)
 );
 
 CREATE TABLE IF NOT EXISTS statistic (
-    stat_id INT AUTO_INCREMENT PRIMARY KEY,
-    post_id INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    day DATE PRIMARY KEY,
     usernameNew DOUBLE,
     postNew DOUBLE,
     upvotes DOUBLE,
     downvotes DOUBLE,
     loggedIn DOUBLE,
-    topPost DOUBLE,
-    FOREIGN KEY (post_id) REFERENCES post(post_id)
+    topPost INT,
+    FOREIGN KEY (topPost) REFERENCES post(post_id)
 );
