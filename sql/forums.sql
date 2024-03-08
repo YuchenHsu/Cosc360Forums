@@ -4,7 +4,7 @@ USE forums;
 
 -- Table for storing user information
 CREATE TABLE IF NOT EXISTS user (
-    username VARCHAR(50) NOT NULL PRIMARY KEY,
+    username VARCHAR(50) PRIMARY KEY,
     full_name VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS notification (
 
 CREATE TABLE IF NOT EXISTS conflict (
     conflict_id INT AUTO_INCREMENT PRIMARY KEY,
-    username1 INT NOT NULL,
-    username2 INT NOT NULL,
+    username1 VARCHAR(50) NOT NULL,
+    username2 VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     info TEXT,
     resolved BOOLEAN,
