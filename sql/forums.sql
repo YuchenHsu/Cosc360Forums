@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS post (
     pinned BOOLEAN,
     user_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES forum_user(user_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
 -- Table for storing posts (replies)
@@ -39,6 +39,24 @@ CREATE TABLE IF NOT EXISTS comment (
     reported BOOLEAN,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (post_id) REFERENCES post(post_id),
-    FOREIGN KEY (user_id) REFERENCES forum_user(user_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
+CREATE TABLE IF NOT EXISTS notification (
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    content TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
+);
+
+CREATE TABLE IF NOT EXISTS conflict (
+    conflict_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id1 INT NOT NULL,
+    user_id2 INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    info TEXT,
+    status BOOLEAN,
+    FOREIGN KEY (user_id1) REFERENCES user(user_id),
+    FOREIGN KEY (user_id2) REFERENCES user(user_id)
+);
