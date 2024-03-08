@@ -75,6 +75,22 @@ $(document).ready( function() {
         // Get the username and password values
         const username = $( "#username" ).val();
         const password = $( "#password" ).val();
+        //prevent empty fields
+        if(username ===  "" || username === null){
+            alert("Please enter a username.");
+        }
+        else {
+            if (password === "" || password === null) {
+            alert("Please enter a password.");
+            }
+            else{
+                if ((username === "" || username === null)&& (password===null || password === "")) {
+                alert("Please enter a username and password.");
+                }  
+            }
+        }
+       
+        
         // Check if they match some predefined values
         if (username === "user" && password === "web_dev") {
             // If yes, display a success message and reload the page
