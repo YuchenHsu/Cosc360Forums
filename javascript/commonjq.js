@@ -201,9 +201,35 @@ $(document).ready( function() {
         // Prevent the default form submission behavior
         event.preventDefault();
         // Get the username and password values
+        const full_name = $( "#full-name" ).val();
         const username = $( "#reg-username" ).val();
         const password = $( "#reg-password" ).val();
         const confirmPassword = $( "#confirm-password" ).val();
+        const email = $( "#email" ).val();
+        //check for empty fields  
+        if(username ===  "" || username === null){
+            alert("Please enter a username.");
+        }
+        else {
+            if (password === "" || password === null) {
+            alert("Please enter a password.");
+            }
+            else{
+                if(confirmPassword === "" || confirmPassword === null){
+                    alert("Please enter your password again.");
+                }
+                else{
+                    if(email === "" || email === null){
+                        alert("Please enter your email.");
+                    }
+                    else{
+                        if(full_name === "" || full_name === null){
+                            alert("Please enter your full name.");
+                        }
+                    }
+                }
+            }
+        }
         // Check if they match some predefined values
         if (password === confirmPassword) {
             // If yes, display a success message and reload the page
