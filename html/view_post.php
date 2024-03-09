@@ -27,7 +27,7 @@
         </div>
         <script>
         $(function(){
-            $("#navbar").load("navbar.html");
+            $("#navbar").load("navbar.php");
             // $.getScript("../javascript/common.js");
             $.getScript("../javascript/commonjq.js");
             // pick a random post from the comments file
@@ -35,11 +35,11 @@
             let post_avail = searchParams.has("post_id");
             let post_num = post_avail ? searchParams.get("post_id") : (Math.floor(Math.random() * 9) + 1);
 
-            let post_id =   "posts.html #post" + post_num; 
+            let post_id =   "posts.php #post" + post_num; 
                 console.log(post_id);
 
             $("#post_content").load( post_id );
-            $("#comment_content").load( "comments.html", function() {
+            $("#comment_content").load( "comments.php", function() {
                 $(".comment").append("<button type=\"submit\" class=\"report_comment\">Report</button>");
             });
         });
