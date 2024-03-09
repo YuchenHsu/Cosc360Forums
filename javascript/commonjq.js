@@ -99,7 +99,7 @@ $(document).ready( function() {
         const postsContainer = $( ".posts" );
         if (postsContainer.css( "display" ) === "none") {
             postsContainer.css( "display", "block" );
-            fetch("posts.html")
+            fetch("posts.php")
                 .then(response => response.text())
                 .then(html => {
                     postsContainer.innerHTML = html;
@@ -117,11 +117,11 @@ $(document).ready( function() {
         toggleOff();
         togglePostsContent();
 
-        // when the posts are toggled, load the pages from ../html/posts.html
-        fetch("posts.html")
+        // when the posts are toggled, load the pages from ../html/posts.php
+        fetch("posts.php")
             .then(response => response.text())
             .then(html => {
-                $( ".posts" ).html(html);
+                $( ".posts" ).php(html);
             })
             .catch(error => {
                 console.error("Error loading posts:", error);
@@ -134,11 +134,11 @@ $(document).ready( function() {
     //     toggleOff();
     //     togglePostsContent();
     //
-    //     // when the posts are toggled, load the pages from ../html/posts.html
-    //     fetch("posts.html")
+    //     // when the posts are toggled, load the pages from ../html/posts.php
+    //     fetch("posts.php")
     //         .then(response => response.text())
     //         .then(html => {
-    //             $( ".posts" ).html(html);
+    //             $( ".posts" ).php(html);
     //         })
     //         .catch(error => {
     //             console.error("Error loading posts:", error);
@@ -236,10 +236,10 @@ $(document).ready( function() {
     profileBtn.on("click", function () {
         toggleOff();
         toggleProfile();
-        fetch("posts.html")
+        fetch("posts.php")
             .then(response => response.text())
             .then(html => {
-                $( ".profile-posts" ).html(html);
+                $( ".profile-posts" ).php(html);
             })
             .catch(error => {
                 console.error("Error loading posts:", error);
