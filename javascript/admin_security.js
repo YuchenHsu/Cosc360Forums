@@ -1,5 +1,6 @@
 // client side validation for admin page forms
-$("search_users_submit").on("click", function (event) {
+const adminBtn = $("search_users_submit");
+adminBtn.on("click", function (event) {
     event.preventDefault();
     const search = document.getElementById("search_users").value;
     if (search === "" || search === null) {
