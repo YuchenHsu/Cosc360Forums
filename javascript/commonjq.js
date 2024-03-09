@@ -76,19 +76,21 @@ $(document).ready( function() {
         const username = $( "#username" ).val();
         const password = $( "#password" ).val();
         //prevent empty fields
-        if(username ===  "" || username === null){
-            alert("Please enter a username.");
-        }
-        else {
-            if (password === "" || password === null) {
-            alert("Please enter a password.");
-            }
+        if ((username === "" || username === null)&& (password===null || password === "")) {
+            alert("Please enter a username and password.");
+            }  
             else{
-                if ((username === "" || username === null)&& (password===null || password === "")) {
-                alert("Please enter a username and password.");
-                }  
+                if(username ===  "" || username === null){
+                    alert("Please enter a username.");
+                }
+                else {
+                    if (password === "" || password === null) {
+                    alert("Please enter a password.");
+                    }
+                }
+                
             }
-        }
+        
        
         
         // Check if they match some predefined values
