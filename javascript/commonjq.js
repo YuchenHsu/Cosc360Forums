@@ -233,14 +233,16 @@ $(document).ready( function() {
             }
         }
         // Check if they match some predefined values
-        if (password === confirmPassword) {
-            // If yes, display a success message and reload the page
-            alert("Registration successful!");
-            window.location.reload();
-        } else {
-            // If no, display an error message
-            toggleErrorRegister();
-            alert("Passwords do not match!");
+        if(password !== null && password !== "" && confirmPassword !== null && confirmPassword !== ""){
+            if (password === confirmPassword) {
+                // If yes, display a success message and reload the page
+                alert("Registration successful!");
+                window.location.reload();
+            } else {
+                // If no, display an error message
+                toggleErrorRegister();
+                alert("Passwords do not match!");
+            }
         }
     }
 
