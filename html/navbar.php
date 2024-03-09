@@ -47,16 +47,16 @@
         <input id="email" type="email" name="email" required>
     </div>
     <div class="username">
-        <label for="username">Username: </label>
-        <input id="username" type="text" name="username" required>
+        <label for="reg_username">Username: </label>
+        <input id="reg_username" type="text" name="username" required>
     </div>
     <div class="password">
-        <label for="password">Password: </label>
-        <input id="password" type="password" name="password" required>
+        <label for="reg_password">Password: </label>
+        <input id="reg_password" type="password" name="password" required>
     </div>
     <div class="confirm">
-        <label for="password">Confirm Password:</label>
-        <input id="password" type="password" name="password" required>
+        <label for="confirm_password">Confirm Password:</label>
+        <input id="confirm_password" type="password" name="password" required>
     </div>
     <div class="profile_pic">
         <label for="profile_pic">Profile Picture: </label>
@@ -76,7 +76,7 @@
         <label for="search"><a>Post</a></label>
     </a>
     <input id="search" type="text" name="search" required>
-    <button id="search-btn" type="submit">Search</button>
+    <button id="search_btn" type="submit">Search</button>
 </form>
 
 <!-- Make a invisible notification page that's toggled by the js -->
@@ -142,8 +142,8 @@
         <h2>Users</h2>
         <p>Here you can view all the users and their information. You can also ban users.</p>
         <form method="POST">
-            <input type="text" name="search" placeholder="Search users" id="search-users">
-            <button type="submit">Search</button>
+            <input type="text" name="search" placeholder="Search users" id="search_users">
+            <button type="submit" id="search_users_submit">Search</button>
         </form>
         <div class="user_disp">
             <p>User 1</p>
