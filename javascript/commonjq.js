@@ -203,10 +203,10 @@ $(document).ready( function() {
         // Prevent the default form submission behavior
         event.preventDefault();
         // Get the username and password values
-        const full_name = $( "#full-name" ).val();
-        const username = $( "#reg-username" ).val();
-        const password = $( "#reg-password" ).val();
-        const confirmPassword = $( "#confirm-password" ).val();
+        const full_name = $( "#full_name" ).val();
+        const username = $( "#reg_username" ).val();
+        const password = $( "#reg_password" ).val();
+        const confirmPassword = $( "#confirm_password" ).val();
         const email = $( "#email" ).val();
         //check for empty fields  
         if(username ===  "" || username === null){
