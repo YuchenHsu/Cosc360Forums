@@ -121,32 +121,13 @@ $(document).ready( function() {
         fetch("posts.php")
             .then(response => response.text())
             .then(html => {
-                $( ".posts" ).php(html);
+                $( ".posts" ).html(html);
             })
             .catch(error => {
                 console.error("Error loading posts:", error);
             }
         );
     });
-
-    // const homeBtn1 = $( "#home-btn-1" );
-    // homeBtn1.on("click", function () {
-    //     toggleOff();
-    //     togglePostsContent();
-    //
-    //     // when the posts are toggled, load the pages from ../html/posts.php
-    //     fetch("posts.php")
-    //         .then(response => response.text())
-    //         .then(html => {
-    //             $( ".posts" ).php(html);
-    //         })
-    //         .catch(error => {
-    //             console.error("Error loading posts:", error);
-    //         }
-    //     );
-    // });
-
-
 
     // Toggle the search form
     function toggleSearchForm() {
@@ -239,7 +220,7 @@ $(document).ready( function() {
         fetch("posts.php")
             .then(response => response.text())
             .then(html => {
-                $( ".profile-posts" ).php(html);
+                $( ".profile-posts" ).html(html);
             })
             .catch(error => {
                 console.error("Error loading posts:", error);
