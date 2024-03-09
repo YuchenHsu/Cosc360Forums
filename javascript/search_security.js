@@ -1,5 +1,5 @@
 // client side security for searching posts
-$("#search-btn").on("click", function (event) {
+$("#search_btn").on("click", function (event) {
     event.preventDefault();
     const search = $("#search-bar").value;
     if (search === "" || search === null) {
