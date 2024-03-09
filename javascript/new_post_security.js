@@ -1,5 +1,5 @@
 // client side validation for new post page forms
-document.getElementById("new_post_submit").onsubmit = function (event) {
+$("new_post_submit").on("click", function (event) {
     event.preventDefault();
     const title = document.getElementById("title").value;
     const content = document.getElementById("post_body").value;
@@ -10,4 +10,4 @@ document.getElementById("new_post_submit").onsubmit = function (event) {
     }else {
         this.submit();
     }
-}
+});

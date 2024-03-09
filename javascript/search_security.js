@@ -1,5 +1,5 @@
 // client side security for searching posts
-document.getElementById("search-btn").onsubmit = function (event) {
+$("search-btn").on("click", function (event) {
     event.preventDefault();
     const search = document.getElementById("search-bar").value;
     if (search === "" || search === null) {
@@ -7,4 +7,4 @@ document.getElementById("search-btn").onsubmit = function (event) {
     } else {
         this.submit();
     }
-}
+});

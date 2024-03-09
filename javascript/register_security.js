@@ -1,5 +1,5 @@
 // client side security for register page
-document.getElementById("register-btn").onsubmit = function (event) {
+$("register-btn").on("click", function (event) {
     event.preventDefault();
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -15,4 +15,4 @@ document.getElementById("register-btn").onsubmit = function (event) {
     } else {
         this.submit();
     }
-}
+});
