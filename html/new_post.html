@@ -15,11 +15,11 @@
                 <label for="title">Post title: <input required type="text" name="title" id="title"></label>
                 <br>
                 <label for="post_body">Post body:</label>
-                <textarea required rows="10" cols="60" placeholder="Insert your post text here:"></textarea>
+                <textarea required rows="10" cols="60" placeholder="Insert your post text here:" id="post_body"></textarea>
                 <!-- below input accepts png and jpeg files -->
                 <br>
                 <label for="post_image">Insert image here: <input type="file" name="post_image" id="post_image" accept="image/png, image/jpeg"></label>
-                <input type="submit" value="submit" id="submit">
+                <input type="submit" value="submit" id="new_post_submit">
             </fieldset>
         </form>
     </body>

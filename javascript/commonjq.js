@@ -75,6 +75,24 @@ $(document).ready( function() {
         // Get the username and password values
         const username = $( "#username" ).val();
         const password = $( "#password" ).val();
+        //prevent empty fields
+        if ((username === "" || username === null)&& (password===null || password === "")) {
+            alert("Please enter a username and password.");
+            }  
+            else{
+                if(username ===  "" || username === null){
+                    alert("Please enter a username.");
+                }
+                else {
+                    if (password === "" || password === null) {
+                    alert("Please enter a password.");
+                    }
+                }
+                
+            }
+        
+       
+        
         // Check if they match some predefined values
         if (username === "user" && password === "web_dev") {
             // If yes, display a success message and reload the page
@@ -185,18 +203,51 @@ $(document).ready( function() {
         // Prevent the default form submission behavior
         event.preventDefault();
         // Get the username and password values
-        const username = $( "#reg-username" ).val();
-        const password = $( "#reg-password" ).val();
-        const confirmPassword = $( "#confirm-password" ).val();
+        const full_name = $( "#full_name" ).val();
+        const username = $( "#reg_username" ).val();
+        const password = $( "#reg_password" ).val();
+        const confirmPassword = $( "#confirm_password" ).val();
+        const email = $( "#email" ).val();
+        //check for empty fields  
+        if(username ===  "" || username === null){
+            alert("Please enter a username.");
+            return;
+        }
+        else {
+            if (password === "" || password === null) {
+            alert("Please enter a password.");
+            return;
+            }
+            else{
+                if(confirmPassword === "" || confirmPassword === null){
+                    alert("Please enter your password again.");
+                    return;
+                }
+                else{
+                    if(email === "" || email === null){
+                        alert("Please enter your email.");
+                        return;
+                    }
+                    else{
+                        if(full_name === "" || full_name === null){
+                            alert("Please enter your full name.");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
         // Check if they match some predefined values
-        if (password === confirmPassword) {
-            // If yes, display a success message and reload the page
-            alert("Registration successful!");
-            window.location.reload();
-        } else {
-            // If no, display an error message
-            toggleErrorRegister();
-            alert("Passwords do not match!");
+        if(password !== null && password !== "" && confirmPassword !== null && confirmPassword !== ""){
+            if (password === confirmPassword) {
+                // If yes, display a success message and reload the page
+                alert("Registration successful!");
+                window.location.reload();
+            } else {
+                // If no, display an error message
+                toggleErrorRegister();
+                alert("Passwords do not match!");
+            }
         }
     }
 

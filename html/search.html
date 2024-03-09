@@ -7,6 +7,6 @@
         <input id="search" type="radio" name="search" value="post" required>
         <label for="search"><a>Post</a></label>
     </a>
-    <input id="search" type="text" name="search" required>
+    <input id="search-bar" type="text" name="search" required>
     <button id="search-btn" type="submit">Search</button>
 </form>
