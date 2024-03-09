@@ -1,5 +1,5 @@
 <div class="topnav">
-    <a href="base.html" id="home-btn" class="active">Home</a>
+    <a href="base.php" id="home-btn" class="active">Home</a>
     <a href="#posts" id="post-btn" class="active">Posts</a>
     <a href="#search" class="active" id="search-btn">Search</a>
     <div class="topnav-right">

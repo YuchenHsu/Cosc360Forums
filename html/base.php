@@ -1,4 +1,4 @@
-<!-- base.html -->
+<!-- base.php -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,7 +24,7 @@
         <script src="../javascript/jquery-3.7.1.js"></script>
         <script>
         $(function(){
-            $("#navbar").load("navbar.html");
+            $("#navbar").load("navbar.php");
             // $.getScript("../javascript/common.js");
             $.getScript("../javascript/commonjq.js");
             $.getScript("../javascript/admin_security.js");

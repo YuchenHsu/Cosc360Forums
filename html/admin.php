@@ -72,7 +72,7 @@
             <!-- <script src="../javascript/common.js"></script> -->
         <script>
         $(function(){
-            $("#navbar").load("navbar.html");
+            $("#navbar").load("navbar.php");
             // $.getScript("../javascript/common.js");
             $.getScript("../javascript/commonjq.js");
             $.getScript("../javascript/admin_security.js");

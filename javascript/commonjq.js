@@ -117,7 +117,7 @@ $(document).ready( function() {
         const postsContainer = $( ".posts" );
         if (postsContainer.css( "display" ) === "none") {
             postsContainer.css( "display", "block" );
-            fetch("posts.html")
+            fetch("posts.php")
                 .then(response => response.text())
                 .then(html => {
                     postsContainer.innerHTML = html;
@@ -135,8 +135,8 @@ $(document).ready( function() {
         toggleOff();
         togglePostsContent();
 
-        // when the posts are toggled, load the pages from ../html/posts.html
-        fetch("posts.html")
+        // when the posts are toggled, load the pages from ../html/posts.php
+        fetch("posts.php")
             .then(response => response.text())
             .then(html => {
                 $( ".posts" ).html(html);
@@ -146,25 +146,6 @@ $(document).ready( function() {
             }
         );
     });
-
-    // const homeBtn1 = $( "#home-btn-1" );
-    // homeBtn1.on("click", function () {
-    //     toggleOff();
-    //     togglePostsContent();
-    //
-    //     // when the posts are toggled, load the pages from ../html/posts.html
-    //     fetch("posts.html")
-    //         .then(response => response.text())
-    //         .then(html => {
-    //             $( ".posts" ).html(html);
-    //         })
-    //         .catch(error => {
-    //             console.error("Error loading posts:", error);
-    //         }
-    //     );
-    // });
-
-
 
     // Toggle the search form
     function toggleSearchForm() {
@@ -287,7 +268,7 @@ $(document).ready( function() {
     profileBtn.on("click", function () {
         toggleOff();
         toggleProfile();
-        fetch("posts.html")
+        fetch("posts.php")
             .then(response => response.text())
             .then(html => {
                 $( ".profile-posts" ).html(html);
