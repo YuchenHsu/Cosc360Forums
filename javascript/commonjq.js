@@ -211,22 +211,27 @@ $(document).ready( function() {
         //check for empty fields  
         if(username ===  "" || username === null){
             alert("Please enter a username.");
+            return;
         }
         else {
             if (password === "" || password === null) {
             alert("Please enter a password.");
+            return;
             }
             else{
                 if(confirmPassword === "" || confirmPassword === null){
                     alert("Please enter your password again.");
+                    return;
                 }
                 else{
                     if(email === "" || email === null){
                         alert("Please enter your email.");
+                        return;
                     }
                     else{
                         if(full_name === "" || full_name === null){
                             alert("Please enter your full name.");
+                            return;
                         }
                     }
                 }
