@@ -12,6 +12,7 @@ $(document).ready( function() {
         const modUserContainer = $( "#mod-user" );
         const analyticsContainer = $( "#mod-analytics" );
         const reportsContainer = $( "#mod-reports" );
+        const postCreation = $( "#create_post" );
         postsContainer.css( "display", "none" );
         searchForm.css( "display", "none" );
         loginForm.css( "display", "none" );
@@ -23,6 +24,7 @@ $(document).ready( function() {
         modUserContainer.css( "display", "none" );
         analyticsContainer.css( "display", "none" );
         reportsContainer.css( "display", "none" );
+        postCreation.css( "display", "none" );
     }
 
 
@@ -362,5 +364,24 @@ $(document).ready( function() {
         toggleAdmin();
         toggleReports();
     });
+
+
+    // Toggles the create post window
+    function toggleCreatePost() {
+        const postCreation = $( "#create_post" );
+        if (postCreation.css( "display" ) === "none") {
+            postCreation.css( "display", "block" );
+        } else {
+            postCreation.css( "display" , "none");
+        }
+    }
+
+    const create_post_btn = $( "#create_post_btn" );
+    create_post_btn.on("click", function () {
+        toggleOff();
+        toggleCreatePost();
+    });
+
+
 });
 

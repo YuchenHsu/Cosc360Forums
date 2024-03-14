@@ -1,6 +1,7 @@
 <div class="topnav">
     <a href="base.php" id="home-btn" class="active">Home</a>
     <a href="#posts" id="post-btn" class="active">Posts</a>
+    <a href="#" id="create_post_btn" class="active">Create Post</a>
     <a href="#search" class="active" id="search-btn">Search</a>
     <div class="topnav-right">
         <a href="#" class="active" id="notif-btn">Notification</a>
@@ -174,4 +175,19 @@
             <figcaption>Posts Over Time</figcaption>
         </figure>
     </div>    
+    <div id="create_post" style="display: none">
+        <form class="create_post form-container">
+            <fieldset>
+                <legend>Create your post:</legend>
+                <label for="title">Post title: <input required type="text" name="title" id="title"></label>
+                <br>
+                <label for="post_body">Post body:</label>
+                <textarea required rows="10" cols="60" placeholder="Insert your post text here:" id="post_body"></textarea>
+                <!-- below input accepts png and jpeg files -->
+                <br>
+                <label for="post_image">Insert image here: <input type="file" name="post_image" id="post_image" accept="image/png, image/jpeg"></label>
+                <input type="submit" value="submit" id="new_post_submit">
+            </fieldset>
+        </form>
+    </div>
 </div>
