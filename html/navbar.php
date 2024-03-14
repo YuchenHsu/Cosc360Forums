@@ -176,7 +176,7 @@
         </figure>
     </div>    
     <div id="create_post" style="display: none">
-        <form class="create_post form-container">
+        <form class="create_post form-container" action="new_post.php" method="POST" id="create_post_form">
             <fieldset>
                 <legend>Create your post:</legend>
                 <label for="title">Post title: <input required type="text" name="title" id="title"></label>
