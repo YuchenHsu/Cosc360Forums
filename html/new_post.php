@@ -13,7 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
 
             $pdo->beginTransaction();
+            $sql = "INSERT INTO post(title, content) VALUES( :title, :body )";
+            $statement = $pdo->prepare($sql);
+            $statement->bindValue(":title", $title);
+            $statement->bindValue(":body", $post_body);
+            $statement->execute();
 
+        // if (!isset($_POST["post_image"]){ }
 
 
             $pdo->commit();
@@ -25,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // echo("<h1>" . $title . "</h1>");
         // echo("<h3>" . $post_body . "</h3>");
 
-        // if (isset($_POST["post_image"]){ }
 
 
     }
