@@ -141,7 +141,7 @@
     <div id="mod-user" style="display: none">
         <h2>Users</h2>
         <p>Here you can view all the users and their information. You can also ban users.</p>
-        <form method="POST">
+        <form id="user_search_form" method="POST">
             <input type="text" name="search" placeholder="Search users" id="search_users">
             <button type="submit" id="search_users_submit">Search</button>
         </form>
