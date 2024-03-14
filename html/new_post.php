@@ -13,13 +13,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
 
             $pdo->beginTransaction();
-            $sql = "INSERT INTO post(title, content) VALUES( :title, :body )";
-            $statement = $pdo->prepare($sql);
-            $statement->bindValue(":title", $title);
-            $statement->bindValue(":body", $post_body);
-            $statement->execute();
 
-        // if (!isset($_POST["post_image"]){ }
+            if (!file_exists($_FILES["post_image"]["tmp_name"]) || !is_uploaded_file($_FILES["post_image"]["tmp_name"])){ 
+                $sql = "INSERT INTO post(title, content) VALUES( :title, :body )";
+                $statement = $pdo->prepare($sql);
+                $statement->bindValue(":title", $title);
+                $statement->bindValue(":body", $post_body);
+                $statement->execute();
+                echo("file no");
+            } else {
+                // $sql = "INSERT INTO post(title, content) VALUES( :title, :body )";
+                // $statement = $pdo->prepare($sql);
+                // $statement->bindValue(":title", $title);
+                // $statement->bindValue(":body", $post_body);
+                // $statement->execute();
+                echo("file yes");
+            }
 
 
             $pdo->commit();
