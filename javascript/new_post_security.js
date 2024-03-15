@@ -1,5 +1,5 @@
 // client side validation for new post page forms
-$("#new_post_submit").on("click", function (event) {
+$("#create_post_form").submit(function (event) {
     event.preventDefault();
     const title = $("#title").value;
     const content = $("#post_body").value;

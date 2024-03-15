@@ -10,15 +10,9 @@
     <body>
         <div id="navbar"></div>
 
-        <div id="notification" class="form-container" style="display: none;">
-            <h3>Notification</h3>
-            <p>Notification 1</p>
-            <p>Notification 2</p>
-            <p>Notification 3</p>
-        </div>
-
         <div class="posts" style="display: none;">
-            <!-- Posts content will be loaded dynamically -->
+            <!-- include the posts.php -->
+            <?php include "posts.php"; ?>
         </div>
         <!-- <script src="../javascript/common.js"></script> -->
         <script src="../javascript/jquery-3.7.1.js"></script>
