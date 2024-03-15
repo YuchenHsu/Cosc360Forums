@@ -21,14 +21,3 @@
 
 <!-- include the create_post.php -->
 <?php include "create_post.php"; ?>
-
-<!-- make an invisible error message for login -->
-<div id="error-login" class="form-container" style="display: none;">
-    <h3>Error</h3>
-    <p>Invalid username or password</p>
-</div>
-<!-- make an invisible error message for register -->
-<div id="error-register" class="form-container" style="display: none;">
-    <h3>Error</h3>
-    <p>Invalid username or password</p>
-</div>
