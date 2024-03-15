@@ -1,4 +1,5 @@
 $(document).ready( function() {
+    const domain = "Cosc360Forums/html/";
     // Toggles everything off
     function toggleOff() {
         const postsContainer = $( ".posts" );
@@ -12,6 +13,7 @@ $(document).ready( function() {
         const modUserContainer = $( "#mod-user" );
         const analyticsContainer = $( "#mod-analytics" );
         const reportsContainer = $( "#mod-reports" );
+        const postCreation = $( "#create_post" );
         postsContainer.css( "display", "none" );
         searchForm.css( "display", "none" );
         loginForm.css( "display", "none" );
@@ -23,6 +25,7 @@ $(document).ready( function() {
         modUserContainer.css( "display", "none" );
         analyticsContainer.css( "display", "none" );
         reportsContainer.css( "display", "none" );
+        postCreation.css( "display", "none" );
     }
 
 
@@ -361,6 +364,40 @@ $(document).ready( function() {
         toggleOff();
         toggleAdmin();
         toggleReports();
+    });
+
+
+    // Toggles the create post window
+    function toggleCreatePost() {
+        const postCreation = $( "#create_post" );
+        if (postCreation.css( "display" ) === "none") {
+            postCreation.css( "display", "block" );
+        } else {
+            postCreation.css( "display" , "none");
+        }
+    }
+
+    const create_post_btn = $( "#create_post_btn" );
+    create_post_btn.on("click", function () {
+        toggleOff();
+        toggleCreatePost();
+    });
+
+    $("#create_post_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var formData = new FormData(this);
+        $.ajax({
+            url: 'new_post.php',
+            type: 'POST',
+            data: formData,
+            success: function(data){
+                alert('Post submitted successfully');
+                window.location.href = domain + 'base.php#posts'; // Redirect to the posts page
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
     });
 });
 
