@@ -120,14 +120,6 @@ $(document).ready( function() {
         const postsContainer = $( ".posts" );
         if (postsContainer.css( "display" ) === "none") {
             postsContainer.css( "display", "block" );
-            fetch("posts.php")
-                .then(response => response.text())
-                .then(html => {
-                    postsContainer.innerHTML = html;
-                })
-                .catch(error => {
-                    console.error("Error loading posts:", error);
-                });
         } else {
             postsContainer.css( "display", "none" );
         }
@@ -137,17 +129,6 @@ $(document).ready( function() {
     postBtn.on("click", function () {
         toggleOff();
         togglePostsContent();
-
-        // when the posts are toggled, load the pages from ../html/posts.php
-        fetch("posts.php")
-            .then(response => response.text())
-            .then(html => {
-                $( ".posts" ).html(html);
-            })
-            .catch(error => {
-                console.error("Error loading posts:", error);
-            }
-        );
     });
 
     // Toggle the search form
@@ -271,15 +252,6 @@ $(document).ready( function() {
     profileBtn.on("click", function () {
         toggleOff();
         toggleProfile();
-        fetch("posts.php")
-            .then(response => response.text())
-            .then(html => {
-                $( ".profile-posts" ).html(html);
-            })
-            .catch(error => {
-                console.error("Error loading posts:", error);
-            }
-        );
     });
 
     // Toggle the admin sidebar
