@@ -1,7 +1,7 @@
 <div class="topnav">
     <a href="base.php" id="home-btn" class="active">Home</a>
     <a href="#posts" id="post-btn" class="active">Posts</a>
-    <a href="#" id="create_post_btn" class="active">Create Post</a>
+    <a href="#create_post" id="create_post_btn" class="active">Create Post</a>
     <a href="#search" class="active" id="search-btn">Search</a>
     <div class="topnav-right">
         <a href="#" class="active" id="notif-btn">Notification</a>
@@ -176,7 +176,8 @@
         </figure>
     </div>    
     <div id="create_post" style="display: none">
-        <form class="create_post form-container" action="new_post.php" method="POST" id="create_post_form" enctype="multipart/form-data">
+        <!-- <form class="create_post form-container" id="create_post_form" action="new_post.php" method="POST" enctype="multipart/form-data"> -->
+        <form class="create_post form-container" id="create_post_form">
             <fieldset>
                 <legend>Create your post:</legend>
                 <label for="title">Post title: <input required type="text" name="title" id="title"></label>

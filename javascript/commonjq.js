@@ -1,4 +1,5 @@
 $(document).ready( function() {
+    const domain = "Cosc360Forums/html/";
     // Toggles everything off
     function toggleOff() {
         const postsContainer = $( ".posts" );
@@ -382,6 +383,21 @@ $(document).ready( function() {
         toggleCreatePost();
     });
 
-
+    $("#create_post_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var formData = new FormData(this);
+        $.ajax({
+            url: 'new_post.php',
+            type: 'POST',
+            data: formData,
+            success: function(data){
+                alert('Post submitted successfully');
+                window.location.href = domain + 'base.php#posts'; // Redirect to the posts page
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
 });
 
