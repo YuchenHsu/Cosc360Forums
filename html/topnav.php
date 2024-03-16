@@ -30,12 +30,12 @@
     </div>
     <!-- make a sub top bar under the bar that shows all the categories -->
 </div>    
-<div class="topnav" style="background-color:white;">
-    <a href="#all" style="background-color:red;">All</a>
-    <a href="#news" style="background-color:red;">News</a>
-    <a href="#discussion" style="background-color:red;">Discussion</a>
-    <a href="#question" style="background-color:red;">Question</a>
-    <a href="#fun" style="background-color:red;">Fun</a>
-    <a href="#meta" style="background-color:red;">Meta</a>
-    <a href="#other" style="background-color:red;">Other</a>
+<div class="topnav" style="background-color: purple;">
+    <a href="#all">All</a>
+    <a href="#news">News</a>
+    <a href="#discussion">Discussion</a>
+    <a href="#question">Question</a>
+    <a href="#fun">Fun</a>
+    <a href="#meta">Meta</a>
+    <a href="#other">Other</a>
 </div>
