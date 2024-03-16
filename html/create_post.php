@@ -1,6 +1,6 @@
 <div id="create_post" style="display: none">
     <!-- <form class="create_post form-container" id="create_post_form" action="new_post.php" method="POST" enctype="multipart/form-data"> -->
-    <form class="create_post form-container" id="create_post_form">
+    <form class="create_post form-container" id="create_post_form" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend>Create your post:</legend>
             <label for="title">Post title: <input required type="text" name="title" id="title"></label>

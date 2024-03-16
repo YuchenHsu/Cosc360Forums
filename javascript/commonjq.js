@@ -364,12 +364,37 @@ $(document).ready( function() {
             data: formData,
             success: function(data){
                 alert('Post submitted successfully');
-                window.location.href = domain + 'base.php#posts'; // Redirect to the posts page
+                window.location.href = 'base.php#'; // Redirect to the posts page
             },
             cache: false,
             contentType: false,
             processData: false
         });
+    });
+
+    $.ajax({
+        url: 'get_posts.php',
+        type: 'get',
+        dataType: 'JSON',
+        success: function(response){
+            var len = response.length;
+            for(var i=0; i<len; i++){
+                var title = response[i].title;
+                var post_id = response[i].post_id;
+                var content = response[i].content;
+                var image = response[i].image;
+
+                var post = '<article class="post">';
+                post += '<h2><a href="view_post.php?post_id=' + post_id + '">Post ' + post_id + ': ' + title + '</a></h2>';
+                post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
+                if (image) {
+                    post += '<img src="data:image/jpeg;base64,' + image + '" style = "width: 75%; height: auto;"/>';
+                }
+                post += '</article>';
+
+                $("#posts").append(post);
+            }
+        }
     });
 });
 
