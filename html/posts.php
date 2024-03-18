@@ -17,15 +17,15 @@
             if(isset($_GET['search']) || isset($_GET['filter'])){
                 // Check if search and filter are not empty
                 if(!empty($_GET['search']) && !empty($_GET['filter'])){
-                    $search = '%' . $_GET['search'] . '%';
+                    $search = '%' . strtolower($_GET['search']) . '%';
                     $filter = '%' . $_GET['filter'] . '%';
-                    $sql = "SELECT title, content, image, post_id FROM post WHERE (title LIKE :search OR content LIKE :search) AND category LIKE :filter";
+                    $sql = "SELECT title, content, image, post_id FROM post WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category LIKE :filter";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(':search', $search);
                     $statement->bindParam(':filter', $filter);
                 } elseif(!empty($_GET['search']) && empty($_GET['filter'])){
-                    $search = $_GET['search'];
-                    $sql = "SELECT title, content, image, post_id FROM post WHERE title LIKE :search OR content LIKE :search";
+                    $search = '%' . strtolower($_GET['search']) . '%';
+                    $sql = "SELECT title, content, image, post_id FROM post WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(':search', $search);
                 }elseif(!empty($_GET['filter']) && empty($_GET['search'])){
