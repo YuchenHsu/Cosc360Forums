@@ -6,6 +6,7 @@
         <form id="search_form">
             <div style="display: flex;">
             <input id="search" type="text" name="search" required>
+            <input id="filter" type="hidden" name="filter" required>
             <button id="search_btn" type="submit">Search</button>
             </div>
         </form>
@@ -38,11 +39,11 @@
     <!-- make a sub top bar under the bar that shows all the categories -->
 </div>    
 <div class="topnav" style="background-color: purple;">
-    <a href="#all">All</a>
-    <a href="#news">News</a>
-    <a href="#discussion">Discussion</a>
-    <a href="#question">Question</a>
-    <a href="#fun">Fun</a>
-    <a href="#meta">Meta</a>
-    <a href="#other">Other</a>
+    <a href="#all" id="all">All</a>
+    <a href="#news" id="news">News</a>
+    <a href="#sports"id="sports">Sports</a>
+    <a href="#travel"id="travel">Travel</a>
+    <a href="#dance"id="dance">Dance</a>
+    <a href="#music"id="music">Music</a>
+    <a href="#food"id="food">Food</a>
 </div>
