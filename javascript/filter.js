@@ -1,9 +1,12 @@
 // filter input box
 const filter = $( "#filter" );
+const filter_nav = $( "#filter_nav" );
 //  don't apply a filter
 const all_filters = $( "#all" );
 all_filters.on("click", function() {
     filter.val("");
+    filter_nav.css("backgroundColor", "purple");
+    all_filters.css("backgroundColor", "#ff6f59");
 });
 // filter by news
 const news_filter = $( "#news" );

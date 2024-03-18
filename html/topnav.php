@@ -38,7 +38,7 @@
     </div>
     <!-- make a sub top bar under the bar that shows all the categories -->
 </div>    
-<div class="topnav" style="background-color: purple;">
+<div id="filter_nav" class="topnav" style="background-color: purple;">
     <a href="#all" id="all">All</a>
     <a href="#news" id="news">News</a>
     <a href="#sports"id="sports">Sports</a>
