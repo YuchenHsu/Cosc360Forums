@@ -372,6 +372,23 @@ $(document).ready( function() {
         });
     });
 
+    $("#search_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var formData = new FormData(this);
+        $.ajax({
+            url: 'posts.php',
+            type: 'GET',
+            data: formData,
+            success: function(data){
+                alert('Search submitted successfully');
+                window.location.href = 'base.php#posts'; // Redirect to the posts page
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+
     $.ajax({
         url: 'get_posts.php',
         type: 'get',
