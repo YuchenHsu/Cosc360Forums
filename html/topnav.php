@@ -2,7 +2,7 @@
     <!-- <a href="base.php" id="home-btn" class="active">Home</a> -->
     <a href="#posts" id="post-btn" class="active">Home</a>
     <a href="#create_post" id="create_post_btn" class="active">Create Post</a>
-    <a href="#search" class="active" id="search-btn"><form id="search_form" class="form-container"><input id="search" type="text" name="search" required><button id="search_btn" type="submit">Search</button></form></a>
+    <a href="#search" class="active" id="search-btn"><form id="search_form"><input id="search" type="text" name="search" required><button id="search_btn" type="submit">Search</button></form></a>
     <!-- make a dropdown for a filter -->
     <div class="dropdown">
         <a class = "active">
