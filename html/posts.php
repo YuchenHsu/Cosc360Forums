@@ -39,7 +39,8 @@
                     $statement = $pdo->prepare($sql);
                 }
             }else{
-                echo "Error: Search and filter are not set";
+                $sql = "SELECT title, content, image, post_id FROM post";
+                $statement = $pdo->prepare($sql);
             }
         }else{
             echo "Error: Request method is not GET";
@@ -52,21 +53,17 @@
             $title = $row['title'];
             $post_id = $row['post_id'];
             echo '<article class="post">';
-        }
-        
-?>
-
-<h2><a href="view_post.php?post_id=<?=$post_id?>">Post <?=$post_id?>: <?=$title?></a></h2>
-
-<?php
+            echo "<h2><a href='view_post.php?post_id=" . $post_id . "'>Post " . $post_id . ":" . $title . "</a></h2>";
             echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
             if (!empty($row['image'])) {
                 echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" style = "width: 75%; height: auto;"/>';
             }
             echo '</article>';
-        
+        }
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
     }
+        
 ?>
+
 
