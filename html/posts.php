@@ -13,24 +13,39 @@
             // Connect to the database
             $pdo = new PDO($connString, $user, $pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            if(isset($_GET['search'] && isset($_GET['filter']))){
-                $search = '%' . $_GET['search'] . '%';
-                $filter = '%' . $_GET['filter'] . '%';
-                $sql = "SELECT title, content, image, post_id FROM post WHERE title LIKE :search OR content LIKE :search OR title LIKE :filter OR content LIKE :filter";
-                
-            }
-            elseif(isset($_GET['search'])){
+            // Check if search and filter are set
+            if(isset($_GET['search']) && isset($_GET['filter'])){
+                // Check if search and filter are not empty
+                if(!empty($_GET['search']) && !empty($_GET['filter'])){
+                    $search = '%' . $_GET['search'] . '%';
+                    $filter = '%' . $_GET['filter'] . '%';
+                    $sql = "SELECT title, content, image, post_id FROM post WHERE (title LIKE :search OR content LIKE :search) AND category LIKE :filter";
+                    $statement = $pdo->prepare($sql);
+                    $statement->bindParam(':search', $search);
+                    $statement->bindParam(':filter', $filter);
+                } elseif(!empty($_GET['search']) && empty($_GET['filter'])){
                     $search = $_GET['search'];
+                    $sql = "SELECT title, content, image, post_id FROM post WHERE title LIKE :search OR content LIKE :search";
+                    $statement = $pdo->prepare($sql);
+                    $statement->bindParam(':search', $search);
+                }elseif(!empty($_GET['filter']) && empty($_GET['search'])){
+                    $filter = $_GET['filter'];
+                    $sql = "SELECT title, content, image, post_id FROM post WHERE category LIKE :filter";
+                    $statement = $pdo->prepare($sql);
+                    $statement->bindParam(':filter', $filter);
+                }
+                else{
+                    $sql = "SELECT title, content, image, post_id FROM post";
+                    $statement = $pdo->prepare($sql);
+                }
+            }else{
+                echo "Error: Search and filter are not set";
             }
-            elseif(isset($_GET['filter'])){
-                $filter = $_GET['filter'];
-            }
+        }else{
+            echo "Error: Request method is not GET";
         }
-        else{
-            $sql = "SELECT title, content, image, post_id FROM post";
-        }
-             
-        $statement = $pdo->prepare($sql);
+        
+                   
         $statement->execute();
 
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
