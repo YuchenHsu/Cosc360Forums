@@ -1,4 +1,4 @@
-document.ready(function() {
+$(document).ready(function() {
     // filter input box
     const filter = $( "#filter" );
     const filter_nav = $( "#filter_nav" );
