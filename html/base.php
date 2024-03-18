@@ -10,7 +10,7 @@
     <body>
         <div id="navbar"></div>
 
-        <div class="posts" style="display: none;">
+        <div class="posts">
             <!-- include the posts.php -->
             <?php include "posts.php"; ?>
         </div>

@@ -1,8 +1,19 @@
 <div class="topnav">
-    <a href="base.php" id="home-btn" class="active">Home</a>
-    <a href="#posts" id="post-btn" class="active">Posts</a>
+    <!-- <a href="base.php" id="home-btn" class="active">Home</a> -->
+    <a href="#posts" id="post-btn" class="active">Home</a>
     <a href="#create_post" id="create_post_btn" class="active">Create Post</a>
-    <a href="#search" class="active" id="search-btn">Search</a>
+    <a href="#search" class="active" id="search-btn"><input id="search" type="text" name="search" required></a>
+    <!-- make a dropdown for a filter -->
+    <div class="dropdown">
+        <a class = "active">
+            Filter &#9660;
+        </a>
+        <div class="dropdown-content">
+            <a href="#new">New</a>
+            <a href="#top">Top</a>
+            <a href="#hot">Hot</a>
+        </div>
+    </div>
     <div class="topnav-right">
         <a href="#" class="active" id="notif-btn">Notification</a>
         <div class="dropdown">
@@ -17,4 +28,14 @@
         </div>
         </div>
     </div>
+    <!-- make a sub top bar under the bar that shows all the categories -->
+</div>    
+<div class="topnav" style="background-color: purple;">
+    <a href="#all">All</a>
+    <a href="#news">News</a>
+    <a href="#discussion">Discussion</a>
+    <a href="#question">Question</a>
+    <a href="#fun">Fun</a>
+    <a href="#meta">Meta</a>
+    <a href="#other">Other</a>
 </div>
