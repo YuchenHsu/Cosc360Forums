@@ -14,7 +14,7 @@
             $pdo = new PDO($connString, $user, $pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // Check if search and filter are set
-            if(isset($_GET['search']) && isset($_GET['filter'])){
+            if(isset($_GET['search']) || isset($_GET['filter'])){
                 // Check if search and filter are not empty
                 if(!empty($_GET['search']) && !empty($_GET['filter'])){
                     $search = '%' . $_GET['search'] . '%';
