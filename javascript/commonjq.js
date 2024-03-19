@@ -380,9 +380,8 @@ $(document).ready( function() {
             type: 'GET',
             data: formData,
             success: function(data){
-                alert('Search submitted successfully');
+                // alert('Search submitted successfully');
                 $('#search_results').html(data);
-                // window.location.href = 'base.php#posts'; // Redirect to the posts page
             },
             cache: false,
             contentType: false,
