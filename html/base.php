@@ -19,7 +19,6 @@
         <script>
         $(function(){
             $("#navbar").load("navbar.php");
-            // $.getScript("../javascript/common.js");
             $.getScript("../javascript/commonjq.js");
             $.getScript("../javascript/admin_security.js");
             $.getScript("../javascript/new_post_security.js");

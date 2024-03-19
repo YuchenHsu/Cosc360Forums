@@ -2,15 +2,26 @@
     <!-- <a href="base.php" id="home-btn" class="active">Home</a> -->
     <a href="#posts" id="post-btn" class="active">Home</a>
     <a href="#create_post" id="create_post_btn" class="active">Create Post</a>
-    <a href="#search" class="active" id="search-btn">
+   
         <form id="search_form">
             <div style="display: flex;">
-            <input id="search" type="text" name="search" required>
-            <input id="filter" type="hidden" name="filter" required>
-            <button id="search_btn" type="submit">Search</button>
+            <input id="search" type="text" name="search">
+            
+            <select id="filter" name="filter" sytle="margin: 3px">
+                <option value="">All</option>
+                <option value="news">News</option>
+                <option value="sports">Sports</option>
+                <option value="travel">Travel</option>
+                <option value="dance">Dance</option>
+                <option value="music">Music</option>
+                <option value="food">Food</option>
+            </select>
+            <a href="#search" class="active" id="search-btn">
+            <button id="search_btn" type="submit" style="background-color: #ff6f59">Search</button>
+            </a>
             </div>
         </form>
-    </a>
+        
     <!-- make a dropdown for a filter -->
     <!-- <div class="dropdown">
         <a class = "active">
@@ -38,12 +49,12 @@
     </div>
     <!-- make a sub top bar under the bar that shows all the categories -->
 </div>    
-<div id="filter_nav" class="topnav" style="background-color: purple;">
-    <a href="#all" id="all">All</a>
-    <a href="#news" id="news">News</a>
+<!-- <div id="filter_nav" class="topnav" style="background-color: purple;">
+    <a href="#all" id="all"><button type="submit" class="filter_nav">All</button></a>
+    <a href="#news" id="news"><button type="submit" class="filter_nav">News</button></a>
     <a href="#sports"id="sports">Sports</a>
     <a href="#travel"id="travel">Travel</a>
     <a href="#dance"id="dance">Dance</a>
     <a href="#music"id="music">Music</a>
     <a href="#food"id="food">Food</a>
-</div>
+</div> -->
