@@ -1,5 +1,5 @@
 <!-- Make a invisible register form that's toggled by the js -->
-<form id="register-form" class="form-container" style="display: none;">
+<form id="register-form" class="form-container" style="display: none;" method="POST" enctype="multipart/form-data">
     <button id="login-btn-1" type="button">Login</button>
     <button id="register-btn" type="button">Register</button>
     <div class="full_name">

@@ -396,5 +396,21 @@ $(document).ready( function() {
             }
         }
     });
+
+    $('#register-form').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'new_register.php', // URL of your PHP script
+            type: 'POST',
+            // data: $(this).serialize(),
+            data: formData,
+            success: function(data) {
+                alert('Registration successful');
+            },
+            error: function() {
+                alert('There was an error');
+            }
+        });
+    });
 });
 
