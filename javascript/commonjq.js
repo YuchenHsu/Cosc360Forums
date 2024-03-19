@@ -396,5 +396,22 @@ $(document).ready( function() {
             }
         }
     });
+
+    $("#search_users_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var formData = new FormData(this);
+        $.ajax({
+            url: 'admin_search.php',
+            type: 'POST',
+            data: formData,
+            success: function(data){
+                // alert('Search submitted successfully');
+                $('#user_disp').html(data);
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
 });
 
