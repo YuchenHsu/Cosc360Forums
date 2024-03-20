@@ -413,5 +413,30 @@ $(document).ready( function() {
             processData: false
         });
     });
+
+    $.ajax({
+        url: 'admin_reported_posts.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response){
+            // alert('Search submitted successfully');
+            var len = response.length;
+            for(var i=0; i<len; i++){
+                var title = response[i].title;
+                var post_id = response[i].post_id;
+                var content = response[i].content;
+
+                var post = '<article class="post">';
+                post += '<h2><a href="view_post.php?post_id=' + post_id + '">Post ' + post_id + ': ' + title + '</a></h2>';
+                post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
+                post += '</article>';
+                post += '<button id=' + post_id + '>Remove Post</button>'
+                $("#reported_posts").append(post);
+            }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 });
 

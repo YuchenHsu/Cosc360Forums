@@ -15,9 +15,10 @@
                 <th>Conflicts</th>
             </tr>
             <tr>
-                <td>Post 1<button>Remove</button></td>
+                <td id="reported_posts"></td>
                 <td>User 1<button>Disable</button></td>
                 <td>Conflict 1</td>
+            </tr>
         </table>
     </div>
     <div id="mod-user" style="display: none">
