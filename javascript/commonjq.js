@@ -458,5 +458,30 @@ $(document).ready( function() {
         contentType: false,
         processData: false
     });
+    // loads conflicts for the admin page
+    $.ajax({
+        url: 'admin_conflicts.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response){
+            var len = response.length;
+            for(var i=0; i<len; i++){
+                var conflict_id = response[i].conflict_id;
+                var username1 = response[i].username1;
+                var username2 = response[i].username2;
+                var info = response[i].info;
+                var conflict = '<article class="conflict">';
+                conflict += '<h2>'+ username1 + '</h2>';
+                conflict += '<h2>'+ username2 + '</h2>';
+                conflict += '<p>'+ info + '</p>';
+                conflict += '</article>';
+                conflict += '<button id=conflict' + conflict_id + '>Resolve</button>';
+                $("#conflicts").append(conflict);
+            }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 });
 

@@ -17,7 +17,7 @@
             <tr>
                 <td id="reported_posts"></td>
                 <td id="reported_users"></td>
-                <td>Conflict 1</td>
+                <td id="conflicts"></td>
             </tr>
         </table>
     </div>
@@ -29,9 +29,6 @@
             <button type="submit" id="search_users_submit">Search</button>
         </form>
         <div class="user_disp" id="user_disp">
-            <p>User 1</p>
-            <button>View</button>
-            <button>Disable</button>
         </div>
     </div>
     <div id="mod-analytics" style="display: none">
