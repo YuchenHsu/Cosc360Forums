@@ -396,7 +396,7 @@ $(document).ready( function() {
             }
         }
     });
-
+    // submits the search for users on admin page
     $("#search_users_form").on('submit', function(e){
         e.preventDefault(); // Prevent the form from submitting via the browser.
         var formData = new FormData(this);
@@ -413,7 +413,7 @@ $(document).ready( function() {
             processData: false
         });
     });
-
+    // loads the reported posts for the admin page
     $.ajax({
         url: 'admin_reported_posts.php',
         type: 'GET',
@@ -430,8 +430,28 @@ $(document).ready( function() {
                 post += '<h2><a href="view_post.php?post_id=' + post_id + '">Post ' + post_id + ': ' + title + '</a></h2>';
                 post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
                 post += '</article>';
-                post += '<button id=' + post_id + '>Remove Post</button>'
+                post += '<button id=' + post_id + '>Remove Post</button>';
                 $("#reported_posts").append(post);
+            }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+    // loads reported users for the admin page
+    $.ajax({
+        url: 'admin_reported_users.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response){
+            var len = response.length;
+            for(var i=0; i<len; i++){
+                var username = response[i].username;
+                var user = '<article class="user">';
+                user += '<h2>'+ username + '</h2>';
+                user += '</article>';
+                user += '<button id=' + username + '>Disable User</button>';
+                $("#reported_users").append(user);
             }
         },
         cache: false,

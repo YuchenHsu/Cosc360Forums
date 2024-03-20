@@ -39,5 +39,7 @@ $pass = "";
         }
     }catch (PDOException $e) {
         die("Error: " . $e->getMessage());
+    }finally{
+        $pdo = null;
     }
 ?>

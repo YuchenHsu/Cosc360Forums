@@ -5,15 +5,14 @@
     try{
         $pdo = new PDO($connString, $user, $pass);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT title, content, image, post_id FROM post WHERE reported = TRUE";
+        $sql = "SELECT username FROM user WHERE reported = TRUE";
         $statement = $pdo->prepare($sql);
         $statement->execute();
-        $posts = [];
+        $users = [];
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $posts[] = $row;
+            $users[] = $row;
         }
-        echo json_encode($posts);
-
+        echo json_encode($users);
 
     }catch (PDOException $e) {
         die("Error: " . $e->getMessage());

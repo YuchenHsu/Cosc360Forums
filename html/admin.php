@@ -16,7 +16,7 @@
             </tr>
             <tr>
                 <td id="reported_posts"></td>
-                <td>User 1<button>Disable</button></td>
+                <td id="reported_users"></td>
                 <td>Conflict 1</td>
             </tr>
         </table>
