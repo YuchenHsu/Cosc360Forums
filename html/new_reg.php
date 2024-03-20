@@ -7,6 +7,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $password = $_POST["reg_password"];
         $conf_password = $_POST["conf_password"];
 
+        // Password validation
+        if (strlen($password) < 8) {
+            die("Error: Password must be at least 8 characters.");
+        }
+        if (!preg_match("/[A-Z]/", $password)) {
+            die("Error: Password must contain at least one uppercase letter.");
+        }
+        if (!preg_match("/[a-z]/", $password)) {
+            die("Error: Password must contain at least one lowercase letter.");
+        }
+        if (!preg_match("/[0-9]/", $password)) {
+            die("Error: Password must contain at least one number.");
+        }
         // Check if passwords match
         if ($password !== $conf_password) {
             die("Error: Passwords do not match.");
@@ -21,6 +34,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
 
             $pdo->beginTransaction();
+
+            // Check if username already exists
+            $sql = "SELECT * FROM user WHERE username = :username";
+            $statement = $pdo->prepare($sql);
+            $statement->bindValue(":username", $username);
+            $statement->execute();
+            $userExists = $statement->fetch(PDO::FETCH_ASSOC);
+
+            if ($userExists) {
+                // Send back an error response
+                http_response_code(400);
+                echo "Error: Username already exists.";
+                exit();
+            }
 
             // Check if a file was uploaded
             if (!file_exists($_FILES["profile_pic"]["tmp_name"]) || !is_uploaded_file($_FILES["profile_pic"]["tmp_name"])){ 
