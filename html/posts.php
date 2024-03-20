@@ -24,6 +24,7 @@
 <h2><a href="view_post.php?post_id=<?=$post_id?>">Post <?=$post_id?>: <?=$title?></a></h2>
 
 <?php
+            $category_id = $row['category_id'];
             echo ''.$category_id.'';
             echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
             if (!empty($row['image'])) {

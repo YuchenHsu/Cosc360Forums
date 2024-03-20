@@ -9,19 +9,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         // Password validation
         if (strlen($password) < 8) {
+            http_response_code(400);
             die("Error: Password must be at least 8 characters.");
         }
         if (!preg_match("/[A-Z]/", $password)) {
+            http_response_code(400);
             die("Error: Password must contain at least one uppercase letter.");
         }
         if (!preg_match("/[a-z]/", $password)) {
+            http_response_code(400);
             die("Error: Password must contain at least one lowercase letter.");
         }
         if (!preg_match("/[0-9]/", $password)) {
+            http_response_code(400);
             die("Error: Password must contain at least one number.");
         }
         // Check if passwords match
         if ($password !== $conf_password) {
+            http_response_code(400);
             die("Error: Passwords do not match.");
         }
 
@@ -31,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pass = "";
 
             $pdo = new PDO($connString, $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $pdo->beginTransaction();
 
@@ -50,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
 
             // Check if a file was uploaded
-            if (!file_exists($_FILES["profile_pic"]["tmp_name"]) || !is_uploaded_file($_FILES["profile_pic"]["tmp_name"])){ 
+            if (!file_exists($_FILES["profile_pic"]["tmp_name"]) || !is_uploaded_file($_FILES["profile_pic"]["tmp_name"])){
                 $sql = "INSERT INTO user(username, full_name, email, password) VALUES( :username, :full_name, :email, :password )";
                 $statement = $pdo->prepare($sql);
                 $statement->bindValue(":username", $username);
@@ -63,8 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $file = $_FILES["profile_pic"];
                 if($file["size"] > $max_file_size) {
                     echo("Error: File too big");
-                } elseif($file["error"] != UPLOAD_ERR_OK) { 
-                    echo("Error: " . $file["name"] . " has error " . $file["error"] . "."); 
+                } elseif($file["error"] != UPLOAD_ERR_OK) {
+                    echo("Error: " . $file["name"] . " has error " . $file["error"] . ".");
                 } else {
                     // $sql = "INSERT INTO users(username, full_name, email, password, profile_pic) VALUES( :username, :full_name, :email, :password, :profile_pic )";
                     // $statement = $pdo->prepare($sql);

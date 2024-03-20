@@ -81,7 +81,7 @@ $(document).ready( function() {
         //prevent empty fields
         if ((username === "" || username === null)&& (password===null || password === "")) {
             alert("Please enter a username and password.");
-            }  
+            }
             else{
                 if(username ===  "" || username === null){
                     alert("Please enter a username.");
@@ -91,11 +91,11 @@ $(document).ready( function() {
                     alert("Please enter a password.");
                     }
                 }
-                
+
             }
-        
-       
-        
+
+
+
         // Check if they match some predefined values
         if (username === "user" && password === "web_dev") {
             // If yes, display a success message and reload the page
@@ -227,7 +227,7 @@ $(document).ready( function() {
         toggleAdmin();
         toggleModerater();
     });
-    
+
     // Toggle the moderater user page
     function toggleModeraterUser() {
         const modUserContainer = $( "#mod-user" );
@@ -237,7 +237,7 @@ $(document).ready( function() {
             modUserContainer.css( "display" , "none");
         }
     }
-    
+
     const modUserBtn = $( "#mod-users-btn" );
     modUserBtn.on("click", function () {
         toggleOff();
@@ -343,7 +343,7 @@ $(document).ready( function() {
     $('#register-form').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
-            url: 'new_reg.php', // URL of your PHP script
+            url: 'reg_function.php', // URL of your PHP script
             type: 'POST',
             data: $(this).serialize(),
             success: function(data) {
@@ -369,7 +369,7 @@ $(document).ready( function() {
         const password = $( "#reg_password" ).val();
         const confirmPassword = $( "#confirm_password" ).val();
         const email = $( "#email" ).val();
-        //check for empty fields  
+        //check for empty fields
         if(username ===  "" || username === null){
             alert("Please enter a username.");
             return;
