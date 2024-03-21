@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pdo->beginTransaction();
 
             if (!file_exists($_FILES["post_image"]["tmp_name"]) || !is_uploaded_file($_FILES["post_image"]["tmp_name"])){
-                $sql = "INSERT INTO post(title, content, category_id, image) VALUES(:title, :body, :category_id, :image)";
+                $sql = "INSERT INTO post(title, content, category_id) VALUES(:title, :body, :category_id)";
                 $statement = $pdo->prepare($sql);
                 $statement->bindValue(":title", $title);
                 $statement->bindValue(":body", $post_body);
