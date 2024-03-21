@@ -1,42 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>User Profile</title>
-    <style>
-        /* CSS styles for the profile page */
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            display: flex;
-        }
-        .posts {
-            flex: 1;
-            padding: 20px;
-        }
-        .profile {
-            flex: 1;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .profile h2 {
-            margin-top: 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="posts">
-            <!-- Posts section -->
-            <h2>Posts</h2>
-            <!-- Add your posts here -->
-        </div>
+<!-- make an invisible profile page that's toggled by the js -->
+<div id="profile" class="form-container">
+    <div class="profile-container">
         <div class="profile">
-            <!-- Profile section -->
-            <h2>User Profile</h2>
-            <p><strong>Username:</strong> <!-- Add username here --></p>
-            <p><strong>Email:</strong> <!-- Add email here --></p>
+            <img class="profile-pic" src="../images/social/twitter_16.png" alt="Profile Picture">
+            <?php
+                // Start the session
+                session_start();
+
+                $connString = "mysql:host=localhost; dbname=forums";
+                $user = "root";
+                $pass = "";
+
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $pdo->beginTransaction();
+
+                $sql = "SELECT * FROM user WHERE username = :username";
+                $statement = $pdo->prepare($sql);
+                // Access the username from the session
+                $statement->bindValue(":username", $_SESSION["username"]);
+                $statement->execute();
+                $user = $statement->fetch(PDO::FETCH_ASSOC);
+                printf("<img class=\"profile-pic\" src=\"data:image/jpeg;base64,%s\" alt=\"Profile Picture\">", base64_encode($user['profile_pic']));
+
+                echo "<h2>User Profile</h2>";
+                echo "<p><strong>Username:</strong> " . $user['username'] . "</p>";
+                echo "<p><strong>Email:</strong> " . $user['email'] . "</p>";
+            ?>
         </div>
+        <?php include "profile_posts.php"; ?>
     </div>
-</body>
-</html>
+</div>

@@ -8,25 +8,15 @@
         <link rel="stylesheet" href="../css/base.css">
     </head>
     <body>
-        <div id="navbar"></div>
-
-        <div id="notification" class="form-container" style="display: none;">
-            <h3>Notification</h3>
-            <p>Notification 1</p>
-            <p>Notification 2</p>
-            <p>Notification 3</p>
-        </div>
-
-        <div class="posts" style="display: none;">
-            <!-- Posts content will be loaded dynamically -->
-        </div>
+        <?php include "topnav.php"; ?>
+        <div id="content"></div>
         <!-- <script src="../javascript/common.js"></script> -->
         <script src="../javascript/jquery-3.7.1.js"></script>
         <script>
         $(function(){
-            $("#navbar").load("navbar.php");
+            // $("#navbar").load("navbar.php");
             // $.getScript("../javascript/common.js");
-            $.getScript("../javascript/commonjq.js");
+            $.getScript("../javascript/commonjq_new.js");
             $.getScript("../javascript/admin_security.js");
             $.getScript("../javascript/new_post_security.js");
             $.getScript("../javascript/search_security.js");
