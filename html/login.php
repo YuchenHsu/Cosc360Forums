@@ -1,7 +1,7 @@
 <!-- Make a invisible login form that's toggled by the js -->
-<form id="login-form" class="form-container" style="display: none;">
-    <button id="login-btn" type="button">Login</button>
-    <button id="register-btn" type="button">Register</button>
+<form id="login-form" class="form-container" method="POST" enctype="multipart/form-data">
+    <button id="login-btn" type="button" data-page="login.php">Login</button>
+    <button id="register-btn" type="button" data-page="register.php">Register</button>
     <div class="username">
         <label for="username">Username: </label>
         <input id="username" type="text" name="username" required>

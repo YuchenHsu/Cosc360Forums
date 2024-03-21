@@ -1,5 +1,5 @@
 <!-- Make a invisible Search bar that's toggled by the js -->
-<form id="search-form" class="form-container" style="display: none;">
+<form id="search-form" class="form-container">
 
     <h3>Search by:</h3>
     <label for="user_search"><a>User</a></label>

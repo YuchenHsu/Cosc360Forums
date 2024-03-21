@@ -1,18 +1,18 @@
-<div id="create_post" style="display: none">
+<div id="create_post" style=>
     <!-- <form class="create_post form-container" id="create_post_form" action="new_post.php" method="POST" enctype="multipart/form-data"> -->
     <form class="create_post form-container" id="create_post_form" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend>Create your post:</legend>
-            <label for="category_id">Category: 
+            <label for="category_id">Category:
                 <!-- create a select dropdown box using pdo to get the data from localhost, database called forum, and the table is called category -->
                 <select name="category_id" id="category_id">
                     <?php
                         $connString = "mysql:host=localhost; dbname=forums";
                         $user = "root";
                         $pass = "";
-            
+
                         $pdo = new PDO($connString, $user, $pass);
-                        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
+                        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $sql = "SELECT name FROM category";
                         $stmt = $pdo->prepare($sql);
                         $stmt->execute();
@@ -24,7 +24,7 @@
                         }
                     ?>
                 </select>
-                    
+
             </label>
             <label for="title">Post title: <input required type="text" name="title" id="title"></label>
             <br>
