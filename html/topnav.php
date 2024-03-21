@@ -15,7 +15,7 @@
                             echo $_SESSION['username'] . ' &#9660';
                         } else {
                             // User is not logged in
-                            echo 'User';
+                            echo 'User' . ' &#9660';
                         }
                     ?>
                     <!-- $_SESSION['username'] &#9660; -->
