@@ -39,18 +39,18 @@
             die("Error: " . $e->getMessage());
         }
     ?>
-    <div class="post_interaction">
+    <form class="post_interaction" method="POST" action="post_interact.php">
         <span class="votes">
-            <button type="submit" id="upvote">↑</button><span><?=$upvotes?></span>
-            <button type="submit" id="downvote">↓</button><span><?=$downvotes?></span>
+            <button type="submit" id="upvote" name="upvote_post">↑</button><span><?=$upvotes?></span>
+            <button type="submit" id="downvote" name="downvote_post">↓</button><span><?=$downvotes?></span>
         </span>
         <!-- <span class="report_post"> -->
-            <button class="report_post" type="submit">Report</button>
+            <button class="report_post" type="submit" name="report_post">Report</button>
         <!-- </span> -->
         <section class="comment_container">
             <h2>Comments</h2>
             <div id="comment_content"></div>
             <?php include "comments.php"; ?>
         </section>
-    </div>
+    </form>
 </div>
