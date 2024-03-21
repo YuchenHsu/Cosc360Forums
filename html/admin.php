@@ -5,21 +5,43 @@
         <li><a href="#analytics" id="mod-analytics-btn">Analytics</a></li>
         <li><a href="#reports" id="mod-reports-btn">Reports</a></li>
     </div>
-    <div id="moderating" style="display: none">
+    <div id="moderating" style="display: none;">
         <h2>Moderating</h2>
         <p>Here you can moderate the forums. You can delete posts, ban users, and more.</p>
-        <table>
+        <!-- <table>
             <tr>
                 <th>Reported Posts</th>
                 <th>Reported Users</th>
                 <th>Conflicts</th>
             </tr>
             <tr>
-                <td id="reported_posts"></td>
-                <td id="reported_users"></td>
-                <td id="conflicts"></td>
+                <form id="reported_posts_form"><td id="reported_posts"></td></form>
+                <form id="reported_users_posts"><td id="reported_users"></td></form>
+                <form id="conflicts_form"><td id="conflicts"></td></form>
             </tr>
-        </table>
+        </table> -->
+        <form id="reported_posts_form" method="POST">
+        <div id="reported_posts_container" style="float:left; background-color:#b0bbd7; border: 1px, black">
+            <h3>Reported Posts</h3>
+            <button type="submit" id="remove_post">Remove Post</button>
+            <div id="reported_posts"></div>
+        </div>
+        </form>
+        <form id="reported_users_posts" method="POST">
+        <div id="reported_users_container" style="float:left; background-color:#b0bbd7">
+            <h3>Reported Users</h3>
+            <button type="submit" id="ban_user">Ban User</button>
+            <div id="reported_users"></div>
+        </div>
+        </form>
+        <form id="conflicts_form" method="POST">
+        <div id="conflicts_container"style="float:left; background-color:#b0bbd7">
+            <h3>Conflicts</h3>
+            <button type="submit" id="resolve_conflict">Resolve Conflict</button>
+            <div id="conflicts"></div>
+        </div>
+        </form>
+
     </div>
     <div id="mod-user" style="display: none">
         <h2>Users</h2>

@@ -430,7 +430,7 @@ $(document).ready( function() {
                 post += '<h2><a href="view_post.php?post_id=' + post_id + '">Post ' + post_id + ': ' + title + '</a></h2>';
                 post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
                 post += '</article>';
-                post += '<button id=' + post_id + '>Remove Post</button>';
+                post += '<input type="checkbox" id=' + post_id + 'name=' + post_id + 'value=' + post_id +'></input>';
                 $("#reported_posts").append(post);
             }
         },
@@ -450,7 +450,7 @@ $(document).ready( function() {
                 var user = '<article class="user">';
                 user += '<h2>'+ username + '</h2>';
                 user += '</article>';
-                user += '<button id=' + username + '>Disable User</button>';
+                user += '<input type="checkbox" id=' + username + 'name=' + username + 'value=' + username +'></input>';
                 $("#reported_users").append(user);
             }
         },
@@ -474,8 +474,9 @@ $(document).ready( function() {
                 conflict += '<h2>'+ username1 + '</h2>';
                 conflict += '<h2>'+ username2 + '</h2>';
                 conflict += '<p>'+ info + '</p>';
+                conflict += '<input type="checkbox" id=' + conflict_id + 'name=' + conflict_id + 'value=' + conflict_id + '></input>';
                 conflict += '</article>';
-                conflict += '<button id=conflict' + conflict_id + '>Resolve</button>';
+                
                 $("#conflicts").append(conflict);
             }
         },
