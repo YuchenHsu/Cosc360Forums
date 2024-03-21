@@ -50,7 +50,7 @@
                     <button type="submit" id="downvote">↓</button><span>3</span>
                 </span>
                 <!-- <span class="report_post"> -->
-                    <button class="report_post" type="submit">Report</button> 
+                    <button class="report_post" type="submit">Report</button>
                 <!-- </span> -->
                 <section class="comment_container">
                     <h2>Comments</h2>
@@ -68,7 +68,7 @@
             let post_avail = searchParams.has("post_id");
             let post_num = post_avail ? searchParams.get("post_id") : (Math.floor(Math.random() * 9) + 1);
 
-            let post_id =   "posts.php #post" + post_num; 
+            let post_id =   "posts.php #post" + post_num;
                 console.log(post_id);
 
             $("#post_content").load( post_id );

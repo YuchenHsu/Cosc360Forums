@@ -1,10 +1,11 @@
 <div id="admin">
-    <div id="sidebar" style="display: none;">
-        <li><a href="#moderating" id="mod-btn">Moderating</a></li>
-        <li><a href="#users" id="mod-users-btn">Users</a></li>
-        <li><a href="#analytics" id="mod-analytics-btn">Analytics</a></li>
-        <li><a href="#reports" id="mod-reports-btn">Reports</a></li>
+    <div id="sidebar">
+        <li><a href="#moderating" id="mod-btn" data-page="admin_mod.php">Moderating</a></li>
+        <li><a href="#users" id="mod-users-btn" data-page="admin_user.php">Users</a></li>
+        <li><a href="#analytics" id="mod-analytics-btn" data-page="admin_analytics.php">Analytics</a></li>
+        <li><a href="#reports" id="mod-reports-btn" data-page="admin_reports.php">Reports</a></li>
     </div>
+    <div id="admin_content"></div>
     <div id="moderating" style="display: none">
         <h2>Moderating</h2>
         <p>Here you can moderate the forums. You can delete posts, ban users, and more.</p>
@@ -55,5 +56,5 @@
             <img src="../images/posts.png" alt="Posts Over Time">
             <figcaption>Posts Over Time</figcaption>
         </figure>
-    </div>    
+    </div>
 </div>
