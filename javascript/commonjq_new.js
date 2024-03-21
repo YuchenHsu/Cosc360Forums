@@ -109,3 +109,23 @@ $(document).on("submit", "#login-form", function(e) {
         }
     });
 });
+
+$(document).on("submit", "#post_interaction" , function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: 'post_interact.php', // URL of your PHP script
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function(data) {
+            // alert('Login successful');
+            // reload the page and go to base.php
+            // window.location.assign = 'post_detail.php?post_id=1';
+            // window.location.assign('post_detail.php?post_id=1');
+            // location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        }
+    });
+});

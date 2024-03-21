@@ -39,7 +39,9 @@
             die("Error: " . $e->getMessage());
         }
     ?>
-    <form class="post_interaction" method="POST" action="post_interact.php">
+    <form id="post_interaction" method="POST">
+        <input type="hidden" name="post_id" value="<?=$post_id?>">
+        <input type="hidden" name="action" id="action">
         <span class="votes">
             <button type="submit" id="upvote" name="upvote_post">↑</button><span><?=$upvotes?></span>
             <button type="submit" id="downvote" name="downvote_post">↓</button><span><?=$downvotes?></span>
@@ -54,3 +56,22 @@
         </section>
     </form>
 </div>
+
+<script>
+$(function() {
+    let action = $("#action");
+    $( "#upvote" ).on( "click", function() {
+        action.attr("value", "upvote_post");
+        console.log("upvote");
+    });
+    $( "#downvote" ).on( "click", function() {
+        action.attr("value", "downvote_post");
+        console.log("downvote");
+    });
+    $( ".report_post" ).on( "click", function() {
+        action.attr("value", "report_post");
+        console.log("report");
+    });
+});
+
+</script>

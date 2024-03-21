@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS post (
     category_id INT NOT NULL,
     upvotes DOUBLE DEFAULT 0,
     downvotes DOUBLE DEFAULT 0,
-    reported BOOLEAN,
-    pinned BOOLEAN,
+    reported BOOLEAN DEFAULT FALSE,
+    pinned BOOLEAN DEFAULT FALSE,
     username VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (username) REFERENCES user(username)
