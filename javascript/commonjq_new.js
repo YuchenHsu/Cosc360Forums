@@ -15,9 +15,15 @@ $(document).ready(function() {
     });
 });
 
-// $(document).on("click", ".post_id", function(e) {
-//     e.preventDefault();
-// });
+$(document).on("click", "#register-btn", function(e) {
+    e.preventDefault();
+    $("#content").load("register.php");
+});
+
+$(document).on("click", "#login-btn", function(e) {
+    e.preventDefault();
+    $("#content").load("login.php");
+});
 
 $(document).on("click","#sidebar li a", function(e) {
     e.preventDefault();

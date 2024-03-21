@@ -1,6 +1,6 @@
 <div id="register-div">
     <form id="register-form" class="form-container" method="POST" enctype="multipart/form-data">
-        <button id="login-btn-1" class="switch_btn" type="button" data-page="login.php">Login</button>
+        <button id="login-btn" class="switch_btn" type="button" data-page="login.php">Login</button>
         <button id="register-btn" class="switch_btn" type="button" data-page="register.php">Register</button>
         <div class="full_name">
             <label for="full_name">Full Name: </label>
