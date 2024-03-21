@@ -13,14 +13,14 @@
 
                     $pdo = new PDO($connString, $user, $pass);
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $sql = "SELECT name FROM category";
+                    $sql = "SELECT id, name FROM category";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute();
 
                     $categories = $stmt->fetchAll();
 
                     foreach ($categories as $category) {
-                        echo "<option value=\"{$category['name']}\">{$category['name']}</option>";
+                        echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
                     }
                 ?>
             </select>
