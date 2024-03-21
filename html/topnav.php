@@ -1,60 +1,73 @@
-<div class="topnav">
-    <!-- <a href="base.php" id="home-btn" class="active">Home</a> -->
-    <a href="#posts" id="post-btn" class="active">Home</a>
-    <a href="#create_post" id="create_post_btn" class="active">Create Post</a>
-   
+<div id="navbar">
+    <div class="topnav">
+        <!-- <a href="base.php" id="home-btn" class="active">Home</a> -->
+        <a href="#posts" id="post-btn" class="active" data-page="posts.php">Home</a>
+        <a href="#create_post" id="create_post_btn" class="active" data-page="create_post.php">Create Post</a>
         <form id="search_form">
             <div style="display: flex;">
-            <input id="search" type="text" name="search">
-            
-            <select id="filter" name="filter" sytle="margin: 3px">
+            <input id="search" type="text" name="search" style="margin:0.4em; height: 2em;">
+            <select name="filter" id="filter" style="height: 3.5em;margin:0.6em; ">
                 <option value="">All</option>
-                <option value="news">News</option>
-                <option value="sports">Sports</option>
-                <option value="travel">Travel</option>
-                <option value="dance">Dance</option>
-                <option value="music">Music</option>
-                <option value="food">Food</option>
+                <?php
+                    session_start();
+                    $connString = "mysql:host=localhost; dbname=forums";
+                    $user = "root";
+                    $pass = "";
+
+                    $pdo = new PDO($connString, $user, $pass);
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql = "SELECT * FROM category";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
+
+                    $categories = $stmt->fetchAll();
+
+                    foreach ($categories as $category) {
+                        echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
+                    }
+                ?>
             </select>
-            <a href="#search" class="active" id="search-btn">
+            <a href="#search" class="active" id="search-btn" style="margin: auto 0; padding:0;" data-page="search.php">
             <button id="search_btn" type="submit" style="background-color: #ff6f59">Search</button>
             </a>
             </div>
         </form>
-        
-    <!-- make a dropdown for a filter -->
-    <!-- <div class="dropdown">
-        <a class = "active">
-            Filter &#9660;
-        </a>
-        <div class="dropdown-content">
-            <a href="#new">New</a>
-            <a href="#top">Top</a>
-            <a href="#hot">Hot</a>
-        </div>
-    </div> -->
-    <div class="topnav-right">
-        <a href="#" class="active" id="notif-btn">Notification</a>
-        <div class="dropdown">
-            <a class = "active">
-                User &#9660;
-            </a>
-            <div class="dropdown-content">
-                <a href="#user" id="profile-btn">Profile</a>
-                <a href="#admin" id="admin-btn">Admin</a>
-                <a href="#register"  id="user-btn">Register</a>
-                <a href="#logout">Logout</a>
-        </div>
+        <div class="topnav-right">
+            <a href="#" class="active" id="notif-btn" data-page="notification.php">Notification</a>
+            <div class="dropdown">
+                <a class = "active">
+                    <?php
+                        if (isset($_SESSION['username'])) {
+                            // User is logged in
+                            echo $_SESSION['username'] . ' &#9660';
+                        } else {
+                            // User is not logged in
+                            echo 'User' . ' &#9660';
+                        }
+                    ?>
+                    <!-- $_SESSION['username'] &#9660; -->
+                </a>
+                <div class="dropdown-content">
+                    <?php
+                        if (isset($_SESSION['username'])) {
+                            // User is logged in
+                            echo '<a href="#profile" id="profile-btn" data-page="profile.php">Profile</a>';
+                        }
+                    ?>
+                    <!-- <a href="#user" id="profile-btn" data-page="profile.php">Profile</a> -->
+                    <a href="#admin" id="admin-btn" data-page="admin.php">Admin</a>
+                    <?php
+                        if (isset($_SESSION['username'])) {
+                            // User is logged in
+                            echo '<a href="#logout" data-page="logout.php">Logout</a>';
+                        } else {
+                            // User is not logged in
+                            echo '<a href="#register" id="user-btn" data-page="register.php">Register</a>';
+                            echo '<a href="#login" id="login-btn" data-page="login.php">Login</a>';
+                        }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- make a sub top bar under the bar that shows all the categories -->
-</div>    
-<!-- <div id="filter_nav" class="topnav" style="background-color: purple;">
-    <a href="#all" id="all"><button type="submit" class="filter_nav">All</button></a>
-    <a href="#news" id="news"><button type="submit" class="filter_nav">News</button></a>
-    <a href="#sports"id="sports">Sports</a>
-    <a href="#travel"id="travel">Travel</a>
-    <a href="#dance"id="dance">Dance</a>
-    <a href="#music"id="music">Music</a>
-    <a href="#food"id="food">Food</a>
-</div> -->
+</div>
