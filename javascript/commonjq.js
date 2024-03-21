@@ -1,5 +1,4 @@
 $(document).ready( function() {
-    getPosts();
     const domain = "Cosc360Forums/html/";
     // Toggles everything off
     function toggleOff() {
@@ -72,51 +71,7 @@ $(document).ready( function() {
         }
     }
 
-    // Keep the function and event listener that handle the login logic
-    function handleLogin(event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
-        // Get the username and password values
-        const username = $( "#username" ).val();
-        const password = $( "#password" ).val();
-        //prevent empty fields
-        if ((username === "" || username === null)&& (password===null || password === "")) {
-            alert("Please enter a username and password.");
-            }
-            else{
-                if(username ===  "" || username === null){
-                    alert("Please enter a username.");
-                }
-                else {
-                    if (password === "" || password === null) {
-                    alert("Please enter a password.");
-                    }
-                }
-
-            }
-
-
-
-        // Check if they match some predefined values
-        if (username === "user" && password === "web_dev") {
-            // If yes, display a success message and reload the page
-            alert("Login successful!");
-            window.location.reload();
-        } else {
-            // If no, display an error message
-            toggleErrorLogin();
-            // alert("Invalid username or password!");
-        }
-    }
-
-    // const loginBtn = $( "#login-submit" );
-    // loginBtn.on("click", function (event) {
-    //     // Call the login function
-    //     handleLogin(event);
-    // });
-
     // Toggles the posts content
-    // TODO: need to configure further with jq?
     function togglePostsContent() {
         const postsContainer = $( ".posts" );
         if (postsContainer.css( "display" ) === "none") {
@@ -344,7 +299,6 @@ $(document).ready( function() {
         });
     }
 
-    // Call the function to get posts when the page loads
     getPosts();
 
 
@@ -386,64 +340,5 @@ $(document).ready( function() {
             }
         });
     });
-
-    // Handle the registration logic
-    function handleRegistration(event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
-        // Get the username and password values
-        const full_name = $( "#full_name" ).val();
-        const username = $( "#reg_username" ).val();
-        const password = $( "#reg_password" ).val();
-        const confirmPassword = $( "#confirm_password" ).val();
-        const email = $( "#email" ).val();
-        //check for empty fields
-        if(username ===  "" || username === null){
-            alert("Please enter a username.");
-            return;
-        }
-        else {
-            if (password === "" || password === null) {
-            alert("Please enter a password.");
-            return;
-            }
-            else{
-                if(confirmPassword === "" || confirmPassword === null){
-                    alert("Please enter your password again.");
-                    return;
-                }
-                else{
-                    if(email === "" || email === null){
-                        alert("Please enter your email.");
-                        return;
-                    }
-                    else{
-                        if(full_name === "" || full_name === null){
-                            alert("Please enter your full name.");
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-        // Check if they match some predefined values
-        if(password !== null && password !== "" && confirmPassword !== null && confirmPassword !== ""){
-            if (password === confirmPassword) {
-                // If yes, display a success message and reload the page
-                alert("Registration successful!");
-                window.location.reload();
-            } else {
-                // If no, display an error message
-                toggleErrorRegister();
-                alert("Passwords do not match!");
-            }
-        }
-    }
-
-    // const regBtn = $( "#register-submit" );
-    // regBtn.on("click", function (event) {
-    //     // Call the registration function
-    //     handleRegistration(event);
-    // });
 });
 
