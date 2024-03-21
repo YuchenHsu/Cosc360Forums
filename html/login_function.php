@@ -3,7 +3,7 @@
         if (isset($_POST["username"]) && isset($_POST["password"])){
             $username = $_POST["username"];
             $password = $_POST["password"];
-            $remember = $_POST["remember"] == "true" ? true : false;
+            $remember = isset($_POST["remember"]);
 
             try {
                 $connString = "mysql:host=localhost; dbname=forums";
