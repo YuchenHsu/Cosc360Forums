@@ -8,9 +8,7 @@
         <link rel="stylesheet" href="../css/base.css">
     </head>
     <body>
-        <div id="navbar"><?php include "topnav.php"; ?></div>
-
-
+        <?php include "topnav.php"; ?>
         <div id="content"></div>
         <!-- <script src="../javascript/common.js"></script> -->
         <script src="../javascript/jquery-3.7.1.js"></script>

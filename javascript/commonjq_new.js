@@ -1,30 +1,35 @@
 $(document).ready(function() {
-    // Check if the user is already logged in
-    // var userLoggedIn = getCookie("userLoggedIn");
-    // if (userLoggedIn == "true") {
-    //     // Show the logout button
-    //     $("#logout").show();
-    //     // Hide the login and register buttons
-    //     $("#login").hide();
-    //     $("#register").hide();
-    // } else {
-    //     // Hide the logout button
-    //     $("#logout").hide();
-    //     // Show the login and register buttons
-    //     $("#login").show();
-    //     $("#register").show();
-    // }
+    // Load the post page by default
+    $("#content").load("posts.php");
 
-    $(function(){
-        $(".topnav a").on("click", function(e) {
-            var page = $(this).data("page");
-            $("#content").load(page);
-        });
+    $(".topnav a").on("click", function(e) {
+        var page = $(this).data("page");
+        $("#content").load(page);
     });
-
-    $("#content").load(page, function(response, status, xhr) {
+});
+$(document).on("click","#sidebar li a", function(e) {
+    e.preventDefault();
+    var page = $(this).data("page");
+    $("#admin_content").load(page, function(response, status, xhr) {
         if (status == "error") {
             console.log("Error: " + xhr.status + " " + xhr.statusText);
+        }
+    });
+});
+$(document).on("click", "#logout_form", function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: 'logout_function.php',
+        type: 'POST',
+        success: function() {
+            alert('Logout successful');
+            // reload the page and go to base.php
+            window.location.href = 'base.php#';
+            location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
         }
     });
 });
@@ -67,7 +72,7 @@ $(document).on("submit", "#register-form", function(e) {
     });
 });
 
-$(document).on("submit", "#loginForm", function(e) {
+$(document).on("submit", "#login-form", function(e) {
     e.preventDefault();
     $.ajax({
         url: 'login_function.php', // URL of your PHP script

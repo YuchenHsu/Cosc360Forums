@@ -3,7 +3,7 @@
         if (isset($_POST["username"]) && isset($_POST["password"])){
             $username = $_POST["username"];
             $password = $_POST["password"];
-            $remember = $_POST["remember"];
+            $remember = $_POST["remember"] == "true" ? true : false;
 
             try {
                 $connString = "mysql:host=localhost; dbname=forums";
@@ -24,13 +24,16 @@
                 if ($result) {
                     // Verify the password
                     if (password_verify($password, $result['password'])) {
+                        echo "Login successful!";
                         // Start a session and set the username session variable
                         session_start();
+                        // Regenerate session ID to prevent session fixation attacks
+                        session_regenerate_id(true);
                         $_SESSION['username'] = $username;
-                        if ($remember) {
+                        if ($remember==1) {
                             setcookie("username", $username, time() + 60 * 60 * 24 * 30);
                         }
-                        echo "Login successful.";
+                        echo json_encode(array('username' => $username, 'remember' => $remember));
                     } else {
                         http_response_code(401);
                         echo "Error: Incorrect password.";

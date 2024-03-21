@@ -27,10 +27,6 @@
                 echo "<p><strong>Username:</strong> " . $user['username'] . "</p>";
                 echo "<p><strong>Email:</strong> " . $user['email'] . "</p>";
             ?>
-
-            <!-- <h2>User Profile</h2>
-            <p><strong>Username:</strong> <?php echo $user['username']; ?></p>
-            <p><strong>Email:</strong> <?php echo $user['email']; ?></p> -->
         </div>
         <?php include "profile_posts.php"; ?>
     </div>
