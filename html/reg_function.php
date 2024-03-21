@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
 
         // check if full name is valid
-        if (!preg_match("/^[a-zA-Z0-9]*$/", $full_name)) {
+        if (!preg_match("/^[a-zA-Z0-9\s]*$/", $full_name)) {
             http_response_code(400);
-            die("Error: Full name must contain only letters and numbers.");
+            die("Error: Full name must contain only letters, numbers, and spaces.");
         }
 
         // Check if passwords match
