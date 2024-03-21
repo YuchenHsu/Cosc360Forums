@@ -8,13 +8,13 @@
             if(isset($_POST['selected'])){
                 $pdo = new PDO($connString, $user, $pass);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                foreach($_POST['selected'] as $post_id){
-                    $sql = "DELETE FROM post WHERE post_id = :post_id";
+                foreach($_POST['selected'] as $username){
+                    $sql = "UPDATE user SET disabled = TRUE, reported = FALSE WHERE username = :username";
                     $statement = $pdo->prepare($sql);
-                    $statement->bindParam(":post_id", $post_id);
+                    $statement->bindParam(":username", $username);
                     $statement->execute();
                 }
-                include "admin_reported_posts.php";
+                include "admin_reported_users.php";
             }else{
                 echo "Nothing is chosen to be removed.";
             }

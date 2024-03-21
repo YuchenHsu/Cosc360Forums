@@ -27,7 +27,7 @@
             <div id="reported_posts"></div>
         </div>
         </form>
-        <form id="reported_users_posts" method="POST">
+        <form id="reported_users_form" method="POST">
         <div id="reported_users_container" style="float:left; background-color:#b0bbd7">
             <h3>Reported Users</h3>
             <button type="submit" id="ban_user">Ban User</button>

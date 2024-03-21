@@ -30,7 +30,7 @@ $(document).ready( function() {
                 var content = response[i].content;
 
                 var post = '<article class="post">';
-                post += '<input type="checkbox" id=' + post_id + 'name=' + post_id + 'value=' + post_id +'></input>';
+                post += '<input type="checkbox" id=' + post_id + 'name= selected[] value=' + post_id +'></input>';
                 post += '<h2><a href="view_post.php?post_id=' + post_id + '">Post ' + post_id + ': ' + title + '</a></h2>';
                 post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
                 post += '</article>';
@@ -51,7 +51,7 @@ $(document).ready( function() {
             for(var i=0; i<len; i++){
                 var username = response[i].username;
                 var user = '<article class="user">';
-                user += '<input type="checkbox" id=' + username + 'name=' + username + 'value=' + username +'></input>';
+                user += '<input type="checkbox" id=' + username + 'name= selected[] value=' + username +'></input>';
                 user += '<h2>'+ username + '</h2>';
                 user += '</article>';
                 $("#reported_users").append(user);
@@ -74,7 +74,7 @@ $(document).ready( function() {
                 var username2 = response[i].username2;
                 var info = response[i].info;
                 var conflict = '<article class="conflict">';
-                conflict += '<input type="checkbox" id=' + conflict_id + 'name=' + conflict_id + 'value=' + conflict_id + '></input>';
+                conflict += '<input type="checkbox" id=' + conflict_id + 'name= selected[] value=' + conflict_id + '></input>';
                 conflict += '<h2>'+ username1 + '</h2>';
                 conflict += '<h2>'+ username2 + '</h2>';
                 conflict += '<p>'+ info + '</p>';
@@ -91,20 +91,44 @@ $(document).ready( function() {
     $("#reported_posts_form").on('submit', function(e){
         e.preventDefault(); // Prevent the form from submitting via the browser.
         var selected = [];
-        $('#reported_posts_form input:checked').each(function() {
+        $('input[type=checkbox]:checked').each(function() {
             selected.push($(this).val());
         });
+        // Manually serialize form data
+        var formData = {
+            selected: selected
+        };
+        console.log(selected);
         $.ajax({
             url: 'admin_delete_posts.php',
             type: 'POST',
-            data: {selected: selected},
+            data: formData,
             success: function(data){
-                // alert('Search submitted successfully');
+                //alert('Search submitted successfully');
                 $('#reported_posts').html(data);
             },
-            cache: false,
-            contentType: false,
-            processData: false
+        });
+    });
+    // bans the selected users
+    $("#reported_users_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var selected = [];
+        $('input[type=checkbox]:checked').each(function() {
+            selected.push($(this).val());
+        });
+        // Manually serialize form data
+        var formData = {
+            selected: selected
+        };
+        console.log(selected);
+        $.ajax({
+            url: 'admin_ban_users.php',
+            type: 'POST',
+            data: formData,
+            success: function(data){
+                //alert('Search submitted successfully');
+                $('#reported_users').html(data);
+            },
         });
     });
 });
