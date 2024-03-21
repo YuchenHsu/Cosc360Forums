@@ -10,7 +10,7 @@
         <label for="password">Password: </label>
         <input id="password" type="password" name="password" required>
     </div>
-    <div class="remember" style="display: none;">
+    <div class="remember">
         <input id="remember" type="checkbox" name="remember">
         <label for="remember">Remember me</label>
     </div>

@@ -11,11 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pass = "";
 
             $pdo = new PDO($connString, $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
-
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->beginTransaction();
 
-            if (!file_exists($_FILES["post_image"]["tmp_name"]) || !is_uploaded_file($_FILES["post_image"]["tmp_name"])){ 
+            if (!file_exists($_FILES["post_image"]["tmp_name"]) || !is_uploaded_file($_FILES["post_image"]["tmp_name"])){
                 $sql = "INSERT INTO post(title, content, category_id, image) VALUES(:title, :body, :category_id, :image)";
                 $statement = $pdo->prepare($sql);
                 $statement->bindValue(":title", $title);
@@ -27,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $file = $_FILES["post_image"];
                 if($file["size"] > $max_file_size) {
                     echo("Error: File too big");
-                } elseif($file["error"] != UPLOAD_ERR_OK) { 
-                    echo("Error: " . $file["name"] . " has error " . $file["error"] . "."); 
+                } elseif($file["error"] != UPLOAD_ERR_OK) {
+                    echo("Error: " . $file["name"] . " has error " . $file["error"] . ".");
                 } else {
                     $sql = "INSERT INTO post(title, content, image) VALUES( :title, :body, :image )";
                     $statement = $pdo->prepare($sql);

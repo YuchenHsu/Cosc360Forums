@@ -1,4 +1,5 @@
 $(document).ready( function() {
+    getPosts();
     const domain = "Cosc360Forums/html/";
     // Toggles everything off
     function toggleOff() {
@@ -108,11 +109,11 @@ $(document).ready( function() {
         }
     }
 
-    const loginBtn = $( "#login-submit" );
-    loginBtn.on("click", function (event) {
-        // Call the login function
-        handleLogin(event);
-    });
+    // const loginBtn = $( "#login-submit" );
+    // loginBtn.on("click", function (event) {
+    //     // Call the login function
+    //     handleLogin(event);
+    // });
 
     // Toggles the posts content
     // TODO: need to configure further with jq?
@@ -307,7 +308,8 @@ $(document).ready( function() {
                 alert('Post submitted successfully');
                 // redirect to base.php and reload the page
                 window.location.href = 'base.php#';
-                // location.reload();
+                location.reload();
+                getPosts(); // Call the function to get posts
             },
             cache: false,
             contentType: false,
@@ -315,30 +317,36 @@ $(document).ready( function() {
         });
     });
 
-    $.ajax({
-        url: 'get_posts.php',
-        type: 'get',
-        dataType: 'JSON',
-        success: function(response){
-            var len = response.length;
-            for(var i=0; i<len; i++){
-                var title = response[i].title;
-                var post_id = response[i].post_id;
-                var content = response[i].content;
-                var image = response[i].image;
+    function getPosts() {
+        $.ajax({
+            url: 'get_posts.php',
+            type: 'get',
+            dataType: 'JSON',
+            success: function(response){
+                var len = response.length;
+                for(var i=0; i<len; i++){
+                    var title = response[i].title;
+                    var post_id = response[i].post_id;
+                    var content = response[i].content;
+                    var image = response[i].image;
 
-                var post = '<article class="post">';
-                post += '<h2><a href="view_post.php?post_id=' + post_id + '">Post ' + post_id + ': ' + title + '</a></h2>';
-                post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
-                if (image) {
-                    post += '<img src="data:image/jpeg;base64,' + image + '" style = "width: 75%; height: auto;"/>';
+                    var post = '<article class="post">';
+                    post += '<h2><a href="view_post.php?post_id=' + post_id + '">Post ' + post_id + ': ' + title + '</a></h2>';
+                    post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
+                    if (image) {
+                        post += '<img src="data:image/jpeg;base64,' + image + '" style = "width: 75%; height: auto;"/>';
+                    }
+                    post += '</article>';
+
+                    $("#posts").append(post);
                 }
-                post += '</article>';
-
-                $("#posts").append(post);
             }
-        }
-    });
+        });
+    }
+
+    // Call the function to get posts when the page loads
+    getPosts();
+
 
     $('#register-form').on('submit', function(e) {
         e.preventDefault();
@@ -348,6 +356,26 @@ $(document).ready( function() {
             data: $(this).serialize(),
             success: function(data) {
                 alert('Registration successful');
+                // reload the page and go to base.php
+                window.location.href = 'base.php#';
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // Handle the error response from the server
+                alert(jqXHR.responseText);
+            }
+        });
+    });
+
+    // Handle the login form submission
+    $('#login-form').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'login_function.php', // URL of your PHP script
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(data) {
+                alert('Login successful');
                 // reload the page and go to base.php
                 window.location.href = 'base.php#';
                 location.reload();

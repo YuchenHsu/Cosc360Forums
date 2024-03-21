@@ -24,10 +24,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             http_response_code(400);
             die("Error: Password must contain at least one number.");
         }
+
+        // check if username is valid
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+            http_response_code(400);
+            die("Error: Username must contain only letters and numbers.");
+        }
+
+        // check if full name is valid
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $full_name)) {
+            http_response_code(400);
+            die("Error: Full name must contain only letters and numbers.");
+        }
+
         // Check if passwords match
         if ($password !== $conf_password) {
             http_response_code(400);
             die("Error: Passwords do not match.");
+        }
+
+        // check if email is valid
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            die("Error: Invalid email.");
         }
 
         try {
@@ -37,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             $pdo = new PDO($connString, $user, $pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             $pdo->beginTransaction();
 
             // Check if username already exists
@@ -54,6 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 exit();
             }
 
+            $hashed_passowrd = password_hash($password, PASSWORD_DEFAULT);
+            if ($hashed_passowrd === false) {
+                http_response_code(500);
+                die("Error: Password hash failed.");
+            }
+
             // Check if a file was uploaded
             if (!file_exists($_FILES["profile_pic"]["tmp_name"]) || !is_uploaded_file($_FILES["profile_pic"]["tmp_name"])){
                 $sql = "INSERT INTO user(username, full_name, email, password) VALUES( :username, :full_name, :email, :password )";
@@ -61,25 +85,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $statement->bindValue(":username", $username);
                 $statement->bindValue(":full_name", $full_name);
                 $statement->bindValue(":email", $email);
-                $statement->bindValue(":password", $password);
+                $statement->bindValue(":password", $hashed_passowrd);
                 $statement->execute();
             } else {
                 $max_file_size = 10000000;
                 $file = $_FILES["profile_pic"];
-                if($file["size"] > $max_file_size) {
-                    echo("Error: File too big");
-                } elseif($file["error"] != UPLOAD_ERR_OK) {
-                    echo("Error: " . $file["name"] . " has error " . $file["error"] . ".");
+                // add checks for file type to make sure it's only png or jpeg
+                if ($file["size"] > $max_file_size) {
+                    http_response_code(400);
+                    die("Error: File size exceeds 10MB.");
+                } elseif ($file["error"] != UPLOAD_ERR_OK) {
+                    http_response_code(400);
+                    die("Error: " . $file["name"] . " has error " . $file["error"] . ".");
                 } else {
-                    // $sql = "INSERT INTO users(username, full_name, email, password, profile_pic) VALUES( :username, :full_name, :email, :password, :profile_pic )";
-                    // $statement = $pdo->prepare($sql);
-                    // $statement->bindValue(":username", $username);
-                    // $statement->bindValue(":full_name", $full_name);
-                    // $statement->bindValue(":email", $email);
-                    // $statement->bindValue(":password", $password);
-                    // $imgcontent = file_get_contents($file["tmp_name"]);
-                    // $statement->bindValue(":profile_pic", $imgcontent);
-                    // $statement->execute();
+                    $sql = "INSERT INTO user(username, full_name, email, password, profile_pic) VALUES( :username, :full_name, :email, :password, :profile_pic )";
+                    $statement = $pdo->prepare($sql);
+                    $statement->bindValue(":username", $username);
+                    $statement->bindValue(":full_name", $full_name);
+                    $statement->bindValue(":email", $email);
+                    $statement->bindValue(":password", $hashed_passowrd);
+                    $imgcontent = file_get_contents($file["tmp_name"]);
+                    $statement->bindValue(":profile_pic", $imgcontent);
+                    $statement->execute();
                 }
             }
             $pdo->commit();

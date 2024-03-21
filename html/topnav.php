@@ -23,13 +23,13 @@
             <div class="dropdown-content">
                 <a href="#user" id="profile-btn">Profile</a>
                 <a href="#admin" id="admin-btn">Admin</a>
-                <a href="#register"  id="user-btn">Register</a>
+                <a href="#register" id="user-btn">Login</a>
                 <a href="#logout">Logout</a>
         </div>
         </div>
     </div>
     <!-- make a sub top bar under the bar that shows all the categories -->
-</div>    
+</div>
 <div class="topnav" style="background-color: purple;">
     <a href="#all">All</a>
     <a href="#news">News</a>
