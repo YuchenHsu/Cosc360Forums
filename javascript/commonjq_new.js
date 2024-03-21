@@ -31,24 +31,6 @@ $(document).ready(function() {
     });
 });
 
-// $(document).on("submit", "#search_form", function(e) {
-//     e.preventDefault();
-//     var formData = $(this).serialize();
-//     $.ajax({
-//         url: 'posts.php',
-//         type: 'GET',
-//         data: formData,
-//         success: function(data){
-//             // alert('Search submitted successfully');
-//             $('#search_results').html(data);
-//         },
-//         cache: false,
-//         contentType: false,
-//         processData: false
-//     });
-// });
-
-
 $(document).on("click", "#register-btn", function(e) {
     e.preventDefault();
     $("#content").load("register.php");
