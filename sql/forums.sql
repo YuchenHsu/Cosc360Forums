@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS forums;
 
 USE forums;
 
-CREATE TABLE category (
+CREATE TABLE IF NOT EXISTS category (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
@@ -27,13 +27,22 @@ CREATE TABLE IF NOT EXISTS post (
     content TEXT,
     image MEDIUMBLOB,
     category_id INT NOT NULL,
-    upvotes DOUBLE,
-    downvotes DOUBLE,
+    upvotes DOUBLE DEFAULT 0,
+    downvotes DOUBLE DEFAULT 0,
     reported BOOLEAN,
     pinned BOOLEAN,
     username VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (username) REFERENCES user(username)
+);
+
+CREATE TABLE IF NOT EXISTS userpost (
+    username VARCHAR(50) NOT NULL,
+    post_id INT NOT NULL,
+    status ENUM('unset', 'upvote', 'downvote') DEFAULT 'unset',
+    FOREIGN KEY (post_id) REFERENCES post(post_id),
+    FOREIGN KEY (username) REFERENCES user(username),
+    PRIMARY KEY (username, post_id)
 );
 
 -- Table for storing posts (replies)
