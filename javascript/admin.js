@@ -78,14 +78,10 @@ $(document).ready( function() {
                 conflict += '<h2>'+ username1 + '</h2>';
                 conflict += '<h2>'+ username2 + '</h2>';
                 conflict += '<p>'+ info + '</p>';
-                conflict += '</article>';
-                
+                conflict += '</article>';              
                 $("#conflicts").append(conflict);
             }
         },
-        cache: false,
-        contentType: false,
-        processData: false
     });
     // deletes the selected posts
     $("#reported_posts_form").on('submit', function(e){
@@ -128,6 +124,28 @@ $(document).ready( function() {
             success: function(data){
                 //alert('Search submitted successfully');
                 $('#reported_users').html(data);
+            },
+        });
+    });
+    // bans the selected users and marks conflicts as resolved
+    $("#conflicts_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var selected = [];
+        $('input[type=checkbox]:checked').each(function() {
+            selected.push($(this).val());
+        });
+        // Manually serialize form data
+        var formData = {
+            selected: selected
+        };
+        console.log(selected);
+        $.ajax({
+            url: 'admin_resolve_conflicts.php',
+            type: 'POST',
+            data: formData,
+            success: function(data){
+                //alert('Search submitted successfully');
+                $('#conflicts').html(data);
             },
         });
     });
