@@ -45,6 +45,58 @@ CREATE TABLE IF NOT EXISTS userpost (
     PRIMARY KEY (username, post_id)
 );
 
+DELIMITER //
+
+CREATE TRIGGER ins_userpost AFTER INSERT ON userpost
+FOR EACH ROW
+BEGIN
+    IF NEW.status = 'upvote' THEN
+        UPDATE post SET upvotes = upvotes + 1 WHERE post.post_id = NEW.post_id;
+    elseif NEW.status = 'downvote' THEN
+        UPDATE post SET downvotes = downvotes + 1 WHERE post.post_id = NEW.post_id;
+    END IF;
+END;
+//
+
+CREATE TRIGGER upd_userpost AFTER UPDATE ON userpost
+FOR EACH ROW
+BEGIN
+    DECLARE old_status ENUM('unset', 'upvote', 'downvote');
+    DECLARE new_status ENUM('unset', 'upvote', 'downvote');
+    
+    SET old_status = OLD.status;
+    SET new_status = NEW.status;
+    
+    IF old_status = 'upvote' AND new_status = 'downvote' THEN
+        UPDATE post SET upvotes = upvotes - 1, downvotes = downvotes + 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'downvote' AND new_status = 'upvote' THEN
+        UPDATE post SET downvotes = downvotes - 1, upvotes = upvotes + 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'unset' AND new_status = 'upvote' THEN
+        UPDATE post SET upvotes = upvotes + 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'unset' AND new_status = 'downvote' THEN
+        UPDATE post SET downvotes = downvotes + 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'upvote' AND new_status = 'unset' THEN
+        UPDATE post SET upvotes = upvotes - 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'downvote' AND new_status = 'unset' THEN
+        UPDATE post SET downvotes = downvotes - 1 WHERE post.post_id = NEW.post_id;
+    END IF;
+END;
+//
+
+
+CREATE TRIGGER del_userpost AFTER DELETE ON userpost
+FOR EACH ROW
+BEGIN
+    IF OLD.status = 'upvote' THEN
+        UPDATE post SET upvotes = upvotes - 1 WHERE post.post_id = OLD.post_id;
+    elseif OLD.status = 'downvote' THEN
+        UPDATE post SET downvotes = downvotes - 1 WHERE post.post_id = OLD.post_id;
+    END IF;
+END;
+//
+
+DELIMITER ;
+
 -- Table for storing posts (replies)
 CREATE TABLE IF NOT EXISTS comment (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
