@@ -407,3 +407,9 @@ figure{
     float: left;
     position: relative;
 }
+
+.log_active{
+    background-color: #046aaa;
+    border: 5px solid #0D1B2A;
+    font-weight: bold;
+}
