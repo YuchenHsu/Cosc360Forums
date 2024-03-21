@@ -28,8 +28,6 @@ $(document).ready( function() {
         postCreation.css( "display", "none" );
     }
 
-
-
     // Toggle the login form
     function toggleLoginForm() {
         const loginForm = $( "#login-form" );
@@ -52,24 +50,6 @@ $(document).ready( function() {
         toggleOff();
         toggleLoginForm();
     });
-
-    function toggleErrorLogin() {
-        const errorMessages = $( ".error" );
-        if (errorMessages.css( "display" ) === "none") {
-            errorMessages.css( "display", "block" );
-        } else {
-            errorMessages.css( "display", "none" );
-        }
-    }
-
-    function toggleErrorRegister() {
-        const errorMessages = $( ".error-register" );
-        if (errorMessages.css( "display" ) === "none") {
-            errorMessages.css( "display", "block" );
-        } else {
-            errorMessages.css( "display", "none" );
-        }
-    }
 
     // Toggles the posts content
     function togglePostsContent() {
