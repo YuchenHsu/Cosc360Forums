@@ -2,11 +2,23 @@ $(document).ready(function() {
     // Load the post page by default
     $("#content").load("posts.php");
 
+    // Use event delegation to handle click events on the post links
+    $("#content").on("click", ".post_id", function(e) {
+        e.preventDefault();
+        var post_id = $(this).attr("href").split("=")[1];
+        $("#content").load("post_detail.php?post_id=" + post_id);
+    });
+
     $(".topnav a").on("click", function(e) {
         var page = $(this).data("page");
         $("#content").load(page);
     });
 });
+
+// $(document).on("click", ".post_id", function(e) {
+//     e.preventDefault();
+// });
+
 $(document).on("click","#sidebar li a", function(e) {
     e.preventDefault();
     var page = $(this).data("page");
@@ -16,6 +28,7 @@ $(document).on("click","#sidebar li a", function(e) {
         }
     });
 });
+
 $(document).on("click", "#logout_form", function(e) {
     e.preventDefault();
     $.ajax({
@@ -38,7 +51,7 @@ $(document).on("submit", "#create_post_form", function(e) {
     e.preventDefault();
     var formData = new FormData(this);
     $.ajax({
-        url: 'new_post.php',
+        url: 'create_post_function.php',
         type: 'POST',
         data: formData,
         success: function() {
