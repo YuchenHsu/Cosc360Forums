@@ -34,7 +34,6 @@
 
                     foreach ($categories as $category) {
                         echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
-                        echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
                     }
                 ?>
             </select>

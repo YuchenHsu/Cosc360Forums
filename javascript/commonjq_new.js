@@ -216,11 +216,8 @@ $(document).on("submit", "#comment_form", function(e) {
         type: 'POST',
         data: $(this).serialize(),
         success: function(data) {
-            // alert('Comment submitted successfully');
-            // reload the page
-            location.reload();
-            // let post_id = $("#post_id").attr("value");
-            // $("#content").load("post_detail.php?post_id=" + post_id);
+            let post_id = $("#post_id").attr("value");
+            $("#content").load("post_detail.php?post_id=" + post_id);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error response from the server
