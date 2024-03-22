@@ -16,6 +16,18 @@
                 if(!empty($_POST['full_name']) && !empty($_POST['email'])){
                     $full_name = $_POST['full_name'];
                     $email = $_POST['email'];
+
+                     // check if full name is valid
+                    if (!preg_match("/^[a-zA-Z0-9\s]*$/", $full_name)) {
+                        http_response_code(400);
+                        die("Error: Full name must contain only letters, numbers, and spaces.");
+                    }
+                    
+                    // check if email is valid
+                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        http_response_code(400);
+                        die("Error: Invalid email.");
+                    }
                     $sql = "UPDATE user SET full_name = :full_name, email = :email WHERE username = :username";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(':full_name', $full_name);
