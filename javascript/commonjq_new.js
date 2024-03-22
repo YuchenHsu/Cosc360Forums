@@ -1,17 +1,44 @@
 $(document).ready(function() {
     // Load the post page by default
     $("#content").load("posts.php");
+    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
+
+    // when clicking on the home in the breadcrumbs, load the posts page
+    $(document).on("click", "#breadcrumbs a", function(e) {
+        e.preventDefault();
+        $("#content").load("posts.php");
+        $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
+    });
 
     // Use event delegation to handle click events on the post links
     $("#content").on("click", ".post_id", function(e) {
         e.preventDefault();
         var post_id = $(this).attr("href").split("=")[1];
         $("#content").load("post_detail.php?post_id=" + post_id);
+        $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Post > Post: " + post_id);
     });
 
     $(".topnav a").on("click", function(e) {
         var page = $(this).data("page");
         $("#content").load(page);
+        // add breadcrumbs based on the page loaded
+        if (page == "posts.php") {
+            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
+        } else if (page == "create_post.php") {
+            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Create Post");
+        } else if (page == "profile.php") {
+            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Profile");
+        } else if (page == "admin.php") {
+            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Admin");
+        } else if (page == "search.php") {
+            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Search");
+        } else if (page == "notification.php") {
+            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Notification");
+        } else if (page == "login.php") {
+            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Login");
+        } else if (page == "register.php") {
+            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Register");
+        }
     });
     $("#search_form").on('submit', function(e){
         e.preventDefault(); // Prevent the form from submitting via the browser.
@@ -34,11 +61,13 @@ $(document).ready(function() {
 $(document).on("click", "#register-btn", function(e) {
     e.preventDefault();
     $("#content").load("register.php");
+    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Register");
 });
 
 $(document).on("click", "#login-btn", function(e) {
     e.preventDefault();
     $("#content").load("login.php");
+    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Login");
 });
 
 $(document).on("click","#sidebar li a", function(e) {
@@ -49,6 +78,7 @@ $(document).on("click","#sidebar li a", function(e) {
             console.log("Error: " + xhr.status + " " + xhr.statusText);
         }
     });
+    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Admin > " + page.split(".")[0].split("_")[1]);
     $.ajax({
         url: 'admin_reported_posts.php',
         type: 'GET',

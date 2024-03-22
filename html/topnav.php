@@ -28,7 +28,7 @@
             </div>
         </form>
         <div class="topnav-right">
-            <a href="#" class="active" id="notif-btn" data-page="notification.php">Notification</a>
+            <a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification</a>
             <div class="dropdown">
                 <a class = "active">
                     <?php
@@ -64,5 +64,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!-- generate a breadcrumbs for this website -->
+    <div id="breadcrumbs">
+        <a href='base.php#'>Home</a> > Posts
     </div>
 </div>
