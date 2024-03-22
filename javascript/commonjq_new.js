@@ -69,6 +69,30 @@ $(document).on("click", "#logout_form", function(e) {
     });
 });
 
+$(document).on("click", '.vote', function(e) {
+    e.preventDefault();
+    var vote_type = $(this).hasClass('upvote') ? 'up' : 'down';
+    var post_id = $(this).data('post-id');
+
+    $.ajax({
+        url: 'updownvote.php',
+        type: 'POST',
+        data: {
+            'post_id': post_id,
+            'vote_type': vote_type
+        },
+        success: function() {
+            // Change the style of the button to indicate that it has been selected
+            $('.vote').removeClass('selected');
+            $('.' + vote_type + '[data-post-id="' + post_id + '"]').addClass('selected');
+            location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.responseText);
+        }
+    });
+});
+
 $(document).on("submit", "#comment_form", function(e) {
     e.preventDefault();
     $.ajax({

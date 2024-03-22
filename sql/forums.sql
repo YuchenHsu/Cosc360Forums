@@ -36,6 +36,16 @@ CREATE TABLE IF NOT EXISTS post (
     FOREIGN KEY (username) REFERENCES user(username)
 );
 
+CREATE TABLE votes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    post_id INT NOT NULL,
+    vote_type ENUM('up', 'down') NOT NULL,
+    FOREIGN KEY (username) REFERENCES user(username),
+    FOREIGN KEY (post_id) REFERENCES post(post_id),
+    UNIQUE KEY user_post_vote (username, post_id)
+);
+
 -- Table for storing posts (replies)
 CREATE TABLE IF NOT EXISTS comment (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,

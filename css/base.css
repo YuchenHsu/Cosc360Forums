@@ -408,3 +408,6 @@ figure{
     position: relative;
 }
 
+.vote.selected {
+    color: #ff0000; /* Change the color to red when selected */
+}

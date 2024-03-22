@@ -29,9 +29,30 @@
         }
     ?>
     <div class="post_interaction">
-        <!-- <button type="submit" id="upvote">↑</button><span>3</span>
-        <button type="submit" id="downvote">↓</button><span>3</span> -->
-        <?php include "updownvote.php"; ?>
+        <span class="votes">
+            <?php
+                include 'connect.php';
+                // Query the database for the count of upvotes and downvotes
+                $sql = "SELECT vote_type, COUNT(*) as count FROM votes WHERE post_id = :post_id GROUP BY vote_type";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([':post_id' => $post_id]);
+                $votes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $upvotes = 0;
+                $downvotes = 0;
+
+                foreach ($votes as $vote) {
+                    if ($vote['vote_type'] == 'up') {
+                        $upvotes = $vote['count'];
+                    } else {
+                        $downvotes = $vote['count'];
+                    }
+                }
+            ?>
+
+            <button class="vote upvote" data-post-id="<?php echo $post_id; ?>">↑</button><span class="upvotes"><?php echo $upvotes; ?></span>
+            <button class="vote downvote" data-post-id="<?php echo $post_id; ?>">↓</button><span class="downvotes"><?php echo $downvotes; ?></span>
+        </span>
         <!-- <span class="report_post"> -->
             <button class="report_post" type="submit">Report</button>
         <!-- </span> -->
