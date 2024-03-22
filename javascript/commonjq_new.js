@@ -115,10 +115,11 @@ $(document).on("submit", "#create_post_form", function(e) {
 
 $(document).on("submit", "#register-form", function(e) {
     e.preventDefault();
+    let formData = new FormData(this);
     $.ajax({
         url: 'reg_function.php', // URL of your PHP script
         type: 'POST',
-        data: $(this).serialize(),
+        data: formData,
         success: function(data) {
             alert('Registration successful');
             // reload the page and go to base.php
@@ -128,7 +129,9 @@ $(document).on("submit", "#register-form", function(e) {
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error response from the server
             alert(jqXHR.responseText);
-        }
+        },
+        contentType: false,
+        processData: false
     });
 });
 
