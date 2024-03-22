@@ -24,8 +24,7 @@ $pass = "";
                         echo "<div class='user' style='width: 100%; height: auto; margin: 1em;'>";
                         echo "<p>" . $row['username'] . "</p>";
                         echo "<button style='display: inline;'><a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'>View</a></button>";
-                        echo "<button style='display: inline;'>Disable</button>";
-                        echo "</div>";
+                        echo "<input type=checkbox id=" . $row['username'] . "name= selected[] value=" . $row['username'] ."></input>";
                     }
 
                 }else{
