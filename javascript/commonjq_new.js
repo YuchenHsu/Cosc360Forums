@@ -69,6 +69,11 @@ $(document).on("click", "#logout_form", function(e) {
     });
 });
 
+$(document).on("click", "#create_redirect", function(e) {
+    e.preventDefault();
+    $("#content").load("login.php");
+});
+
 $(document).on("submit", "#comment_form", function(e) {
     e.preventDefault();
     $.ajax({

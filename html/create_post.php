@@ -10,7 +10,7 @@
             font-size: 1.5em;
             background-color: #ff6f59ff;
             text-align: center;
-        '>You must be logged in to create a post. Click <a href=\"login.php\">here</a> to login.</h2>";
+        '>You must be logged in to create a post. Click <a href=\"login.php\" id='create_redirect'>here</a> to login.</h2>";
         } else {
     ?>
     <form class="create_post form-container" id="create_post_form" method="POST" enctype="multipart/form-data">
