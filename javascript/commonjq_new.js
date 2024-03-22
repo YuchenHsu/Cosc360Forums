@@ -87,8 +87,8 @@ $(document).on("submit", "#edit_profile_form", function(e) {
         type: 'POST',
         data: formData,
         success: function() {
-           // alert('Profile updated successfully');
-            //location.reload();
+            alert('Profile updated successfully');
+            location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error response from the server
