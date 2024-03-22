@@ -85,8 +85,6 @@ $(document).on("submit", "#edit_profile_form", function(e) {
         data: $(this).serialize(),
         success: function() {
             alert('Profile updated successfully');
-            // reload the page and go to base.php
-            // window.location.href = 'base.php#';
             location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
