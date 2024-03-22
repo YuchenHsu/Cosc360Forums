@@ -69,6 +69,12 @@ $(document).on("click", "#logout_form", function(e) {
     });
 });
 
+$(document).on("click", "#edit_profile", function(e) {
+    $("#full_name_input").html("<input type='text' name='full_name' value='" + $("#full_name_input").text() + "'>");
+    $("#email_input").html("<input type='text' name='email' value='" + $("#email_input").text() + "'>");
+    $("#button_stuff").html("<button type='submit' id='submit_profile'>Save</button>");
+});
+
 $(document).on("submit", "#create_post_form", function(e) {
     e.preventDefault();
     var formData = new FormData(this);
