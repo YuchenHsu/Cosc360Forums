@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS post (
     FOREIGN KEY (username) REFERENCES user(username)
 );
 
-CREATE VIEW IF NOT EXISTS post_view AS SELECT title, content, image, post_id, c.name AS category_name, upvotes, downvotes, reported, pinned, username, created_at FROM post AS p JOIN category AS c ON p.category_id = c.id;
+CREATE VIEW IF NOT EXISTS post_view AS SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name, upvotes, downvotes, reported, pinned, username, created_at FROM post AS p JOIN category AS c ON p.category_id = c.id;
 
 CREATE TABLE IF NOT EXISTS userpost (
     username VARCHAR(50) NOT NULL,
