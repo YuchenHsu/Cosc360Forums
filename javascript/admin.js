@@ -75,6 +75,10 @@ $(document).on('submit', '#conflicts_form', function(e){
 });
 $(document).on('submit', '#search_users_form', function(e){
     e.preventDefault(); // Prevent the form from submitting via the browser.
+    const search = $("#search_users").val();
+    if (search === "" || search === null) {
+        alert("Please enter a username to search for.");
+    }
     var formData = new FormData(this);
     $.ajax({
         url: 'admin_search.php',
