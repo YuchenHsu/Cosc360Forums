@@ -118,7 +118,32 @@ $(document).on("submit", "#edit_profile_form", function(e) {
         contentType: false,
         processData: false
     });
-    
+
+});
+
+$(document).on("click", "#create_redirect", function(e) {
+    e.preventDefault();
+    $("#content").load("login.php");
+});
+
+$(document).on("submit", "#comment_form", function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: 'comment_function.php',
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function(data) {
+            // alert('Comment submitted successfully');
+            // reload the page
+            location.reload();
+            // let post_id = $("#post_id").attr("value");
+            // $("#content").load("post_detail.php?post_id=" + post_id);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        }
+    });
 });
 
 $(document).on("submit", "#create_post_form", function(e) {
@@ -173,6 +198,23 @@ $(document).on("submit", "#login-form", function(e) {
             // reload the page and go to base.php
             window.location.href = 'base.php#';
             location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        }
+    });
+});
+
+$(document).on("submit", "#post_interaction" , function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: 'post_interact.php', // URL of your PHP script
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function(data) {
+            let post_id = $("#post_id_interact").attr("value");
+            $("#content").load("post_detail.php?post_id=" + post_id);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error response from the server

@@ -1,11 +1,7 @@
 <?php
-    $connString = "mysql:host=localhost; dbname=forums";
-    $user = "root";
-    $pass = "";
+    include 'connect.php';
 
     try {
-        $pdo = new PDO($connString, $user, $pass);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "SELECT title, content, image, post_id FROM post";
         $statement = $pdo->prepare($sql);

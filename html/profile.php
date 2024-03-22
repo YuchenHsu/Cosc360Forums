@@ -2,7 +2,6 @@
 <div id="profile" class="form-container">
     <div class="profile-container">
         <div class="profile">
-            <img class="profile-pic" src="../images/social/twitter_16.png" alt="Profile Picture">
             <?php
                 // Start the session
                 session_start();
@@ -22,7 +21,7 @@
                         }
                             $sql = "SELECT * FROM user WHERE username = :username";
                             $statement = $pdo->prepare($sql);
-                          
+
                             // Access the username from the session
                             $statement->bindValue(":username", $username);
                             $statement->execute();
@@ -46,7 +45,7 @@
                     }else{
                         echo "Error: GET request not received.";
                     }
-                    
+
                 } catch (PDOException $e) {
                     die($e->getMessage());
                 }finally{
