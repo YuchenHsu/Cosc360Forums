@@ -42,14 +42,14 @@
             <button type="submit" id="downvote" name="downvote_post">↓</button><span><?=$downvotes?></span>
         </span>
         <!-- <span class="report_post"> -->
-            <button class="report_post" type="submit" name="report_post">Report</button>
+        <button class="report_post" type="submit" name="report_post">Report</button>
         <!-- </span> -->
-        <section class="comment_container">
-            <h2>Comments</h2>
-            <div id="comment_content"></div>
-            <?php include "comments.php"; ?>
-        </section>
     </form>
+    <section class="comment_container">
+        <h2>Comments</h2>
+        <div id="comment_content"></div>
+        <?php include "comments.php"; ?>
+    </section>
 </div>
 
 <script>
