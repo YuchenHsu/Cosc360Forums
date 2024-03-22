@@ -78,6 +78,27 @@ $(document).on("click", "#edit_profile", function(e) {
     $("#button_stuff").html("<button type='submit' id='submit_profile'>Save</button>");
 });
 
+// submits view profile form
+$(document).on("submit", "#view_profile_form", function(e) {
+    e.preventDefault();
+    let formData = new FormData(this);
+    $.ajax({
+        url: 'view_profile_function.php',
+        type: 'GET',
+        data: formData,
+        success: function() {
+            // alert('Profile updated successfully');
+            // location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        },
+        contentType: false,
+        processData: false
+    });
+});
+
 // submits the edit profile form
 $(document).on("submit", "#edit_profile_form", function(e) {
     e.preventDefault();
