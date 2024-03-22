@@ -36,9 +36,10 @@
                     $statement->bindValue(":username", $username);
                     $statement->execute();
                     $user = $statement->fetch(PDO::FETCH_ASSOC);
-                    echo "<form id=edit_profile_form action=POST>";
+                    echo "<form id=edit_profile_form action=POST enctype=multipart/form-data>";
                     printf("<img class=\"profile-pic\" src=\"data:image/jpeg;base64,%s\" alt=\"Profile Picture\">", base64_encode($user['profile_pic']));
                     echo "<h2>User Profile</h2>";
+                    echo "<div id=image_input></div>";
                     echo "<p><strong>Username:</strong> " . $user['username'] . "</p>";
                     echo "<p><strong>Full Name:</strong> <div id=full_name_input>" . $user['full_name'] . "</div></p>";
                     echo "<p><strong>Email:</strong><div id=email_input>" . $user['email'] . "</div></p>";
