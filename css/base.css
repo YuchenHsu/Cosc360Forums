@@ -413,3 +413,22 @@ figure{
     border: 5px solid #0D1B2A;
     font-weight: bold;
 }
+
+#reported_users_container, #reported_posts_container, #conflicts_container{
+    border-collapse: collapse;
+    margin: 0 2%;
+    width: 20%;
+    height: auto;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    float:left;
+    background-color:#b0bbd7;
+    border-style: solid;
+}
+
+#admin_header {
+    color: whitesmoke;
+    text-align: center;
+    padding: 1em;
+    margin: 0;
+}
