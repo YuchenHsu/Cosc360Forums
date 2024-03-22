@@ -21,7 +21,7 @@
                         }
                             $sql = "SELECT * FROM user WHERE username = :username";
                             $statement = $pdo->prepare($sql);
-                          
+
                             // Access the username from the session
                             $statement->bindValue(":username", $username);
                             $statement->execute();
@@ -45,7 +45,7 @@
                     }else{
                         echo "Error: GET request not received.";
                     }
-                    
+
                 } catch (PDOException $e) {
                     die($e->getMessage());
                 }finally{
