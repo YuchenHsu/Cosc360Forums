@@ -69,10 +69,31 @@ $(document).on("click", "#logout_form", function(e) {
     });
 });
 
+// toggles the edit profile form
 $(document).on("click", "#edit_profile", function(e) {
     $("#full_name_input").html("<input type='text' name='full_name' value='" + $("#full_name_input").text() + "'>");
     $("#email_input").html("<input type='text' name='email' value='" + $("#email_input").text() + "'>");
     $("#button_stuff").html("<button type='submit' id='submit_profile'>Save</button>");
+});
+
+// submits the edit profile form
+$(document).on("submit", "#edit_profile_form", function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: 'edit_profile_function.php',
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function() {
+            alert('Profile updated successfully');
+            // reload the page and go to base.php
+            // window.location.href = 'base.php#';
+            location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        }
+    });
 });
 
 $(document).on("submit", "#create_post_form", function(e) {
