@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $statement->bindValue(":username", $username);
                     $imgcontent = file_get_contents($file["tmp_name"]);
                     $statement->bindValue(":image", $imgcontent);
+                    $statement->bindValue(":category_id", $category_id);
                     $statement->execute();
                 }
             }

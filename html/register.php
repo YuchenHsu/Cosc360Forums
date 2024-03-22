@@ -1,7 +1,7 @@
 <div id="register-div">
     <form id="register-form" class="form-container" method="POST" enctype="multipart/form-data">
         <button id="login-btn" class="switch_btn" type="button" data-page="login.php">Login</button>
-        <button id="register-btn" class="switch_btn" type="button" data-page="register.php">Register</button>
+        <button id="register-btn" class="switch_btn log_active" type="button" data-page="register.php">Register</button>
         <div class="full_name">
             <label for="full_name">Full Name: </label>
             <input id="full_name" type="text" name="full_name" required title="Firstname must contain only letters and numbers">
