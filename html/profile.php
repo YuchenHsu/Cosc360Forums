@@ -17,8 +17,15 @@
 
                 $sql = "SELECT * FROM user WHERE username = :username";
                 $statement = $pdo->prepare($sql);
+                if (isset($_SESSION['username'])) {
+                    // User is logged in
+                   $username = $_SESSION['username'];
+                } else {
+                    // User is not logged in
+                    $username = "testing";
+                }
                 // Access the username from the session
-                $statement->bindValue(":username", $_SESSION["username"]);
+                $statement->bindValue(":username", $username);
                 $statement->execute();
                 $user = $statement->fetch(PDO::FETCH_ASSOC);
                 printf("<img class=\"profile-pic\" src=\"data:image/jpeg;base64,%s\" alt=\"Profile Picture\">", base64_encode($user['profile_pic']));
