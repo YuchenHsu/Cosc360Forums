@@ -14,9 +14,9 @@ CREATE TABLE IF NOT EXISTS user (
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
     profile_pic MEDIUMBLOB,
-    admin BOOLEAN,
-    disabled BOOLEAN,
-    reported BOOLEAN,
+    admin BOOLEAN DEFAULT FALSE,
+    disabled BOOLEAN DEFAULT FALSE,
+    reported BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS post (
     downvotes DOUBLE DEFAULT 0,
     reported BOOLEAN DEFAULT FALSE,
     pinned BOOLEAN DEFAULT FALSE,
-    username VARCHAR(50),
+    username VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (username) REFERENCES user(username)
 );
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS comment (
     post_id INT NOT NULL,
     username VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
-    reported BOOLEAN,
+    reported BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (post_id) REFERENCES post(post_id),
     FOREIGN KEY (username) REFERENCES user(username)
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS conflict (
     username2 VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     info TEXT,
-    resolved BOOLEAN,
+    resolved BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (username1) REFERENCES user(username),
     FOREIGN KEY (username2) REFERENCES user(username)
 );
