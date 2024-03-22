@@ -15,7 +15,7 @@ $pass = "";
                 if(!empty($_POST['search_users'])){
                     // search_users for users
                     $search_users = '%' . strtolower($_POST['search_users']) . '%';
-                    $sql = "SELECT username, reported, disabled FROM user WHERE LOWER(username) LIKE :search_users";
+                    $sql = "SELECT username, reported, disabled FROM user WHERE LOWER(username) LIKE :search_users OR LOWER(email) LIKE :search_users";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(':search_users', $search_users);
                     $statement->execute();
