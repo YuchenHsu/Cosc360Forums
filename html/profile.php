@@ -2,7 +2,6 @@
 <div id="profile" class="form-container">
     <div class="profile-container">
         <div class="profile">
-            <img class="profile-pic" src="../images/social/twitter_16.png" alt="Profile Picture">
             <?php
                 // Start the session
                 session_start();

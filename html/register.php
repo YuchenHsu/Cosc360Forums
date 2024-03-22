@@ -1,7 +1,7 @@
 <div id="register-div">
     <form id="register-form" class="form-container" method="POST" enctype="multipart/form-data">
         <button id="login-btn" class="switch_btn" type="button" data-page="login.php">Login</button>
-        <button id="register-btn" class="switch_btn" type="button" data-page="register.php">Register</button>
+        <button id="register-btn" class="switch_btn log_active" type="button" data-page="register.php">Register</button>
         <div class="full_name">
             <label for="full_name">Full Name: </label>
             <input id="full_name" type="text" name="full_name" required title="Firstname must contain only letters and numbers">
@@ -22,7 +22,7 @@
             <label for="confirm_password">Confirm Password:</label>
             <input id="confirm_password" type="password" name="conf_password" required title="Passwords must match">
         </div>
-        <div class="profile_pic">
+        <div class="profile_picture">
             <label for="profile_pic">Profile Picture: </label>
             <input type="file" name="profile_pic" id="profile_pic" accept="image/png, image/jpeg">
         </div>

@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS forums;
 
 USE forums;
 
-CREATE TABLE category (
+CREATE TABLE IF NOT EXISTS category (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
@@ -27,14 +27,81 @@ CREATE TABLE IF NOT EXISTS post (
     content TEXT,
     image MEDIUMBLOB,
     category_id INT NOT NULL,
-    upvotes DOUBLE,
-    downvotes DOUBLE,
-    reported BOOLEAN,
-    pinned BOOLEAN,
+    upvotes DOUBLE DEFAULT 0,
+    downvotes DOUBLE DEFAULT 0,
+    reported BOOLEAN DEFAULT FALSE,
+    pinned BOOLEAN DEFAULT FALSE,
     username VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (username) REFERENCES user(username)
 );
+
+CREATE TABLE IF NOT EXISTS userpost (
+    username VARCHAR(50) NOT NULL,
+    post_id INT NOT NULL,
+    status ENUM('unset', 'upvote', 'downvote') DEFAULT 'unset',
+    FOREIGN KEY (post_id) REFERENCES post(post_id),
+    FOREIGN KEY (username) REFERENCES user(username),
+    PRIMARY KEY (username, post_id)
+);
+
+DELIMITER //
+
+CREATE TRIGGER ins_userpost AFTER INSERT ON userpost
+FOR EACH ROW
+BEGIN
+    IF NEW.status = 'upvote' THEN
+        UPDATE post SET upvotes = upvotes + 1 WHERE post.post_id = NEW.post_id;
+    elseif NEW.status = 'downvote' THEN
+        UPDATE post SET downvotes = downvotes + 1 WHERE post.post_id = NEW.post_id;
+    END IF;
+END;
+//
+
+CREATE TRIGGER upd_userpost BEFORE UPDATE ON userpost
+FOR EACH ROW
+BEGIN
+    DECLARE old_status ENUM('unset', 'upvote', 'downvote');
+    DECLARE new_status ENUM('unset', 'upvote', 'downvote');
+    
+    SET old_status = OLD.status;
+    SET new_status = NEW.status;
+    
+    IF old_status = 'upvote' AND new_status = 'downvote' THEN
+        UPDATE post SET upvotes = upvotes - 1, downvotes = downvotes + 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'downvote' AND new_status = 'upvote' THEN
+        UPDATE post SET downvotes = downvotes - 1, upvotes = upvotes + 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'unset' AND new_status = 'upvote' THEN
+        UPDATE post SET upvotes = upvotes + 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'unset' AND new_status = 'downvote' THEN
+        UPDATE post SET downvotes = downvotes + 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'upvote' AND new_status = 'unset' THEN
+        UPDATE post SET upvotes = upvotes - 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'downvote' AND new_status = 'unset' THEN
+        UPDATE post SET downvotes = downvotes - 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'upvote' AND new_status = 'upvote' THEN
+        UPDATE post SET upvotes = upvotes - 1 WHERE post.post_id = NEW.post_id;
+        SET NEW.status = "unset";
+    ELSEIF old_status = 'downvote' AND new_status = 'downvote' THEN
+        UPDATE post SET downvotes = downvotes - 1 WHERE post.post_id = NEW.post_id;
+        SET NEW.status = "unset";
+    END IF;
+END;
+//
+
+
+CREATE TRIGGER del_userpost AFTER DELETE ON userpost
+FOR EACH ROW
+BEGIN
+    IF OLD.status = 'upvote' THEN
+        UPDATE post SET upvotes = upvotes - 1 WHERE post.post_id = OLD.post_id;
+    elseif OLD.status = 'downvote' THEN
+        UPDATE post SET downvotes = downvotes - 1 WHERE post.post_id = OLD.post_id;
+    END IF;
+END;
+//
+
+DELIMITER ;
 
 -- Table for storing posts (replies)
 CREATE TABLE IF NOT EXISTS comment (
