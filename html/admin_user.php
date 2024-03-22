@@ -6,5 +6,7 @@
         <button type="submit" id="search_users_submit">Search</button>
     </form>
     <div class="user_disp" id="user_disp">
+        <form id="disable_user" method="POST">
+        </form>
     </div>
 </div>
