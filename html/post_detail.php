@@ -40,7 +40,7 @@
         }
     ?>
     <form id="post_interaction" method="POST">
-        <input type="hidden" name="post_id" value="<?=$post_id?>">
+        <input type="hidden" id="post_id_interact" name="post_id" value="<?=$post_id?>">
         <input type="hidden" name="action" id="action">
         <span class="votes">
             <button type="submit" id="upvote" name="upvote_post">↑</button><span><?=$upvotes?></span>

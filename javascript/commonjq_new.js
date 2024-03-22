@@ -117,11 +117,8 @@ $(document).on("submit", "#post_interaction" , function(e) {
         type: 'POST',
         data: $(this).serialize(),
         success: function(data) {
-            // alert('Login successful');
-            // reload the page and go to base.php
-            // window.location.assign = 'post_detail.php?post_id=1';
-            // window.location.assign('post_detail.php?post_id=1');
-            // location.reload();
+            let post_id = $("#post_id_interact").attr("value");
+            $("#content").load("post_detail.php?post_id=" + post_id);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error response from the server
