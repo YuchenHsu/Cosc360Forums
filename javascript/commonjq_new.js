@@ -69,6 +69,24 @@ $(document).on("click", "#logout_form", function(e) {
     });
 });
 
+$(document).on("submit", "#comment_form", function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: 'comment_function.php',
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function() {
+            alert('Comment submitted successfully');
+            // reload the page
+            location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        }
+    });
+});
+
 $(document).on("submit", "#create_post_form", function(e) {
     e.preventDefault();
     var formData = new FormData(this);

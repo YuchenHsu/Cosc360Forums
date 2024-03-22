@@ -1,6 +1,4 @@
 <div id="create_post" style=>
-    <!-- <form class="create_post form-container" id="create_post_form" action="new_post.php" method="POST" enctype="multipart/form-data"> -->
-        <!-- if the user is not logged in show a message to tell them they need to login to create post and make a link to the login page -->
     <?php
         session_start();
         if (!isset($_SESSION["username"])) {

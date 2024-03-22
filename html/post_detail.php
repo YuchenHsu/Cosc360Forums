@@ -29,10 +29,9 @@
         }
     ?>
     <div class="post_interaction">
-        <span class="votes">
-            <button type="submit" id="upvote">↑</button><span>3</span>
-            <button type="submit" id="downvote">↓</button><span>3</span>
-        </span>
+        <!-- <button type="submit" id="upvote">↑</button><span>3</span>
+        <button type="submit" id="downvote">↓</button><span>3</span> -->
+        <?php include "updownvote.php"; ?>
         <!-- <span class="report_post"> -->
             <button class="report_post" type="submit">Report</button>
         <!-- </span> -->
