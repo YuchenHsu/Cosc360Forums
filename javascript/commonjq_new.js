@@ -13,6 +13,22 @@ $(document).ready(function() {
         var page = $(this).data("page");
         $("#content").load(page);
     });
+    $("#search_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var formData = $(this).serialize();
+        $.ajax({
+            url: 'posts.php',
+            type: 'GET',
+            data: formData,
+            success: function(data){
+                // alert('Search submitted successfully');
+                $('#search_results').html(data);
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
 });
 
 $(document).on("click", "#register-btn", function(e) {

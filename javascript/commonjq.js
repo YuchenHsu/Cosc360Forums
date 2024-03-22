@@ -241,10 +241,24 @@ $(document).ready( function() {
             data: formData,
             success: function(){
                 alert('Post submitted successfully');
-                // redirect to base.php and reload the page
-                window.location.href = 'base.php#';
-                location.reload();
-                getPosts(); // Call the function to get posts
+                window.location.href = 'base.php#'; // Redirect to the posts page
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+
+    $("#search_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var formData = $(this).serialize();
+        $.ajax({
+            url: 'posts.php',
+            type: 'GET',
+            data: formData,
+            success: function(data){
+                // alert('Search submitted successfully');
+                $('#search_results').html(data);
             },
             cache: false,
             contentType: false,

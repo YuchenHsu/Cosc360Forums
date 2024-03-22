@@ -9,11 +9,44 @@
         $pass = "";
 
         try {
-            $pdo = new PDO($connString, $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $sql = "SELECT title, content, image, post_id, category_id FROM post";
-            $statement = $pdo->prepare($sql);
+            // check if post or get
+            if ($_SERVER['REQUEST_METHOD'] == "GET"){
+                // Connect to the database
+                    $pdo = new PDO($connString, $user, $pass);
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                // Check if search and filter are set
+                if(isset($_GET['search']) && isset($_GET['filter'])){
+                    // Check if search and filter are not empty
+                    if(!empty($_GET['search']) && !empty($_GET['filter'])){
+                        $search = '%' . strtolower($_GET['search']) . '%';
+                        $filter = '%' . $_GET['filter'] . '%';
+                        $sql = "SELECT title, content, image, post_id, category_id FROM post WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id LIKE :filter";
+                        $statement = $pdo->prepare($sql);
+                        $statement->bindParam(':search', $search);
+                        $statement->bindParam(':filter', $filter);
+                    } elseif(!empty($_GET['search']) && empty($_GET['filter'])){
+                        $search = '%' . strtolower($_GET['search']) . '%';
+                        $sql = "SELECT title, content, image, post_id, category_id FROM post WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search";
+                        $statement = $pdo->prepare($sql);
+                        $statement->bindParam(':search', $search);
+                    }elseif(!empty($_GET['filter']) && empty($_GET['search'])){
+                        $filter = $_GET['filter'];
+                        $sql = "SELECT title, content, image, post_id, category_id FROM post WHERE category_id LIKE :filter";
+                        echo $filter;
+                        $statement = $pdo->prepare($sql);
+                        $statement->bindParam(':filter', $filter);
+                    }
+                    else{
+                        $sql = "SELECT title, content, image, post_id, category_id FROM post";
+                        $statement = $pdo->prepare($sql);
+                    }
+                }else{
+                        $sql = "SELECT title, content, image, post_id, category_id FROM post";
+                        $statement = $pdo->prepare($sql);
+                }
+            }else{
+                echo "Error: Request method is not GET";
+            }
             $statement->execute();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {

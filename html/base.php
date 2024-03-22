@@ -1,4 +1,4 @@
-<!-- base.php -->
+<!-- base.php  -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,6 +20,7 @@
             $.getScript("../javascript/admin_security.js");
             $.getScript("../javascript/new_post_security.js");
             $.getScript("../javascript/search_security.js");
+            $.getScript("../javascript/filter.js");
         });
         </script>
     </body>
