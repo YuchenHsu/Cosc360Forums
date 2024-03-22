@@ -51,8 +51,7 @@
                     <?php
                         if (isset($_SESSION['username'])) {
                             // User is logged in
-                            echo '<form id="view_profile_form"><input type="hidden" name="username" value="' . $_SESSION['username'] . '">'; 
-                            echo '<button type=submit><a href="#profile" id="profile-btn" data-page="profile.php">Profile</a><button></form>';
+                            echo '<a href="#profile" id="profile-btn" data-page="profile.php">Profile</a>';
                         }
                     ?>
                     <!-- <a href="#user" id="profile-btn" data-page="profile.php">Profile</a> -->

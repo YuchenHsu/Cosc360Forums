@@ -17,6 +17,9 @@
                     if($_SERVER['REQUEST_METHOD'] == "GET"){
                         if(isset($_GET['username'])){
                             $username = $_GET['username'];
+                        }else{
+                            $username = $_SESSION['username'];
+                        }
                             $sql = "SELECT * FROM user WHERE username = :username";
                             $statement = $pdo->prepare($sql);
                           
@@ -40,7 +43,8 @@
                                 }
                             }
                             echo "</form>";
-                        }
+                    }else{
+                        echo "Error: GET request not received.";
                     }
                     
                 } catch (PDOException $e) {
