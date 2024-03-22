@@ -58,7 +58,7 @@ BEGIN
 END;
 //
 
-CREATE TRIGGER upd_userpost AFTER UPDATE ON userpost
+CREATE TRIGGER upd_userpost BEFORE UPDATE ON userpost
 FOR EACH ROW
 BEGIN
     DECLARE old_status ENUM('unset', 'upvote', 'downvote');
@@ -79,6 +79,12 @@ BEGIN
         UPDATE post SET upvotes = upvotes - 1 WHERE post.post_id = NEW.post_id;
     ELSEIF old_status = 'downvote' AND new_status = 'unset' THEN
         UPDATE post SET downvotes = downvotes - 1 WHERE post.post_id = NEW.post_id;
+    ELSEIF old_status = 'upvote' AND new_status = 'upvote' THEN
+        UPDATE post SET upvotes = upvotes - 1 WHERE post.post_id = NEW.post_id;
+        SET NEW.status = "unset";
+    ELSEIF old_status = 'downvote' AND new_status = 'downvote' THEN
+        UPDATE post SET downvotes = downvotes - 1 WHERE post.post_id = NEW.post_id;
+        SET NEW.status = "unset";
     END IF;
 END;
 //
