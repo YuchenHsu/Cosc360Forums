@@ -1,5 +1,18 @@
 <div id="create_post" style=>
-    <!-- <form class="create_post form-container" id="create_post_form" action="new_post.php" method="POST" enctype="multipart/form-data"> -->
+    <?php
+        session_start();
+        if (!isset($_SESSION["username"])) {
+            echo "<h2 id='create_redirect' style='
+            display: block;
+            width: 25%;
+            padding: 2em;
+            margin: 15% auto;
+            font-size: 1.5em;
+            background-color: #ff6f59ff;
+            text-align: center;
+        '>You must be logged in to create a post. Click <a href=\"login.php\" id='create_redirect'>here</a> to login.</h2>";
+        } else {
+    ?>
     <form class="create_post form-container" id="create_post_form" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend>Create your post:</legend>
@@ -13,13 +26,14 @@
 
                     $pdo = new PDO($connString, $user, $pass);
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $sql = "SELECT id, name FROM category";
+                    $sql = "SELECT * FROM category";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute();
 
                     $categories = $stmt->fetchAll();
 
                     foreach ($categories as $category) {
+                        echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
                         echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
                     }
                 ?>
@@ -38,4 +52,7 @@
             <input type="submit" value="submit" id="new_post_submit">
         </fieldset>
     </form>
+    <?php
+        }
+    ?>
 </div>

@@ -13,6 +13,22 @@ $(document).ready(function() {
         var page = $(this).data("page");
         $("#content").load(page);
     });
+    $("#search_form").on('submit', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var formData = $(this).serialize();
+        $.ajax({
+            url: 'posts.php',
+            type: 'GET',
+            data: formData,
+            success: function(data){
+                // alert('Search submitted successfully');
+                $('#search_results').html(data);
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
 });
 
 $(document).on("click", "#register-btn", function(e) {
@@ -44,6 +60,29 @@ $(document).on("click", "#logout_form", function(e) {
             alert('Logout successful');
             // reload the page and go to base.php
             window.location.href = 'base.php#';
+            location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        }
+    });
+});
+
+$(document).on("click", "#create_redirect", function(e) {
+    e.preventDefault();
+    $("#content").load("login.php");
+});
+
+$(document).on("submit", "#comment_form", function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: 'comment_function.php',
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function() {
+            alert('Comment submitted successfully');
+            // reload the page
             location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {

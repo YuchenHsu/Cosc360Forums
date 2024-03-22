@@ -3,13 +3,35 @@
         <!-- <a href="base.php" id="home-btn" class="active">Home</a> -->
         <a href="#posts" id="post-btn" class="active" data-page="posts.php">Home</a>
         <a href="#create_post" id="create_post_btn" class="active" data-page="create_post.php">Create Post</a>
-        <a href="#search" class="active" id="search-btn" data-page="search.php">Search</a>
+        <form id="search_form">
+            <div style="display: flex;">
+            <input id="search" type="text" name="search" style="margin:0.4em; height: 2em;">
+            <select name="filter" id="filter" style="height: 3.5em;margin:0.6em; ">
+                <option value="">All</option>
+                <?php
+                    session_start();
+                    include "connect.php";
+                    $sql = "SELECT * FROM category";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
+
+                    $categories = $stmt->fetchAll();
+
+                    foreach ($categories as $category) {
+                        echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
+                    }
+                ?>
+            </select>
+            <a href="#search" class="active" id="search-btn" style="margin: auto 0; padding:0;" data-page="search.php">
+            <button id="search_btn" type="submit" style="background-color: #ff6f59">Search</button>
+            </a>
+            </div>
+        </form>
         <div class="topnav-right">
             <a href="#" class="active" id="notif-btn" data-page="notification.php">Notification</a>
             <div class="dropdown">
                 <a class = "active">
                     <?php
-                        session_start();
                         if (isset($_SESSION['username'])) {
                             // User is logged in
                             echo $_SESSION['username'] . ' &#9660';

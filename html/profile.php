@@ -7,12 +7,8 @@
                 // Start the session
                 session_start();
 
-                $connString = "mysql:host=localhost; dbname=forums";
-                $user = "root";
-                $pass = "";
+                include "connect.php";
 
-                $pdo = new PDO($connString, $user, $pass);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $pdo->beginTransaction();
 
                 $sql = "SELECT * FROM user WHERE username = :username";

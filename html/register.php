@@ -22,7 +22,7 @@
             <label for="confirm_password">Confirm Password:</label>
             <input id="confirm_password" type="password" name="conf_password" required title="Passwords must match">
         </div>
-        <div class="profile_pic">
+        <div class="profile_picture">
             <label for="profile_pic">Profile Picture: </label>
             <input type="file" name="profile_pic" id="profile_pic" accept="image/png, image/jpeg">
         </div>
