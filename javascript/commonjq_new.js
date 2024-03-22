@@ -112,6 +112,9 @@ $(document).on("click","#sidebar li a", function(e) {
                 $("#conflicts").append(conflict);
             }
         },
+        cache: false,
+        contentType: false,
+        processData: false
     });
 });
 
