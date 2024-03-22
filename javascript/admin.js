@@ -1,6 +1,7 @@
 $(document).ready( function() {
-
 });
+
+
 $(document).on('submit', '#reported_posts_form', function(e){
     e.preventDefault(); // Prevent the form from submitting via the browser.
     var selected = [];
