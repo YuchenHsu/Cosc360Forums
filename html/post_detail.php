@@ -2,6 +2,7 @@
 <div class="posts" style="width: 75%; margin: 1em auto;">
     <?php
         $post_id = $_GET['post_id'];
+        session_start();
 
         try {
             include 'connect.php';

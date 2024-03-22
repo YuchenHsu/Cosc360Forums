@@ -47,10 +47,10 @@
                         if (isset($_SESSION['username'])) {
                             // User is logged in
                             echo '<a href="#profile" id="profile-btn" data-page="profile.php">Profile</a>';
+                            echo '<a href="#admin" id="admin-btn" data-page="admin.php">Admin</a>';
                         }
                     ?>
-                    <!-- <a href="#user" id="profile-btn" data-page="profile.php">Profile</a> -->
-                    <a href="#admin" id="admin-btn" data-page="admin.php">Admin</a>
+
                     <?php
                         if (isset($_SESSION['username'])) {
                             // User is logged in
