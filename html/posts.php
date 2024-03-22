@@ -4,16 +4,11 @@
     <h1>Welcome to Our Forum!</h1>
     <p>Here are some interesting posts:</p>
     <?php
-        $connString = "mysql:host=localhost; dbname=forums";
-        $user = "root";
-        $pass = "";
+        include 'connect.php';
 
         try {
             // check if post or get
             if ($_SERVER['REQUEST_METHOD'] == "GET"){
-                // Connect to the database
-                    $pdo = new PDO($connString, $user, $pass);
-                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 // Check if search and filter are set
                 if(isset($_GET['search']) && isset($_GET['filter'])){
                     // Check if search and filter are not empty

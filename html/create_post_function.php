@@ -4,22 +4,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $title = $_POST["title"];
         $post_body = $_POST["post_body"];
         $category_id = $_POST["category_id"];
+        session_start();
+        $username = $_SESSION["username"];
 
         try {
-            $connString = "mysql:host=localhost; dbname=forums";
-            $user = "root";
-            $pass = "";
-
-            $pdo = new PDO($connString, $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            include "connect.php";
             $pdo->beginTransaction();
 
             if (!file_exists($_FILES["post_image"]["tmp_name"]) || !is_uploaded_file($_FILES["post_image"]["tmp_name"])){
-                $sql = "INSERT INTO post(title, content, category_id, image) VALUES(:title, :body, :category_id, :image)";
+                $sql = "INSERT INTO post(title, content, category_id, username) VALUES(:title, :body, :category_id, :username)";
                 $statement = $pdo->prepare($sql);
                 $statement->bindValue(":title", $title);
                 $statement->bindValue(":body", $post_body);
                 $statement->bindValue(":category_id", $category_id);
+                $statement->bindValue(":username", $username);
                 $statement->execute();
             } else {
                 $max_file_size = 10000000;
@@ -29,10 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 } elseif($file["error"] != UPLOAD_ERR_OK) {
                     echo("Error: " . $file["name"] . " has error " . $file["error"] . ".");
                 } else {
-                    $sql = "INSERT INTO post(title, content, image) VALUES( :title, :body, :image )";
+                    $sql = "INSERT INTO post(title, content, category_id, username, image) VALUES( :title, :body, :category_id, :username, :image )";
                     $statement = $pdo->prepare($sql);
                     $statement->bindValue(":title", $title);
                     $statement->bindValue(":body", $post_body);
+                    $statement->bindValue(":category_id", $category_id);
+                    $statement->bindValue(":username", $username);
                     $imgcontent = file_get_contents($file["tmp_name"]);
                     $statement->bindValue(":image", $imgcontent);
                     $statement->execute();

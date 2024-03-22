@@ -3,13 +3,8 @@
     <?php
         $post_id = $_GET['post_id'];
 
-        $connString = "mysql:host=localhost; dbname=forums";
-        $user = "root";
-        $pass = "";
-
         try {
-            $pdo = new PDO($connString, $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            include 'connect.php';
 
             $sql = "SELECT title, content, image, post_id, category_id FROM post WHERE post_id = :post_id";
             $statement = $pdo->prepare($sql);

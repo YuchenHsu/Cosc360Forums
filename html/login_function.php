@@ -6,12 +6,7 @@
             $remember = isset($_POST["remember"]);
 
             try {
-                $connString = "mysql:host=localhost; dbname=forums";
-                $user = "root";
-                $pass = "";
-
-                $pdo = new PDO($connString, $user, $pass);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                include "connect.php";
 
                 // Check if username exists and get the associated password
                 $sql = "SELECT password FROM user WHERE username = :username";
