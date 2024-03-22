@@ -81,10 +81,11 @@ $(document).on("click", "#edit_profile", function(e) {
 // submits the edit profile form
 $(document).on("submit", "#edit_profile_form", function(e) {
     e.preventDefault();
+    let formData = new FormData(this);
     $.ajax({
         url: 'edit_profile_function.php',
         type: 'POST',
-        data: $(this).serialize(),
+        data: formData,
         success: function() {
            // alert('Profile updated successfully');
             //location.reload();
@@ -92,8 +93,11 @@ $(document).on("submit", "#edit_profile_form", function(e) {
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error response from the server
             alert(jqXHR.responseText);
-        }
+        },
+        contentType: false,
+        processData: false
     });
+    
 });
 
 $(document).on("submit", "#create_post_form", function(e) {
