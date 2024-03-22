@@ -25,3 +25,4 @@
         </div>
     </form>
 </div>
+<!-- INSERT INTO `conflict`(`username1`, `username2`, `info`, `resolved`) VALUES ('Ethanh0000','Ethanh1111','info', FALSE) -->

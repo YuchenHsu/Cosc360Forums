@@ -4,7 +4,7 @@ $connString = "mysql:host=localhost; dbname=forums";
 $user = "root";
 $pass = "";
     try{
-        
+
         if($_SERVER['REQUEST_METHOD'] == "POST") {
             // Connect to the database
             $pdo = new PDO($connString, $user, $pass);
@@ -21,9 +21,11 @@ $pass = "";
                     $statement->execute();
                     // display results
                     while($row = $statement->fetch()){
+                        echo "<div class='user' style='width: 100%; height: auto; margin: 1em;'>";
                         echo "<p>" . $row['username'] . "</p>";
-                        echo "<button>View</button>";
-                        echo "<button>Disable</button>";
+                        echo "<button style='display: inline;'>View</button>";
+                        echo "<button style='display: inline;'>Disable</button>";
+                        echo "</div>";
                     }
 
                 }else{
