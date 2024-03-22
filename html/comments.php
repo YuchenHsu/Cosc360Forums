@@ -35,7 +35,7 @@
         $post_id = $_GET['post_id'];
         echo '<form id="comment_form" method="post" method="POST" enctype="multipart/form-data">';
         echo '<textarea id="comment_content" name="comment_content" placeholder="Write a comment..." style="width: 100%; height: 10em;"></textarea>';
-        echo '<input type="hidden" name="post_id" value="' . $post_id . '">';
+        echo '<input type="hidden" id="post_id" name="post_id" value="' . $post_id . '">';
         echo '<button id="comment_btn" type="submit" style="background-color: #ff6f59">Post Comment</button>';
         echo '</form>';
     } catch (PDOException $e) {
