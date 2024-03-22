@@ -5,8 +5,9 @@
         <input type="text" name="search_users" placeholder="Search users" id="search_users">
         <button type="submit" id="search_users_submit">Search</button>
     </form>
-    <div class="user_disp" id="user_disp">
-        <form id="disable_user" method="POST">
-        </form>
-    </div>
+    <form id="disable_user" method="POST">
+        <button type="submit" id="disable_user_submit">Disable</button>
+        <div class="user_disp" id="user_disp">
+        </div>
+    </form>
 </div>
