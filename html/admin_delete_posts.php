@@ -7,7 +7,7 @@
                 $pdo = new PDO($connString, $user, $pass);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 foreach($_POST['selected'] as $post_id){
-                    $sql = "DELETE FROM post WHERE post_id = :post_id" ON DELETE CASCADE;
+                    $sql = "DELETE FROM post WHERE post_id = :post_id ON DELETE CASCADE";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(":post_id", $post_id);
                     $statement->execute();

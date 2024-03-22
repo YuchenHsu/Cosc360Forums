@@ -8,6 +8,7 @@
         $sql = "SELECT * FROM conflict WHERE resolved = FALSE";
         $statement = $pdo->prepare($sql);
         $statement->execute();
+        $conflicts = array();
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             $conflicts[] = $row;
         }

@@ -43,7 +43,7 @@ $(document).on('submit', '#reported_users_form', function(e){
         },
     });
 });
-$(document).on('submit', '#conlicts_form', function(e){
+$(document).on('submit', '#conflicts_form', function(e){
     e.preventDefault(); // Prevent the form from submitting via the browser.
     var selected = [];
     $('input[type=checkbox]:checked').each(function() {
