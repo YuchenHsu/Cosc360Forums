@@ -39,7 +39,11 @@ $(document).on('submit', '#reported_users_form', function(e){
         data: formData,
         success: function(data){
             //alert('Search submitted successfully');
-            $('#reported_users').html(data);
+            if (data == '[]') {
+                $('#reported_users').html('<p>No users to ban</p>');
+            } else {
+                $('#reported_users').html(data);
+            }
         },
     });
 });
@@ -60,7 +64,11 @@ $(document).on('submit', '#conflicts_form', function(e){
         data: formData,
         success: function(data){
             //alert('Search submitted successfully');
-            $('#conflicts').html(data);
+            if (data == '[]') {
+                $('#conflicts').html('<p>No conflicts to resolve</p>');
+            } else {
+                $('#conflicts').html(data);
+            }
         },
     });
 });
@@ -73,7 +81,11 @@ $(document).on('submit', '#search_users_form', function(e){
         data: formData,
         success: function(data){
             // alert('Search submitted successfully');
-            $('#user_disp').html(data);
+            if (data == '[]') {
+                $('#user_disp').html('<p>No users found</p>');
+            } else {
+                $('#user_disp').html(data);
+            }
         },
         cache: false,
         contentType: false,
