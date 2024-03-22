@@ -145,25 +145,11 @@ $(document).on("click", "#edit_profile", function(e) {
     $("#button_stuff").html("<button type='submit' id='submit_profile'>Save</button>");
 });
 
-// submits view profile form
-$(document).on("submit", "#view_profile_form", function(e) {
-    e.preventDefault();
-    let formData = new FormData(this);
-    $.ajax({
-        url: 'view_profile_function.php',
-        type: 'GET',
-        data: formData,
-        success: function() {
-            // alert('Profile updated successfully');
-            // location.reload();
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Handle the error response from the server
-            alert(jqXHR.responseText);
-        },
-        contentType: false,
-        processData: false
-    });
+$(document).on('click', '.searched_user', function(e){
+    e.preventDefault(); // Prevent the form from submitting via the browser.
+    // load the profile page in the main content area
+    var username = $(this).attr("href").split("=")[1];
+    $("#content").load("profile.php?username=" + username);
 });
 
 // submits the edit profile form
