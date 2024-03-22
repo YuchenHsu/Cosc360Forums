@@ -17,7 +17,6 @@
             // $("#navbar").load("navbar.php");
             // $.getScript("../javascript/common.js");
             $.getScript("../javascript/commonjq_new.js");
-            $.getScript("../javascript/admin_security.js");
             $.getScript("../javascript/new_post_security.js");
             $.getScript("../javascript/search_security.js");
             $.getScript("../javascript/admin.js");
