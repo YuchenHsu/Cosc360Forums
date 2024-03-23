@@ -47,7 +47,16 @@
                         if (isset($_SESSION['username'])) {
                             // User is logged in
                             echo '<a href="#profile" id="profile-btn" data-page="profile.php">Profile</a>';
-                            echo '<a href="#admin" id="admin-btn" data-page="admin.php">Admin</a>';
+                            $sql = "SELECT * FROM user WHERE username = :username";
+                            $stmt = $pdo->prepare($sql);
+                            $stmt->bindValue(':username', $_SESSION['username']);
+                            $stmt->execute();
+                            $user = $stmt->fetch();
+                            if ($user['admin'] == 1) {
+                                echo '<a href="#admin" id="admin-btn" data-page="admin.php">Admin</a>';
+                            } else {
+                                echo '<a href="#admin" id="admin-btn" data-page="admin.php" style="display: none;">Admin</a>';
+                            }
                         }
                     ?>
 
