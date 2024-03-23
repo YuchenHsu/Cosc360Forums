@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS forums;
+CREATE DATABASE IF NOT EXISTS db_75492660;
 
-USE forums;
+USE db_75492660;
 
 CREATE TABLE IF NOT EXISTS category (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS post (
     pinned BOOLEAN DEFAULT FALSE,
     username VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE,
+    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE
 );
 
 CREATE VIEW IF NOT EXISTS post_view AS SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name, upvotes, downvotes, reported, pinned, username, created_at FROM post AS p JOIN category AS c ON p.category_id = c.id;
