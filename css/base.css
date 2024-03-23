@@ -378,8 +378,7 @@ td{
     border: 1px solid #0D1B2A;
 }
 .user_disp{
-   justify-content: center;
-   display: flex;
+   float: left;
    background-color: #b0bbd7;
    border: 1px solid #0D1B2A;
    width: 50%;
@@ -431,4 +430,20 @@ figure{
     text-align: center;
     padding: 1em;
     margin: 0;
+}
+
+#breadcrumbs {
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #0d1b2a;
+    color: #f2f2f2;
+}
+
+#breadcrumbs a {
+    color: #f2f2f2;
+    text-decoration: none;
+    color: inherit;
 }

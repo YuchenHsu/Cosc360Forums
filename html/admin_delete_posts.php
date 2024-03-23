@@ -1,11 +1,9 @@
 <?php
-    $connString = "mysql:host=localhost; dbname=forums";
-    $user = "root";
-    $pass = "";
     try{
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             //var_dump($_POST);
             if(isset($_POST['selected'])){
+                include "connect.php";
                 $pdo = new PDO($connString, $user, $pass);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 foreach($_POST['selected'] as $post_id){

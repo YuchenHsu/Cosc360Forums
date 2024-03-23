@@ -83,32 +83,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $statement->bindValue(":password", $hashed_passowrd);
                 $statement->execute();
             } else {
-                // $max_file_size = 10000000;
-                // $file = $_FILES["profile_pic"];
-                // // add checks for file type to make sure it's only png or jpeg
-                // if ($file["size"] > $max_file_size) {
-                //     http_response_code(400);
-                //     die("Error: File size exceeds 10MB.");
-                // } elseif ($file["error"] != UPLOAD_ERR_OK) {
-                //     http_response_code(400);
-                //     die("Error: " . $file["name"] . " has error " . $file["error"] . ".");
-                // } else {
-                //     $sql = "INSERT INTO user(username, full_name, email, password, profile_pic) VALUES( :username, :full_name, :email, :password, :profile_pic )";
-                //     $statement = $pdo->prepare($sql);
-                //     $statement->bindValue(":username", $username);
-                //     $statement->bindValue(":full_name", $full_name);
-                //     $statement->bindValue(":email", $email);
-                //     $statement->bindValue(":password", $hashed_passowrd);
-                //     $imgcontent = file_get_contents($file["tmp_name"]);
-                //     $statement->bindValue(":profile_pic", $imgcontent);
-                //     $statement->execute();
-                // }
                 $max_file_size = 10000000;
                 $file = $_FILES["profile_pic"];
+                $allowed_types = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
+
                 if($file["size"] > $max_file_size) {
                     echo("Error: File too big");
                 } elseif($file["error"] != UPLOAD_ERR_OK) {
                     echo("Error: " . $file["name"] . " has error " . $file["error"] . ".");
+                } elseif(!in_array(mime_content_type($file["tmp_name"]), $allowed_types)) {
+                    http_response_code(400);
+                    echo("Error: Invalid file type. Only png, jpg, jpeg, and gif are allowed.");
                 } else {
                     $sql = "INSERT INTO user(username, full_name, email, password, profile_pic) VALUES( :username, :full_name, :email, :password, :profile_pic )";
                     $statement = $pdo->prepare($sql);

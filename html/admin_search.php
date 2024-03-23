@@ -1,12 +1,9 @@
 <!-- search_users for users to disable or view -->
 <?php
-$connString = "mysql:host=localhost; dbname=forums";
-$user = "root";
-$pass = "";
     try{
-        
         if($_SERVER['REQUEST_METHOD'] == "POST") {
             // Connect to the database
+            include 'connect.php';
             $pdo = new PDO($connString, $user, $pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // check for null values
@@ -15,15 +12,26 @@ $pass = "";
                 if(!empty($_POST['search_users'])){
                     // search_users for users
                     $search_users = '%' . strtolower($_POST['search_users']) . '%';
-                    $sql = "SELECT username FROM user WHERE LOWER(username) LIKE :search_users";
+                    $sql = "SELECT username, reported, disabled FROM user WHERE LOWER(username) LIKE :search_users OR LOWER(email) LIKE :search_users";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(':search_users', $search_users);
                     $statement->execute();
                     // display results
                     while($row = $statement->fetch()){
-                        echo "<p>" . $row['username'] . "</p>";
-                        echo "<button>View</button>";
-                        echo "<button>Disable</button>";
+                        echo "<div class='user' style='width: 100%; height: auto; margin: 1em;'>";
+                        if($row['reported'] == 1){
+                            $reported = "Reported";
+                        }else{
+                            $reported = "Not Reported";
+                        }
+                        if($row['disabled'] == 1){
+                            $disabled = "Disabled";
+                        }else{
+                            $disabled = "Not Disabled";
+                        }
+                        echo "<p>" . $row['username'] ."-". $reported . "-" . $disabled . "</p>";
+                        echo "<button style='display: inline;'><a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'>View</a></button>";
+                        echo "<input type=checkbox id=" . $row['username'] . "name= selected[] value=" . $row['username'] ."></input>";
                     }
 
                 }else{
