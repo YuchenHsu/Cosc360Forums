@@ -60,10 +60,7 @@ $(document).ready(function() {
 
 $(document).on("click", ".edit_post", function(e) {
     e.preventDefault();
-    // <button class="edit_post" style="float: right;" id = '.$row['post_id'].'>Edit Post</button>
-    // get the post_id from the button
     var post_id = $(this).attr("id");
-    // get the id from the post_id
     $("#content").load("edit_post.php?post_id=" + post_id);
     $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Edit Post");
 });
@@ -190,6 +187,25 @@ $(document).on('click', '.searched_user', function(e){
     // load the profile page in the main content area
     var username = $(this).attr("href").split("=")[1];
     $("#content").load("profile.php?username=" + username);
+});
+
+$(document).on('submit', '#edit_post_form', function(e){
+    e.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+        url: 'edit_post_function.php',
+        type: 'POST',
+        data: formData,
+        success: function() {
+            alert('Post updated successfully');
+            // redirect to base.php and reload the page
+            window.location.href = 'base.php#';
+            location.reload();
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 });
 
 // submits the edit profile form

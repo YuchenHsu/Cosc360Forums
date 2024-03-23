@@ -18,16 +18,23 @@
                 $upvotes = $row['upvotes'];
                 $downvotes = $row['downvotes'];
                 $category = $row['category_name'];
+                $post_id = $row['post_id'];
                 global $upvotes;
                 global $downvotes;
+                echo '<form class="edit_post_form form-container" id="edit_post_form" method="POST" enctype="multipart/form-data">';
                 echo '<article class="post" style="width:90%; margin: 2em auto;">';
-                echo "<h2 class='post_id'>Title: <input name='title' placeholder='{$title}'></h2>";
+                echo "<label for='title'>Post Title: </label><br><input required name='title' type='text' id='title' value='{$title}'>";
+                echo "<input type='hidden' name='post_id' value='{$post_id}'>";
                 echo "<h3>Category: {$category}</h3>";
-                echo '<p>Post Body: <input name="content" placeholder="' . nl2br(htmlspecialchars($row['content'])) . '"></p>';
+                echo '<label for="post_body">Post body:</label><br>';
+                echo '<textarea required rows="10" cols="60" placeholder="' . nl2br(htmlspecialchars($row['content'])) . '" id="post_body" name="post_body">' . nl2br(htmlspecialchars($row['content'])) .'</textarea><br>';
                 if (!empty($row['image'])) {
-                    echo 'New Image:<input type="file" name="post_image" id="post_image" accept="image/png, image/jpeg"><br>';
+                    echo '<label for="post_image">Insert image here: </label><input type="file" name="post_image" id="post_image" accept="image/png, image/jpeg"><br>';
                     echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" style = "width: 40%; height: auto;"/>';
                 }
+                echo '<br><button type="submit" value="submit" id="edit_post_submit"> Submit </button>';
+                echo '</article>';
+                echo '</form>';
             } else {
                 echo "<p>No post found with ID {$post_id}.</p>";
             }

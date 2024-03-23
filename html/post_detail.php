@@ -27,6 +27,7 @@
                 if (!empty($row['image'])) {
                     echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" style = "width: 40%; height: auto;"/>';
                 }
+                echo '</article>';
             } else {
                 echo "<p>No post found with ID {$post_id}.</p>";
             }
