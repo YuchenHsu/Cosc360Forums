@@ -1,13 +1,13 @@
 <div id="mod-user">
     <h2>Users</h2>
     <p>Here you can view all the users and their information. You can also ban users.</p>
-    <form method="POST">
-        <input type="text" name="search" placeholder="Search users" id="search_users">
+    <form method="POST" id="search_users_form">
+        <input type="text" name="search_users" placeholder="Search users" id="search_users">
         <button type="submit" id="search_users_submit">Search</button>
     </form>
-    <div class="user_disp">
-        <p>User 1</p>
-        <button>View</button>
-        <button>Disable</button>
-    </div>
+    <form id="reported_users_form" method="POST">
+        <button type="submit" id="disable_user_submit">Disable</button>
+        <div class="user_disp" id="user_disp">
+        </div>
+    </form>
 </div>
