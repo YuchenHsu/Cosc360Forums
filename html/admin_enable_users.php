@@ -4,8 +4,6 @@
             //var_dump($_POST);
             if(isset($_POST['selected'])){
                 include 'connect.php';
-                $pdo = new PDO($connString, $user, $pass);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 foreach($_POST['selected'] as $username){
                     $sql = "UPDATE user SET disabled = FALSE, reported = FALSE WHERE username = :username";
                     $statement = $pdo->prepare($sql);
