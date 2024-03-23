@@ -1,5 +1,5 @@
 <!-- post_detail.php -->
-<div class="posts" style="width: 75%; margin: 1em auto;">
+<div class="posts">
     <?php
         $post_id = $_GET['post_id'];
         session_start();
@@ -22,15 +22,15 @@
                 global $upvotes;
                 global $downvotes;
                 echo '<form class="edit_post_form form-container" id="edit_post_form" method="POST" enctype="multipart/form-data">';
-                echo '<article class="post" style="width:90%; margin: 2em auto;">';
+                echo '<article class="post">';
                 echo "<label for='title'>Post Title: </label><br><input required name='title' type='text' id='title' value='{$title}'>";
                 echo "<input type='hidden' name='post_id' value='{$post_id}'>";
                 echo "<h3>Category: {$category}</h3>";
                 echo '<label for="post_body">Post body:</label><br>';
                 echo '<textarea required rows="10" cols="60" placeholder="' . nl2br(htmlspecialchars($row['content'])) . '" id="post_body" name="post_body">' . nl2br(htmlspecialchars($row['content'])) .'</textarea><br>';
                 if (!empty($row['image'])) {
-                    echo '<label for="post_image">Insert image here: </label><input type="file" name="post_image" id="post_image" accept="image/png, image/jpeg"><br>';
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" style = "width: 40%; height: auto;"/>';
+                    echo '<label for="post_image">Insert image here: </label><br><input type="file" name="post_image" id="post_image" accept="image/png, image/jpeg"><br>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '""/>';
                 }
                 echo '<br><button type="submit" value="submit" id="edit_post_submit"> Submit </button>';
                 echo '</article>';
@@ -43,39 +43,4 @@
             die("Error: " . $e->getMessage());
         }
     ?>
-    <form id="post_interaction" method="POST">
-        <input type="hidden" id="post_id_interact" name="post_id" value="<?=$post_id?>">
-        <input type="hidden" name="action" id="action">
-        <span class="votes">
-            <button type="submit" id="upvote" name="upvote_post">↑</button><span><?=$upvotes?></span>
-            <button type="submit" id="downvote" name="downvote_post">↓</button><span><?=$downvotes?></span>
-        </span>
-        <!-- <span class="report_post"> -->
-        <button class="report_post" type="submit" name="report_post">Report</button>
-        <!-- </span> -->
-    </form>
-    <section class="comment_container">
-        <h2>Comments</h2>
-        <div id="comment_content"></div>
-        <?php include "comments.php"; ?>
-    </section>
 </div>
-
-<script>
-$(function() {
-    let action = $("#action");
-    $( "#upvote" ).on( "click", function() {
-        action.attr("value", "upvote_post");
-        console.log("upvote");
-    });
-    $( "#downvote" ).on( "click", function() {
-        action.attr("value", "downvote_post");
-        console.log("downvote");
-    });
-    $( ".report_post" ).on( "click", function() {
-        action.attr("value", "report_post");
-        console.log("report");
-    });
-});
-
-</script>

@@ -21,7 +21,7 @@
                         $statement->bindValue(":username", $username);
                         $statement->execute();
                         $user = $statement->fetch(PDO::FETCH_ASSOC);
-                        echo "<form id=edit_profile_form action=POST enctype=multipart/form-data>";
+                        echo "<form id='edit_profile_form' action='POST' enctype='multipart/form-data'>";
                         printf("<img class=\"profile-pic\" src=\"data:image/jpeg;base64,%s\" alt=\"Profile Picture\">", base64_encode($user['profile_pic']));
                         echo "<h2>User Profile</h2>";
                         echo "<div id=image_div></div>";
@@ -31,7 +31,7 @@
                         echo "<p><strong>Join Date:</strong> " . $user['created_at'] . "</p>";
                         if (isset($_SESSION['username'])) {
                             if (strcasecmp($_SESSION['username'], $username) == 0) {
-                                echo "<div id=button_stuff>";
+                                echo "<div id='edit_profile_button'>";
                                 echo "<button id=\"edit_profile\">Edit Profile</button>";
                                 echo "</div>";
                             }

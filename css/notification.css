@@ -1,0 +1,20 @@
+#notification {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    z-index: 1000;
+    overflow-y: auto;
+    text-align: center;
+}
+
+#notification h3, #notification p{
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    text-align: center;
+}

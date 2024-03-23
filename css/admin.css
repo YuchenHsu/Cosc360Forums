@@ -67,3 +67,29 @@ li {
     padding: 1em;
     margin: 0;
 }
+
+.edit_post {
+    float: left;
+}
+
+
+@media screen and (max-width: 55em) {
+    #moderating {
+        word-wrap: break-word;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #reported_users_container, #reported_posts_container, #conflicts_container{
+        width: 80%;
+        margin: 1em;
+        align-items: center;
+    }
+    #moderating form div {
+        display: block;
+        align-items: center;
+    }
+    #moderating form div button {
+        margin: 0 auto;
+    }
+}
