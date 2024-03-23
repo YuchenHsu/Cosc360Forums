@@ -8,6 +8,10 @@ $(document).on('submit', '#delete_posts_form', function(e){
     $('input[type=checkbox]:checked').each(function() {
         selected.push($(this).val());
     });
+    if (selected.length === 0) {
+        alert("Please select at least one post to delete.");
+        return;
+    }
     // Manually serialize form data
     var formData = {
         selected: selected
