@@ -6,8 +6,7 @@
 
         try {
             include 'connect.php';
-
-            $sql = "SELECT title, content, image, post_id, category_name, upvotes, downvotes FROM post_view; WHERE post_id = :post_id";
+            $sql = "SELECT title, content, image, post_id, category_name, upvotes, downvotes FROM post_view WHERE post_id = :post_id";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
             $statement->execute();
