@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS post (
     pinned BOOLEAN DEFAULT FALSE,
     username VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE
+    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE VIEW IF NOT EXISTS post_view AS SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name, upvotes, downvotes, reported, pinned, username, created_at FROM post AS p JOIN category AS c ON p.category_id = c.id;
@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS userpost (
     username VARCHAR(50) NOT NULL,
     post_id INT NOT NULL,
     status ENUM('unset', 'upvote', 'downvote') DEFAULT 'unset',
-    FOREIGN KEY (post_id) REFERENCES post(post_id),
-    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES post(post_id) ON DELETE CASCADE,
+    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (username, post_id)
 );
 
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS comment (
     reported BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (post_id) REFERENCES post(post_id) ON DELETE CASCADE,
-    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE
+    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS notification (
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS notification (
     username VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     content TEXT NOT NULL,
-    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE
+    FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS conflict (
@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS conflict (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     info TEXT,
     resolved BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (username1) REFERENCES user(username) ON DELETE CASCADE,
-    FOREIGN KEY (username2) REFERENCES user(username) ON DELETE CASCADE
+    FOREIGN KEY (username1) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (username2) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS statistic (
