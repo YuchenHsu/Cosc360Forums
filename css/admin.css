@@ -1,5 +1,18 @@
 /* admin css */
-
+#admin_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0D1B2A;
+    color: whitesmoke;
+    padding: 1em;
+    margin: 1em;
+}
+#moderating {
+    align-items: center;
+    margin: 1em;
+    width: 100%;
+}
 #sidebar{
     float: left;
     margin: 1em;
@@ -32,7 +45,6 @@ li {
 .user_disp{
    float: left;
    background-color: #b0bbd7;
-   border: 1px solid #0D1B2A;
    width: 50%;
 }
 .user_disp p{
@@ -51,12 +63,12 @@ li {
 }
 #reported_users_container, #reported_posts_container, #conflicts_container{
     border-collapse: collapse;
-    margin: 0 2%;
-    width: 20%;
+    margin: 0 1em;
+    width: 30%;
     height: auto;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
-    float:left;
+    float: left;
     background-color:#b0bbd7;
     border-style: solid;
 }

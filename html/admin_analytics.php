@@ -1,5 +1,5 @@
-<div id="mod-reports" style="display: none">
-    <h2>Reports</h2>
+<div id="mod-reports">
+    <h2>Analytics</h2>
     <p>Here you can view the reports for the forum.</p>
     <figure>
         <img src="../images/posts.png" alt="New Users Over Time">
