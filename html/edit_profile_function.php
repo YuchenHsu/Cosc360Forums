@@ -26,18 +26,26 @@
                         http_response_code(400);
                         die("Error: Invalid email.");
                     }
-                    if(file_exists($_FILES["profile_img"]["tmp_name"]) || is_uploaded_file($_FILES["profile_img"]["tmp_name"])){                        
-                        $profile_img = file_get_contents($_FILES["profile_img"]["tmp_name"]);
-                         // check if full name is valid                         
-                        $sql = "UPDATE user SET full_name = :full_name, email = :email, profile_pic = :profile_pic WHERE username = :username";
-                        $statement = $pdo->prepare($sql);
-                        $statement->bindParam(':full_name', $full_name);
-                        $statement->bindParam(':email', $email);
-                        $statement->bindParam(':profile_pic', $profile_img);
-                        $statement->bindParam(':username', $_SESSION['username']);
-                        $statement->execute();
-                        $pdo->commit();
-                        header("Location: profile.php");
+                    if(file_exists($_FILES["profile_img"]["tmp_name"]) || is_uploaded_file($_FILES["profile_img"]["tmp_name"])){ 
+                        $max_file_size = 10000000;
+                        $file = $_FILES["profile_pic"];
+                        if($file["size"] > $max_file_size) {
+                            echo("Error: File too big");
+                        } elseif($file["error"] != UPLOAD_ERR_OK) {
+                            echo("Error: " . $file["name"] . " has error " . $file["error"] . ".");
+                        } else {                       
+                            $profile_img = file_get_contents($_FILES["profile_img"]["tmp_name"]);
+                            // check if full name is valid                         
+                            $sql = "UPDATE user SET full_name = :full_name, email = :email, profile_pic = :profile_pic WHERE username = :username";
+                            $statement = $pdo->prepare($sql);
+                            $statement->bindParam(':full_name', $full_name);
+                            $statement->bindParam(':email', $email);
+                            $statement->bindParam(':profile_pic', $profile_img);
+                            $statement->bindParam(':username', $_SESSION['username']);
+                            $statement->execute();
+                            $pdo->commit();
+                            header("Location: profile.php");
+                        }
                     }else{
                         $sql = "UPDATE user SET full_name = :full_name, email = :email WHERE username = :username";
                         $statement = $pdo->prepare($sql);

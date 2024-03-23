@@ -12,7 +12,7 @@
                 if(!empty($_POST['search_posts'])){
                     // search_posts for users
                     $search_posts = '%' . strtolower($_POST['search_posts']) . '%';
-                    $sql = "SELECT post_id, title, content FROM post WHERE LOWER(title) LIKE :search_posts OR LOWER(content) LIKE :search_posts";
+                    $sql = "SELECT post_id, title, content, reported FROM post WHERE LOWER(title) LIKE :search_posts OR LOWER(content) LIKE :search_posts";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(':search_posts', $search_posts);
                     $statement->execute();
@@ -21,10 +21,16 @@
                         $title = $row['title'];
                         $post_id = $row['post_id'];
                         $content = $row['content'];
+                        if($row['reported'] == 1){
+                           $reported = "Reported";
+                        }else{
+                            $reported = "Not Reported";
+                        }
 
                         echo '<article class="post" style="width: 70%; padding:0.5em;">';
                         echo'<input type="checkbox" id=' . $post_id . 'name= selected[] value='. $post_id . '></input>';
                         echo'<a href="post_detail.php?post_id=' . $post_id . '" style="font-size: 1.2em;">Post ' . $post_id . ': ' . $title . '</a>';
+                        echo'<span>' . $reported . '</span>';
                         echo'<p>' . $content .'</p>';
                         echo '</article>';
                     }                  
