@@ -172,7 +172,13 @@ $(document).on("click", "#edit_profile", function(e) {
     $("#image_div").html("<input type='file' name='profile_img' accept=image/png, image/jpeg image/jpg>");
     $("#full_name_div").html("<input id='full_name_input' type='text' name='full_name' value='" + $("#full_name_div").text() + "' required>");
     $("#email_div").html("<input id='email_input' type='text' name='email' value='" + $("#email_div").text() + "' required>");
-    $("#button_stuff").html("<button type='submit' id='submit_profile'>Save</button>>");
+    $("#button_stuff").html("<button type='submit' id='submit_profile'>Save</button>");
+    $(".profile-posts").hide();
+    $(".profile").css({
+        float: 'none',
+        width: '60%',
+        margin: 'auto'
+    });
 });
 
 $(document).on('click', '.searched_user', function(e){
@@ -193,6 +199,7 @@ $(document).on("submit", "#edit_profile_form", function(e) {
         success: function() {
             alert('Profile updated successfully');
             location.reload();
+            // $("content").load("profile.php");
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error response from the server
@@ -201,6 +208,12 @@ $(document).on("submit", "#edit_profile_form", function(e) {
         contentType: false,
         processData: false
     });
+    /* $(".profile-posts").show();
+    $(".profile").css({
+        float: 'right',
+        width: '10%',
+        margin: 'unset'
+    }); */
 
 });
 
