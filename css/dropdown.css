@@ -42,3 +42,13 @@
     display: inline-block;
     width: 50%;
 }
+
+@media screen and (max-width: 75em) {
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown:hover .dropdown-content a {
+        display: inline-block;
+        width: auto;
+    }
+}
