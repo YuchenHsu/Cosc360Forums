@@ -26,16 +26,20 @@
                         http_response_code(400);
                         die("Error: Invalid email.");
                     }
-                    if(file_exists($_FILES["profile_img"]["tmp_name"]) || is_uploaded_file($_FILES["profile_img"]["tmp_name"])){ 
+                    if(file_exists($_FILES["profile_img"]["tmp_name"]) || is_uploaded_file($_FILES["profile_img"]["tmp_name"])){
                         $max_file_size = 10000000;
-                        $file = $_FILES["profile_pic"];
+                        $file = $_FILES["profile_img"];
+                        $allowed_types = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
                         if($file["size"] > $max_file_size) {
                             echo("Error: File too big");
                         } elseif($file["error"] != UPLOAD_ERR_OK) {
                             echo("Error: " . $file["name"] . " has error " . $file["error"] . ".");
-                        } else {                       
+                        } elseif(!in_array(mime_content_type($file["tmp_name"]), $allowed_types)) {
+                            http_response_code(400);
+                            echo("Error: Invalid file type. Only png, jpg, jpeg, and gif are allowed.");
+                        } else {
                             $profile_img = file_get_contents($_FILES["profile_img"]["tmp_name"]);
-                            // check if full name is valid                         
+                            // check if full name is valid
                             $sql = "UPDATE user SET full_name = :full_name, email = :email, profile_pic = :profile_pic WHERE username = :username";
                             $statement = $pdo->prepare($sql);
                             $statement->bindParam(':full_name', $full_name);
@@ -56,7 +60,7 @@
                         $pdo->commit();
                         header("Location: profile.php");
                     }
-                   
+
                 } else {
                     echo "Error: Full name and email cannot be empty";
                 }

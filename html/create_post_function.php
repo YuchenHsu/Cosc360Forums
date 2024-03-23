@@ -22,10 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } else {
                 $max_file_size = 10000000;
                 $file = $_FILES["post_image"];
+                $allowed_types = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
                 if($file["size"] > $max_file_size) {
                     echo("Error: File too big");
                 } elseif($file["error"] != UPLOAD_ERR_OK) {
                     echo("Error: " . $file["name"] . " has error " . $file["error"] . ".");
+                } elseif(!in_array(mime_content_type($file["tmp_name"]), $allowed_types)) {
+                    http_response_code(400);
+                    echo("Error: Invalid file type. Only png, jpg, jpeg, and gif are allowed.");
                 } else {
                     $sql = "INSERT INTO post(title, content, category_id, username, image) VALUES( :title, :body, :category_id, :username, :image )";
                     $statement = $pdo->prepare($sql);

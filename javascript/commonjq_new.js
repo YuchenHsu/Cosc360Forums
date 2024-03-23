@@ -176,7 +176,7 @@ $(document).on("click", "#logout_form", function(e) {
 // toggles the edit profile form
 $(document).on("click", "#edit_profile", function(e) {
     e.preventDefault();
-    $("#image_div").html("<input type='file' name='profile_img' accept=image/png, image/jpeg image/jpg>");
+    $("#image_div").html("<input type='file' name='profile_img' accept='image/png, image/jpeg, image/jpg'>");
     $("#full_name_div").html("<input id='full_name_input' type='text' name='full_name' value='" + $("#full_name_div").text() + "' required>");
     $("#email_div").html("<input id='email_input' type='text' name='email' value='" + $("#email_div").text() + "' required>");
     $("#button_stuff").html("<button type='submit' id='submit_profile'>Save</button>");
@@ -207,6 +207,10 @@ $(document).on('submit', '#edit_post_form', function(e){
             // redirect to base.php and reload the page
             window.location.href = 'base.php#';
             location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
         },
         cache: false,
         contentType: false,
@@ -277,6 +281,10 @@ $(document).on("submit", "#create_post_form", function(e) {
             // redirect to base.php and reload the page
             window.location.href = 'base.php#';
             location.reload();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
         },
         cache: false,
         contentType: false,
