@@ -169,9 +169,9 @@ $(document).on("click", "#logout_form", function(e) {
 // toggles the edit profile form
 $(document).on("click", "#edit_profile", function(e) {
     e.preventDefault();
-    $("#image_input").html("<input type='file' name='profile_img' required>");
-    $("#full_name_input").html("<input type='text' name='full_name' value='" + $("#full_name_input").text() + "' required>");
-    $("#email_input").html("<input type='text' name='email' value='" + $("#email_input").text() + "' required>");
+    $("#image_div").html("<input type='file' name='profile_img'>");
+    $("#full_name_div").html("<input id='full_name_input' type='text' name='full_name' value='" + $("#full_name_div").text() + "' required>");
+    $("#email_div").html("<input id='email_input' type='text' name='email' value='" + $("#email_div").text() + "' required>");
     $("#button_stuff").html("<button type='submit' id='submit_profile'>Save</button>>");
 });
 
