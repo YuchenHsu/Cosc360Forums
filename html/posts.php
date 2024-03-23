@@ -15,29 +15,29 @@
                     if(!empty($_GET['search']) && !empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
                         $filter = '%' . $_GET['filter'] . '%';
-                        $sql = "SELECT title, content, image, post_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id LIKE :filter";
+                        $sql = "SELECT title, content, image, post_id, username, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id LIKE :filter";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                         $statement->bindParam(':filter', $filter);
                     } elseif(!empty($_GET['search']) && empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
-                        $sql = "SELECT title, content, image, post_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search";
+                        $sql = "SELECT title, content, image, post_id, username, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                     }elseif(!empty($_GET['filter']) && empty($_GET['search'])){
                         $filter = $_GET['filter'];
-                        $sql = "SELECT title, content, image, post_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE category_id LIKE :filter";
+                        $sql = "SELECT title, content, image, post_id, username, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE category_id LIKE :filter";
                         echo $filter;
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':filter', $filter);
                     }
                     else{
-            $sql = "SELECT title, content, image, post_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id";
+                        $sql = "SELECT title, content, image, post_id, username, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id";
                         $statement = $pdo->prepare($sql);
                     }
                 }else{
-            $sql = "SELECT title, content, image, post_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id";
-                        $statement = $pdo->prepare($sql);
+                    $sql = "SELECT title, content, image, post_id, username, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id";
+                    $statement = $pdo->prepare($sql);
                 }
             }else{
                 echo "Error: Request method is not GET";
@@ -48,8 +48,10 @@
                 $title = $row['title'];
                 $post_id = $row['post_id'];
                 echo '<article class="post" style="width:90%; margin: 2em auto;">';
-                echo "<h2><a class='post_id' href='view_post.php?post_id={$post_id}'>Post {$post_id}: {$title}</a></h2>";
+                echo "<h2><a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a></h2>";
                 $category = $row['category_name'];
+                // display the username of the post and make it link to their profile
+                // echo '<p>Posted by: <a class="post_username" name=' . $row['username'] . ' value=' . $row['username'] . ' href="profile.php?username=' . $row['username'] . '">' . $row['username'] . '</a></p>';
                 echo '<b>Category: '.$category.'</b>';
                 echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {

@@ -18,6 +18,14 @@ $(document).ready(function() {
         $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Post > Post: " + post_id);
     });
 
+    // load the user profile page when clicking on the username
+    $("#content").on("click", ".post_username", function(e) {
+        e.preventDefault();
+        var username = $(this).attr("id")
+        $("#content").load("profile.php?username=" + username);
+        $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Profile > " + username);
+    });
+
     $(".topnav a").on("click", function(e) {
         var page = $(this).data("page");
         $("#content").load(page);
