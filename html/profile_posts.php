@@ -14,7 +14,10 @@
 
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             echo '<article class="profile-posts">';
+            echo '<button class="edit_post" style="float: right;">Edit Post</button>';
             echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
+            // add a edit button to edit the post
+
             echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
             if (!empty($row['image'])) {
                 echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" style = "width: 40%; height: auto;"/>';
