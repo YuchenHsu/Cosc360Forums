@@ -15,7 +15,7 @@
                     if(!empty($_GET['search']) && !empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
                         $filter = '%' . $_GET['filter'] . '%';
-                        $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id LIKE :filter";
+                        $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id = :filter";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                         $statement->bindParam(':filter', $filter);
@@ -26,7 +26,7 @@
                         $statement->bindParam(':search', $search);
                     }elseif(!empty($_GET['filter']) && empty($_GET['search'])){
                         $filter = $_GET['filter'];
-                        $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view WHERE category_id LIKE :filter";
+                        $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view WHERE category_id = :filter";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':filter', $filter);
                     }
