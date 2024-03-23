@@ -33,9 +33,12 @@
 }
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .dropdown:hover .dropdown-content a {
     display: inline-block;
+    width: 50%;
 }
