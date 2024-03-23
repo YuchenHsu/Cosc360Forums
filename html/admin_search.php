@@ -1,12 +1,9 @@
 <!-- search_users for users to disable or view -->
 <?php
-$connString = "mysql:host=localhost; dbname=forums";
-$user = "root";
-$pass = "";
     try{
-
         if($_SERVER['REQUEST_METHOD'] == "POST") {
             // Connect to the database
+            include 'connect.php';
             $pdo = new PDO($connString, $user, $pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // check for null values
