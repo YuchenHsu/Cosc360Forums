@@ -6,8 +6,8 @@
         <button type="submit" id="search_posts_submit">Search</button>
     </form>
     <form id="reported_posts_form" method="POST">
-        <button type="submit" id="delete_post_submit">Delete</button>
-        <div class="post_disp" id="post_disp">
+        <button type="submit" id="delete_post_submit" style="float:right;">Delete</button>
+        <div class="post_disp" id="post_disp" style="clear:both;">
         </div>
     </form>
 </div>

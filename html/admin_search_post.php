@@ -27,8 +27,7 @@
                         echo'<a href="post_detail.php?post_id=' . $post_id . '" style="font-size: 1.2em;">Post ' . $post_id . ': ' . $title . '</a>';
                         echo'<p>' . $content .'</p>';
                         echo '</article>';
-                    }
-                    
+                    }                  
 
                 }else{
                     echo "Please enter a search_posts term empty";
