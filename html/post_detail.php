@@ -1,5 +1,5 @@
 <!-- post_detail.php -->
-<div class="posts" style="width: 75%; margin: 1em auto;">
+<div class="posts">
     <?php
         $post_id = $_GET['post_id'];
         session_start();
@@ -19,12 +19,12 @@
                 $category = $row['category_name'];
                 global $upvotes;
                 global $downvotes;
-                echo '<article class="post" style="width:90%; margin: 2em auto;">';
-                echo "<h2 class='post_id'><a>{$title}</a></h2>";
+                echo '<article class="post">';
+                echo "<a class='post_id'>{$title}</a>";
                 echo "<h3>Category: {$category}</h3>";
                 echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" style = "width: 40%; height: auto;"/>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" "/>';
                 }
                 echo '</article>';
             } else {

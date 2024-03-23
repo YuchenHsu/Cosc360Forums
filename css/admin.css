@@ -1,0 +1,69 @@
+/* admin css */
+
+#sidebar{
+    float: left;
+    margin: 1em;
+    color: whitesmoke;
+    background-color: #0D1B2A;
+    display: block;
+    padding-bottom: 0.7em;
+    padding-left: 0.3em;
+}
+li {
+    font-size: 1em;
+    list-style-type: none;
+    padding: 0.5em 0.5em;
+}
+#sidebar a {
+    float: left;
+    color: #f2f2f2;
+    padding: 1em 2em;
+    text-decoration: none;
+    font-size: 1.25em;}
+#sidebar a:hover {
+    background-color: #ffffff;
+    color: black;
+    width: 50%;
+}
+#search-users{
+    width: 50%;
+    border: 1px solid #0D1B2A;
+}
+.user_disp{
+   float: left;
+   background-color: #b0bbd7;
+   border: 1px solid #0D1B2A;
+   width: 50%;
+}
+.user_disp p{
+    margin: 1.1em;
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+.container{
+    background-color: #b0bbd7;
+    border: 1px solid #0D1B2A;
+    display: inline-block;
+    width: 50%;
+}
+.container h4{
+    border-top: 1px solid #0D1B2A;
+}
+#reported_users_container, #reported_posts_container, #conflicts_container{
+    border-collapse: collapse;
+    margin: 0 2%;
+    width: 20%;
+    height: auto;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    float:left;
+    background-color:#b0bbd7;
+    border-style: solid;
+}
+
+#admin_header {
+    color: whitesmoke;
+    text-align: center;
+    padding: 1em;
+    margin: 0;
+}
