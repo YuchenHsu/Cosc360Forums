@@ -20,12 +20,8 @@
             <!-- create a select dropdown box using pdo to get the data from localhost, database called forum, and the table is called category -->
             <select name="category_id" id="category_id">
                 <?php
-                    $connString = "mysql:host=localhost; dbname=forums";
-                    $user = "root";
-                    $pass = "";
+                    include "connect.php";
 
-                    $pdo = new PDO($connString, $user, $pass);
-                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $sql = "SELECT * FROM category";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute();
@@ -33,7 +29,6 @@
                     $categories = $stmt->fetchAll();
 
                     foreach ($categories as $category) {
-                        echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
                         echo "<option value=\"{$category['id']}\">{$category['name']}</option>";
                     }
                 ?>
