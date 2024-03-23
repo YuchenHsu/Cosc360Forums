@@ -1,12 +1,8 @@
 <?php
-    $connString = "mysql:host=localhost; dbname=forums";
-    $user = "root";
-    $pass = "";
+    include 'connect.php';
     try {
         session_start();
         // Connect to the database
-        $pdo = new PDO($connString, $user, $pass);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->beginTransaction();
         // Check if post or get
         if ($_SERVER['REQUEST_METHOD'] == "POST"){
