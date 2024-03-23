@@ -16,7 +16,7 @@
                     $post_image = null;
                 }
 
-                $sql = "INSERT INTO post (category_id, title, post_body, username, post_image) VALUES (:category_id, :title, :post_body, :username, :post_image)";
+                $sql = "UPDATE post SET category_id = :category_id, title = :title, content = :post_body, username = :username, image = :post_image WHERE post_id = :post_id";
                 $statement = $pdo->prepare($sql);
                 $statement->bindParam(':category_id', $category_id);
                 $statement->bindParam(':title', $title);

@@ -58,6 +58,16 @@ $(document).ready(function() {
     });
 });
 
+$(document).on("click", ".edit_post", function(e) {
+    e.preventDefault();
+    // <button class="edit_post" style="float: right;" id = '.$row['post_id'].'>Edit Post</button>
+    // get the post_id from the button
+    var post_id = $(this).attr("id");
+    // get the id from the post_id
+    $("#content").load("edit_post.php?post_id=" + post_id);
+    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Edit Post");
+});
+
 $(document).on("click", "#register-btn", function(e) {
     e.preventDefault();
     $("#content").load("register.php");
