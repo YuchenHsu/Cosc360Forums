@@ -4,8 +4,6 @@
         if($_SERVER['REQUEST_METHOD'] == "POST") {
             // Connect to the database
             include 'connect.php';
-            $pdo = new PDO($connString, $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // check for null values
             if(isset($_POST['search_posts'])){
                 // check for empty values

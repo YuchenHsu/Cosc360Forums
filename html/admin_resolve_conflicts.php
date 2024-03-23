@@ -4,8 +4,6 @@
             //var_dump($_POST);
             if(isset($_POST['selected'])){
                 include "connect.php";
-                $pdo = new PDO($connString, $user, $pass);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 foreach($_POST['selected'] as $conflict_id){
                     $sql = "UPDATE conflict SET resolved = TRUE WHERE conflict_id = :conflict_id";
                     $statement = $pdo->prepare($sql);

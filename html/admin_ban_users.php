@@ -1,13 +1,9 @@
 <?php
-    $connString = "mysql:host=localhost; dbname=forums";
-    $user = "root";
-    $pass = "";
     try{
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             //var_dump($_POST);
             if(isset($_POST['selected'])){
-                $pdo = new PDO($connString, $user, $pass);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                include 'connect.php';
                 foreach($_POST['selected'] as $username){
                     $sql = "UPDATE user SET disabled = TRUE, reported = FALSE WHERE username = :username";
                     $statement = $pdo->prepare($sql);

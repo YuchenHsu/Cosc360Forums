@@ -27,33 +27,68 @@ $(document).on('submit', '#delete_posts_form', function(e){
         },
     });
 });
-$(document).on('submit', '#reported_users_form', function(e){
-    e.preventDefault(); // Prevent the form from submitting via the browser.
-    var selected = [];
-    $('input[type=checkbox]:checked').each(function() {
-        selected.push($(this).val());
+// disable user
+$(document).on('click', '#disable_user_submit', function(e){
+    $(document).on('submit', '#reported_users_form', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var selected = [];
+        $('input[type=checkbox]:checked').each(function() {
+            selected.push($(this).val());
+        });
+        if (selected.length === 0) {
+            alert("Please select at least one user to ban.");
+            return;
+        }
+        // Manually serialize form data
+        var formData = {
+            selected: selected
+        };
+        console.log(selected);
+        $.ajax({
+            url: 'admin_ban_users.php',
+            type: 'POST',
+            data: formData,
+            success: function(data){
+                //alert('Search submitted successfully');
+                if (data == '[]') {
+                    $('#user_disp').html('<p>No users to ban</p>');
+                } else {
+                    $('#user_disp').html(data);
+                }
+            },
+        });
     });
-    if (selected.length === 0) {
-        alert("Please select at least one user to ban.");
-        return;
-    }
-    // Manually serialize form data
-    var formData = {
-        selected: selected
-    };
-    console.log(selected);
-    $.ajax({
-        url: 'admin_ban_users.php',
-        type: 'POST',
-        data: formData,
-        success: function(data){
-            //alert('Search submitted successfully');
-            if (data == '[]') {
-                $('#reported_users').html('<p>No users to ban</p>');
-            } else {
-                $('#reported_users').html(data);
-            }
-        },
+});
+// enable users
+$(document).on('click', '#enable_user_submit', function(e){
+    $(document).on('submit', '#reported_users_form', function(e){
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var selected = [];
+        $('input[type=checkbox]:checked').each(function() {
+            selected.push($(this).val());
+        });
+        if (selected.length === 0) {
+            alert("Please select at least one user to enable.");
+            return;
+        }
+        // Manually serialize form data
+        var formData = {
+            selected: selected
+        };
+        console.log(selected);
+        $.ajax({
+            url: 'admin_enable_users.php',
+            type: 'POST',
+            data: formData,
+            success: function(data){
+                //alert('Search submitted successfully');
+                if (data == '[]') {
+                    $('#user_disp').html('<p>No users to ban</p>');
+                } else {
+                    $('#user_disp').html(data);
+                }
+            },
+        });
     });
 });
 $(document).on('submit', '#conflicts_form', function(e){
