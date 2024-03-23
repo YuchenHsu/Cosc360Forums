@@ -5,12 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $action = $_POST["action"];
 
         try {
-            $connString = "mysql:host=localhost; dbname=forums";
-            $user = "root";
-            $pass = "";
-
-            $pdo = new PDO($connString, $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            include 'connect.php';
             $pdo->beginTransaction();
 
             session_start();
