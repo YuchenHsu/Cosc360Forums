@@ -97,7 +97,7 @@ $(document).on("click","#sidebar li a", function(e) {
                 post += '<a href="post_detail.php?post_id=' + post_id + '" style="font-size: 1.2em;">Post ' + post_id + ': ' + title + '</a>';
                 post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
                 post += '</article>';
-                $("#reported_posts").append(post);
+                $("#post_disp").append(post);
             }
         },
     });

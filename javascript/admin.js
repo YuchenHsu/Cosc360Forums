@@ -2,7 +2,7 @@ $(document).ready( function() {
 });
 
 
-$(document).on('submit', '#reported_posts_form', function(e){
+$(document).on('submit', '#delete_posts_form', function(e){
     e.preventDefault(); // Prevent the form from submitting via the browser.
     var selected = [];
     $('input[type=checkbox]:checked').each(function() {
@@ -19,7 +19,7 @@ $(document).on('submit', '#reported_posts_form', function(e){
         data: formData,
         success: function(data){
             //alert('Search submitted successfully');
-            $('#reported_posts').html(data);
+            $('#post_disp').html(data);
         },
     });
 });
