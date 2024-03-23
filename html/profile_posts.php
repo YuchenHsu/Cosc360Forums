@@ -11,7 +11,6 @@
         $statement->bindParam(':username', $_SESSION['username']);
         $statement->execute();
 
-
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             echo '<article class="profile-posts">';
             echo '<button class="edit_post" style="float: right;" id = '.$row['post_id'].'>Edit Post</button>';
