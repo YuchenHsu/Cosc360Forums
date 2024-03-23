@@ -1,0 +1,49 @@
+/* create post css */
+
+.create_post {
+    padding: 1em;
+    text-align: center;
+    margin: 2em auto;
+    width: 70%;
+    justify-content: center;
+}
+.create_post input, .create_post textarea {
+    margin: 10px 0 0 0;
+    width: 100%;
+    min-height: 2em;
+}
+
+.create_post legend {
+    font-weight: bold;
+    font-size: 4em;
+}
+
+.create_post label {
+    display: block;
+    margin: 0.5rem auto;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2em;
+}
+
+#category_id {
+    margin: 1em auto;
+    padding: 0.5em 0;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+    width: 50%;
+}
+
+#post_image {
+    /* align it to the middle */
+    margin: 0 auto;
+}
+
+#new_post_submit {
+    margin: 1em auto;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    width: 20%;
+}

@@ -30,9 +30,9 @@
                         echo'<a href="post_detail.php?post_id=' . $post_id . '" style="font-size: 1.2em;">Post ' . $post_id . ': ' . $title . '</a>';
                         echo'<span>' . $reported . '</span>';
                         echo'<p>' . $content .'</p>';
+                        echo '<button class="edit_post" id = '.$row['post_id'].'>Edit Post</button>';
                         echo '</article>';
-                    }                  
-
+                    }
                 }else{
                     echo "Please enter a search_posts term empty";
                     // echo "empty search_posts term"

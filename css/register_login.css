@@ -1,0 +1,8 @@
+/* register and login css */
+.username, .password, .remember, .confirm, .email, .profile_pic, .full_name {
+    margin: 1em;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: bold;
+}

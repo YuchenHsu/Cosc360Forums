@@ -1,0 +1,90 @@
+/* topbar css */
+
+.topnav {
+    position: relative;
+    background-color: #0D1B2A;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 1em 2em;
+    text-decoration: none;
+    font-size: 1.25em;
+}
+.topnav a:hover {
+    background-color: #ffffff;
+    color: black;
+}
+.topnav a.active {
+    background-color: #0D1B2A;
+    color: white;
+}
+#search_form {
+    display: flex;
+}
+#search_form input, #search_form button, #search_form select {
+    margin:0.4em;
+    height: 2em;
+}
+#search_form button{
+    background-color: #ff6f59;
+}
+#search_form a{
+    margin: auto 0;
+    padding:0;
+}
+#search_form select{
+    height: 3.5em;
+    margin:0.6em;
+}
+.topnav-right {
+    display: flex;
+}
+
+/* CSS for larger screens */
+@media screen and (min-width: 76em) {
+    .topnav {
+        display: flex;
+        justify-content: space-between;
+    }
+    .topnav a, .topnav-right, #search_form {
+        display: flex;
+    }
+    .topnav-right {
+        float: right;
+    }
+}
+
+/* CSS for smaller screens */
+@media screen and (max-width: 75em) {
+    .topnav {
+        flex-direction: column;
+    }
+    .topnav a, .topnav-right, #search_form {
+        flex-direction: row;
+    }
+    .topnav-right {
+        align-items: flex-end;
+        margin: 0 auto;
+    }
+}
+
+/* CSS for smaller screens */
+@media screen and (max-width: 50em) {
+    .topnav {
+        flex-direction: column;
+    }
+    .topnav a, .topnav-right, #search_form {
+        flex-direction: column;
+    }
+    .topnav-right {
+        align-items: center;
+    }
+
+}
+

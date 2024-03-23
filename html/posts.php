@@ -1,6 +1,6 @@
 <!-- posts.php -->
 <!-- Posts content will be loaded dynamically -->
-<div class="posts" style="width: 75%; margin: 1em auto;">
+<div class="posts">
     <h1>Welcome to Our Forum!</h1>
     <p>Here are some interesting posts:</p>
     <?php
@@ -46,15 +46,15 @@
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                 $title = $row['title'];
                 $post_id = $row['post_id'];
-                echo '<article class="post" style="width:90%; margin: 2em auto;">';
-                echo "<h2><a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a></h2>";
+                echo '<article class="post">';
+                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a>";
                 $category = $row['category_name'];
                 // display the username of the post and make it link to their profile
                 // echo '<p>Posted by: <a class="post_username" name=' . $row['username'] . ' value=' . $row['username'] . ' href="profile.php?username=' . $row['username'] . '">' . $row['username'] . '</a></p>';
                 echo '<b>Category: '.$category.'</b>';
                 echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" style = "width: 40%; height: auto;"/>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"/>';
                 }
                 echo '</article>';
             }

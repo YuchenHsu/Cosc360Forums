@@ -1,0 +1,27 @@
+/* The dropdown container */
+.dropdown {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    color: whitesmoke;
+}
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: rgba(0,0,0,1);
+    min-width: 160px;
+    z-index: 1;
+}
+.dropdown-content a {
+    float: none;
+    color: #f2f2f2;
+    padding: 1em 2em;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
