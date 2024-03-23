@@ -5,13 +5,8 @@
             <?php
                 // Start the session
                 session_start();
-
-                $connString = "mysql:host=localhost; dbname=forums";
-                $user = "root";
-                $pass = "";
+                include 'connect.php';
                 try{
-                    $pdo = new PDO($connString, $user, $pass);
-                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $pdo->beginTransaction();
                     if($_SERVER['REQUEST_METHOD'] == "GET"){
                         if(isset($_GET['username'])){
