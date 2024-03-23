@@ -12,6 +12,16 @@
     min-width: 160px;
     z-index: 1;
 }
+
+@media screen and (max-width: 75em) {
+    .dropdown-content {
+        position: sticky;
+    }
+    .dropdown:hover .active {
+        display: none;
+    }
+}
+
 .dropdown-content a {
     float: none;
     color: #f2f2f2;
