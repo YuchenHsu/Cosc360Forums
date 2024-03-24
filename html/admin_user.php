@@ -1,6 +1,8 @@
 <div id="mod-user">
-    <h2>Users</h2>
-    <p>Here you can view all the users and their information. You can also ban users.</p>
+    <span id="admin_header">
+        <h2>Users</h2>
+        <p>Here you can view all the users and their information. You can also ban users.</p>
+    </span>
     <form method="POST" id="search_users_form">
         <input type="text" name="search_users" placeholder="Search users" id="search_users">
         <button type="submit" id="search_users_submit">Search</button>
