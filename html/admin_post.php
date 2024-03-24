@@ -1,6 +1,8 @@
 <div id="mod-post">
-    <h2>Users</h2>
-    <p>Here you can view all the posts and their information. You can also ban posts.</p>
+    <span id="admin_header">
+        <h2>Posts</h2>
+        <p>Here you can view all the posts and their information. You can also ban posts.</p>
+    </span>
     <form method="POST" id="search_posts_form">
         <input type="text" name="search_posts" placeholder="Search posts" id="search_posts">
         <button type="submit" id="search_posts_submit">Search</button>
