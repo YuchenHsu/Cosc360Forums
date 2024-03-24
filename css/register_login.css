@@ -30,6 +30,12 @@
     width: 80%;
 }
 
+@media screen and (min-width: 75em) {
+    #register-form input, #login-form input{
+        width: 25em;
+    }
+}
+
 #remember + label {
     display: inline;
 }
