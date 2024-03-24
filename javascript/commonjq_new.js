@@ -310,10 +310,7 @@ $(document).on("submit", "#register-form", function(e) {
         type: 'POST',
         data: formData,
         success: function(data) {
-            // alert('Registration successful');
-            // reload the page and go to base.php
-            // window.location.href = 'base.php#';
-            location.reload();
+            $("#content").load("login.php");
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error response from the server
