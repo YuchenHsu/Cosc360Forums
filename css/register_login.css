@@ -14,3 +14,14 @@
     border-radius: 10px;
     width: 50%;
 }
+
+#register-form label, #login-form label{
+    display: block;
+    text-align:center;
+    margin:auto;
+    padding:0;
+}
+
+#remember + label {
+    display: inline;
+}
