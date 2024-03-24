@@ -4,15 +4,15 @@
 
 ## Proposal
 
-### Details of team members (name and student number)
+### Details of team members (name, student number, and github username)
 
-* Ethan Hsu 43371855
-* Beth Ralston 18799312
-* Jacob Tizel 75492660
+* Ethan Hsu 43371855 YuchenHsu
+* Beth Ralston 18799312 mblackbeak
+* Jacob Tizel 75492660 jacobtizel
 
 ### Project description and details:
 
-## Use snake case for all variables, file names, and github branches (everything!)
+### Use snake case for all variables, file names, and github branches (everything!)
 
 #### Provide a description of the project you are going to undertake
 
@@ -46,3 +46,71 @@
   * Enable/disable users
   * Visual display of updates, site usage charts, etc
 
+## Minimal Core Functionality Milestone
+* [Posted on cosc360.ok.ubc.ca](https://cosc360.ok.ubc.ca/jtizel)
+
+* Client-side security -  Can be seen in the javascript folder
+  * Prevents the default submit
+  * Checks if text inputs are empty
+  * Checks if at least one check box is checked
+  * Checks that the expected file upload is an image
+  * Checks that inputs are recieving the expected data
+  * Displays alert errors if anything fails to be correct and does not submit the forms
+
+* Server-side security - Php files are in the html folder
+  * Checks that the expected server Request Method is correct
+  * Checks if the server variables are set
+  * Checks if any of the input is empty
+  * Checks the expected input is correct
+    * Checks format of usernames, passwords, images
+  * Checks the image size
+  * Gives errors and fails to update the database if any check does not pass
+
+* Server-side scripting with PHP 
+  * See html folder
+  * All functions are implemented using php, javascript, and html
+* Data storage in MySQL 
+  * All of the websites information and database is stored on the cosc 360 server.
+  * You can view the basic database structure in the sql folder
+  * User images (thumbnail) and profile stored in a database
+  * Discussion thread storage in database
+* Asynchronous updates - See javascript files to see how things are loaded with ajax
+  * All toggling of website pages and loading of page information such as posts, and profile is loaded using ajax
+* Core functional components operational (see baseline objectives)
+  * Browse discussions without registering
+Search for items/posts by keyword without registering
+    * posts.php, search.php and commonjq_new.js
+    * Please try the 'seach bar' on the top bar of our website
+  * Register at the site by providing their name, e-mail and image
+    * register.php, reg_function.php, and commonjq_new.js
+    * Please try registering on our website by click on the 'Register' Button
+  * Allow user login by providing user id and password
+    * lgoin.php, login_function.php, commonjq_new.js
+    * Please try logging in on our website after creating an account by clicking on the 'Login' Button
+  * Create and comment when logged into the site
+    * comments.php, comment_function.php, commonjq_new.js
+    * Please try commenting on a post once logged in by typing a comment and clicking 'Post Comment'
+  * Users are required to be able to view/edit their profile
+    * edit_profile_function.php, profile.php, profile_posts.php, edit_post.php, edit_post_function.php, commonjq_new.js
+    * Please try by going to the profile by clicking the 'Profile' Button and edit by clicking the 'Edit Profile' Button
+  * Website administrator’s objectives:
+    * Search for user by name, email or post
+    * Enable/disable users
+    * Edit/remove posts items or complete posts 
+    * admin_analytics.php, admin_ban_users.php, admin_conflicts.php, admin_delete_posts.php, amdin_enable_users.php, admin_moderation.php, admin_post.php, admin_reported_posts.php, admin_reports.php, admin_resolve_conflicts.php, admin_search.php, admin_user.php, admin.php, edit_post.php, edit_post_function.php, commonjq_new.js, admin.js
+    * Please see by logging in as an Admin and going to the Admin page by clicking the 'Admin' Button
+* Hand-styled layout with contextual menus (i.e. when a user has logged on to the site, menus reflect the change). Layout frameworks are not permitted other than Bootstrap (see above).
+  * Please see the topbar differences
+* 2 or 3-column layout using appropriate design principles (i.e. highlighting nav links when hovered over, etc) responsive design
+  * Please see admin page
+* Site must maintain state (user state being logged on, etc)
+  * Implemented using cookies and sessions
+* Responsive design philosophy (minimum requirements for different non-mobile display sizes)
+  * Please view the css in the css folder
+* Simple discussion (topics) grouping and display
+  * Can search through posts by choosing a category from a dropdown menu
+* Navigation breadcrumb strategy (i.e. users can determine where they are in threads)
+  * Can be seen at the top of each page
+  * Please reference commonjq_new.js
+* Error handling (bad navigation)
+  * All pages are loaded using ajax from the base.php file, this allows for it to be next to impossible to naviagate without using buttons
