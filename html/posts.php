@@ -15,27 +15,27 @@
                     if(!empty($_GET['search']) && !empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
                         $filter = '%' . $_GET['filter'] . '%';
-                        $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id = :filter";
+                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id = :filter";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                         $statement->bindParam(':filter', $filter);
                     } elseif(!empty($_GET['search']) && empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
-                        $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search";
+                        $sql = "SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                     }elseif(!empty($_GET['filter']) && empty($_GET['search'])){
                         $filter = $_GET['filter'];
-                        $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view WHERE category_id = :filter";
+                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE category_id LIKE :filter";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':filter', $filter);
                     }
                     else{
-                        $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view";
+            $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id";
                         $statement = $pdo->prepare($sql);
                     }
                 }else{
-                    $sql = "SELECT title, content, image, post_id, username, category_id, category_name FROM post_view";
+            $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id";
                     $statement = $pdo->prepare($sql);
                 }
             }else{

@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS post (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
+/*
 CREATE VIEW IF NOT EXISTS post_view AS SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name, upvotes, downvotes, reported, pinned, username, created_at FROM post AS p JOIN category AS c ON p.category_id = c.id;
 
 CREATE TABLE IF NOT EXISTS userpost (
@@ -104,7 +104,7 @@ END;
 //
 
 DELIMITER ;
-
+*/
 -- Table for storing posts (replies)
 CREATE TABLE IF NOT EXISTS comment (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
