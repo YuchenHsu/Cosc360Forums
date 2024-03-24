@@ -25,3 +25,11 @@
 #remember + label {
     display: inline;
 }
+
+#register-form input, #login-form input {
+    margin: 1em;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    width: 80%;
+}
