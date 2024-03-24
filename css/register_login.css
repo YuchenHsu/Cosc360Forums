@@ -6,3 +6,11 @@
     font-size: 1.25em;
     font-weight: bold;
 }
+
+#register-form, #login-form {
+    margin: 0 auto;
+    padding: 1em;
+    text-align: center;
+    border-radius: 10px;
+    width: 50%;
+}

@@ -19,7 +19,7 @@
             <input id="reg_password" type="password" name="reg_password" required title="Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, and one number">
         </div>
         <div class="confirm">
-            <label for="confirm_password">Confirm Password:</label>
+            <label for="confirm_password">Confirm Password: </label>
             <input id="confirm_password" type="password" name="conf_password" required title="Passwords must match">
         </div>
         <div class="profile_picture">
