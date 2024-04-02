@@ -31,11 +31,11 @@
                         $statement->bindParam(':filter', $filter);
                     }
                     else{
-                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id ORDER BY created_at DESC";
+                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id ORDER BY pinned DESC, created_at DESC";
                         $statement = $pdo->prepare($sql);
                     }
                 }else{
-                    $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id ORDER BY created_at DESC";
+                    $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id ORDER BY pinned DESC, created_at DESC";
                     $statement = $pdo->prepare($sql);
                 }
             }else{
