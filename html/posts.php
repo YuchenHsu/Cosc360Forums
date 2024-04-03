@@ -15,27 +15,27 @@
                     if(!empty($_GET['search']) && !empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
                         $filter = '%' . $_GET['filter'] . '%';
-                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id = :filter ORDER BY created_at DESC";
+                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id = :filter ORDER BY upvotes DESC, created_at DESC";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                         $statement->bindParam(':filter', $filter);
                     } elseif(!empty($_GET['search']) && empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
-                        $sql = "SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search ORDER BY created_at DESC";
+                        $sql = "SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search ORDER BY upvotes DESC, created_at DESC";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                     }elseif(!empty($_GET['filter']) && empty($_GET['search'])){
                         $filter = $_GET['filter'];
-                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE category_id LIKE :filter ORDER BY created_at DESC";
+                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE category_id LIKE :filter ORDER BY upvotes DESC, created_at DESC";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':filter', $filter);
                     }
                     else{
-                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id ORDER BY pinned DESC, created_at DESC";
+                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id ORDER BY pinned DESC, upvotes DESC, created_at DESC";
                         $statement = $pdo->prepare($sql);
                     }
                 }else{
-                    $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id ORDER BY pinned DESC, created_at DESC";
+                    $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id ORDER BY pinned DESC, upvotes DESC, created_at DESC";
                     $statement = $pdo->prepare($sql);
                 }
             }else{
@@ -54,7 +54,7 @@
                 echo '<b>Category: '.$category.'</b>';
                 echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"/>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
                 }
                 echo '</article>';
             }
