@@ -64,6 +64,9 @@
                 if (!empty($row['image'])) {
                     echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
                 }
+                if (!empty($row['profile_pic'])) {
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['profile_pic'] ) . '"alt = "' . $row['username'] . ' Profile Pic"/>';
+                }
                 echo '</article>';
             }
         } catch (PDOException $e) {
