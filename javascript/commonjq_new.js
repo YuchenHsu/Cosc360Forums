@@ -3,9 +3,19 @@ $(document).ready(function() {
     $("#content").load("posts.php");
     $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
 
-    setInterval(() => {
+    function reload_posts() {
         $("#content").load("posts.php");
-    }, 10000);
+    }
+
+    let post_reload_id = setInterval(reload_posts, 2000);
+
+    $("a").on('click', function() {
+        clearInterval(post_reload_id)
+    });
+
+    $("#post-btn").on('click', function() {
+        post_reload_id = setInterval(reload_posts, 2000);
+    })
 
     // when clicking on the home in the breadcrumbs, load the posts page
     $(document).on("click", "#breadcrumbs a", function(e) {
