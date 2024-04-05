@@ -57,7 +57,7 @@
                 else{
                     $up = $row['upvotes'];
                     $down = $row['downvotes'];
-                    $total = (2 * $up) - $down;
+                    $total = $up - ceil($down / 2);
                     echo "<p class='vote'>Score: {$total}</p>";
                 }
                 echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a>";
