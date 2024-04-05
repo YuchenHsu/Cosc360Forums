@@ -3,6 +3,10 @@ $(document).ready(function() {
     $("#content").load("posts.php");
     $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
 
+    setInterval(() => {
+        $("#content").load("posts.php");
+    }, 10000);
+
     // when clicking on the home in the breadcrumbs, load the posts page
     $(document).on("click", "#breadcrumbs a", function(e) {
         e.preventDefault();
