@@ -7,16 +7,21 @@ $(document).ready(function() {
         $("#content").load("posts.php");
     }
 
-    let post_reload_id = setInterval(reload_posts, 2000);
+    let post_reload_id = setInterval(reload_posts, 10000);
     let comment_reload_id = 0;
 
+    //stop refreshing of posts
     $(document).on('click', 'a:not(#post-btn)', function() {
         clearInterval(post_reload_id);
-        // clearInterval(comment_reload_id);
+    });
+
+    //stop refreshing of comments
+    $(document).on('click', 'a:not(.post_id)', function() {
+        clearInterval(comment_reload_id);
     });
 
     $("#post-btn").on('click', function() {
-        post_reload_id = setInterval(reload_posts, 2000);
+        post_reload_id = setInterval(reload_posts, 10000);
     })
 
     // when clicking on the home in the breadcrumbs, load the posts page
@@ -32,9 +37,9 @@ $(document).ready(function() {
         var post_id = $(this).attr("href").split("=")[1];
         $("#content").load("post_detail.php?post_id=" + post_id);
         $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Post > Post: " + post_id);
-        // comment_reload_id = setInterval(function() {
-        //     $("#content").load("post_detail.php?post_id=" + post_id);
-        // }, 2000);
+        comment_reload_id = setInterval(function() {
+            $("#content").load("post_detail.php?post_id=" + post_id);
+        }, 10000);
 
     });
 
