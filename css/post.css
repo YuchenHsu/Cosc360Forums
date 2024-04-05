@@ -54,3 +54,8 @@
 .pinned{
     background-color: #ff6f59;
 }
+.vote{
+    float: right;
+    border: 1px #0d1b2a solid;
+    padding: 0.5em;
+}
