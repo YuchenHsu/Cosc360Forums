@@ -47,7 +47,7 @@
                 $title = $row['title'];
                 $post_id = $row['post_id'];
                 echo '<article class="post">';
-                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a>";
+                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>{$title}</a>";
                 $category = $row['category_name'];
                 // display the username of the post and make it link to their profile
                 // echo '<p>Posted by: <a class="post_username" name=' . $row['username'] . ' value=' . $row['username'] . ' href="profile.php?username=' . $row['username'] . '">' . $row['username'] . '</a></p>';
