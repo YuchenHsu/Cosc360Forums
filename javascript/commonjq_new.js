@@ -8,9 +8,11 @@ $(document).ready(function() {
     }
 
     let post_reload_id = setInterval(reload_posts, 2000);
+    let comment_reload_id = 0;
 
-    $("a").on('click', function() {
-        clearInterval(post_reload_id)
+    $(document).on('click', 'a:not(#post-btn)', function() {
+        clearInterval(post_reload_id);
+        // clearInterval(comment_reload_id);
     });
 
     $("#post-btn").on('click', function() {
@@ -30,6 +32,10 @@ $(document).ready(function() {
         var post_id = $(this).attr("href").split("=")[1];
         $("#content").load("post_detail.php?post_id=" + post_id);
         $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Post > Post: " + post_id);
+        // comment_reload_id = setInterval(function() {
+        //     $("#content").load("post_detail.php?post_id=" + post_id);
+        // }, 2000);
+
     });
 
     // load the user profile page when clicking on the username
