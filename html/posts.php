@@ -60,6 +60,12 @@
                     $total = $up - ceil($down / 2);
                     echo "<p class='vote'>Score: {$total}</p>";
                 }
+                echo("<div class='userinfo'>"); 
+                if (!empty($row['profile_pic'])) {
+                echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['profile_pic'] ) . '"alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
+                }
+                echo("<span class='username'>" . $row['username'] . "</span>");
+                echo("</div>"); 
                 echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a>";
                 $category = $row['category_name'];
                 // display the username of the post and make it link to their profile
@@ -68,9 +74,6 @@
                 echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
                     echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
-                }
-                if (!empty($row['profile_pic'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['profile_pic'] ) . '"alt = "' . $row['username'] . ' Profile Pic"/>';
                 }
                 echo '</article>';
             }
