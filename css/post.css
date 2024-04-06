@@ -46,3 +46,12 @@
     color: -webkit-link;
 
 }
+
+.content {
+    display: -webkit-box;
+    margin: 1em, auto;
+    max-width: 100%;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
