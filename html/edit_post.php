@@ -30,7 +30,7 @@
                 echo '<textarea required rows="10" cols="60" placeholder="' . nl2br(htmlspecialchars($row['content'])) . '" id="post_body" name="post_body">' . nl2br(htmlspecialchars($row['content'])) .'</textarea><br>';
                 if (!empty($row['image'])) {
                     echo '<label for="post_image">Insert image here: </label><br><input type="file" name="post_image" id="post_image" accept="image/png, image/jpeg"><br>';
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '""/>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"" alt="post image"/>';
                 }
                 echo '<br><button type="submit" value="submit" id="edit_post_submit"> Submit </button>';
                 echo '</article>';
