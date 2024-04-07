@@ -14,7 +14,7 @@
 
         try {
             // Get posts per day for the past 7 days
-            $sql = "SELECT DATE(time) as date, COUNT(*) as count FROM post WHERE time >= NOW() - INTERVAL 7 DAY GROUP BY DATE(time)";
+            $sql = "SELECT DATE(created_at) as date, COUNT(*) as count FROM post WHERE created_at >= NOW() - INTERVAL 7 DAY GROUP BY DATE(created_at)";
             $statement = $pdo->prepare($sql);
             $statement->execute();
 
@@ -24,8 +24,7 @@
             }
 
             // Get comments per day for the past 7 days
-            // Assuming you have a 'comments' table with a 'time' column
-            $sql = "SELECT DATE(time) as date, COUNT(*) as count FROM comments WHERE time >= NOW() - INTERVAL 7 DAY GROUP BY DATE(time)";
+            $sql = "SELECT DATE(created_at) as date, COUNT(*) as count FROM comment WHERE created_at >= NOW() - INTERVAL 7 DAY GROUP BY DATE(created_at)";
             $statement = $pdo->prepare($sql);
             $statement->execute();
 
