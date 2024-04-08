@@ -79,6 +79,7 @@ $(function() {
     });
     $( ".report_post" ).on( "click", function() {
         action.attr("value", "report_post");
+        alert("Post has been reported.")
         console.log("report");
     });
 });
