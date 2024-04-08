@@ -21,6 +21,7 @@ $(document).ready(function() {
     });
 
     $("#post-btn").on('click', function() {
+        clearInterval(post_reload_id);
         post_reload_id = setInterval(reload_posts, 10000);
     })
 
@@ -37,6 +38,7 @@ $(document).ready(function() {
         var post_id = $(this).attr("href").split("=")[1];
         $("#content").load("post_detail.php?post_id=" + post_id);
         $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Post > Post: " + post_id);
+        clearInterval(comment_reload_id);
         comment_reload_id = setInterval(function() {
             $("#content").load("post_detail.php?post_id=" + post_id);
         }, 10000);
