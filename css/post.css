@@ -63,3 +63,33 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.vote{
+    float: right;
+    border: 1px #0d1b2a solid;
+    padding: 0.5em;
+}
+
+.userinfo {
+    display: inline-flex;
+    margin: auto;
+    margin-top: -3em;
+    margin-bottom: 1em;
+    /* float: left; */
+    border: 1px solid #000;
+    border-radius: 10%/20%;
+}
+
+.userinfo .prof_pic {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}
+
+.userinfo .username {
+    margin: auto;
+    font-size: 1em;
+}
+
+.category {
+    margin: auto;
+}
