@@ -14,15 +14,14 @@
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             echo '<article class="profile-posts">';
             echo '<article class="post">';
-            echo '<button class="edit_post" style="float: right;" id = '.$row['post_id'].'>Edit Post</button>';
-            echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
-            // add a edit button to edit the post
-
+            echo '<button class="edit_post" style="float: right; margin:0;" id = '.$row['post_id'].'>Edit Post</button>';
+            echo '<h2 class="post_id">' . htmlspecialchars($row['title']) . '</h2>';
             echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
             if (!empty($row['image'])) {
                 echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '""/>';
             }
             echo '</article>';
+
             echo '</article>';
         }
     } catch (PDOException $e) {
