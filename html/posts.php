@@ -60,7 +60,7 @@
                 // display the username of the post and make it link to their profile
                 // echo '<p>Posted by: <a class="post_username" name=' . $row['username'] . ' value=' . $row['username'] . ' href="profile.php?username=' . $row['username'] . '">' . $row['username'] . '</a></p>';
                 echo '<b>Category: '.$category.'</b>';
-                echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
+                echo '<p class="content">' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
                     echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
                 }
