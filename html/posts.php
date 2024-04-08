@@ -15,27 +15,28 @@
                     if(!empty($_GET['search']) && !empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
                         $filter = '%' . $_GET['filter'] . '%';
-                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id = :filter";
+                        $sql = "SELECT title, content, image, post_id, u.username, profile_pic, pinned, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id JOIN user AS u ON p.username = u.username WHERE (LOWER(title) LIKE :search OR LOWER(content)  LIKE :search) AND category_id = :filter ORDER BY upvotes DESC, p.created_at DESC";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                         $statement->bindParam(':filter', $filter);
                     } elseif(!empty($_GET['search']) && empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
-                        $sql = "SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search";
+                        $sql = "SELECT title, content, image, post_id, u.username, profile_pic, pinned, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id JOIN user AS u ON p.username = u.username WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search ORDER BY upvotes DESC, p.created_at DESC";
+                        $sql = "SELECT title, content, image, post_id, pinned, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE LOWER(title) LIKE :search OR LOWER(content)  LIKE :search ORDER BY upvotes DESC, p.created_at DESC";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
                     }elseif(!empty($_GET['filter']) && empty($_GET['search'])){
                         $filter = $_GET['filter'];
-                        $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE category_id LIKE :filter";
+                        $sql = "SELECT title, content, image, post_id, u.username, profile_pic, pinned, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id JOIN user AS u ON p.username = u.username WHERE category_id LIKE :filter ORDER BY upvotes DESC, p.created_at DESC";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':filter', $filter);
                     }
                     else{
-            $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id";
+            $sql = "SELECT title, content, image, post_id, u.username, profile_pic, pinned, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id JOIN user AS u ON p.username = u.username ORDER BY pinned DESC, upvotes DESC, p.created_at DESC";
                         $statement = $pdo->prepare($sql);
                     }
                 }else{
-            $sql = "SELECT title, content, image, post_id, username, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id";
+            $sql = "SELECT title, content, image, post_id, u.username, profile_pic, pinned, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id JOIN user AS u ON p.username = u.username ORDER BY pinned DESC, upvotes DESC, p.created_at DESC";
                     $statement = $pdo->prepare($sql);
                 }
             }else{
@@ -46,15 +47,22 @@
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                 $title = $row['title'];
                 $post_id = $row['post_id'];
-                echo '<article class="post">';
-                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>{$title}</a>";
+                $class = "post";
+                if($row['pinned'] == 1){
+                    $class = "pinned post";
+                }
+                echo '<article class="'. $class . '">';
+                if($row['pinned'] == 1){
+                    echo "<img class='pinIcon'src='../images/social/pin_icon.png' alt='Pinned Post'>";
+                }
+                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a>";
                 $category = $row['category_name'];
                 // display the username of the post and make it link to their profile
                 // echo '<p>Posted by: <a class="post_username" name=' . $row['username'] . ' value=' . $row['username'] . ' href="profile.php?username=' . $row['username'] . '">' . $row['username'] . '</a></p>';
                 echo '<b>Category: '.$category.'</b>';
                 echo '<p class="content">' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"/>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
                 }
                 echo '</article>';
             }

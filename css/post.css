@@ -37,6 +37,11 @@
     color: -webkit-link;
     /* "0d1b2a","1b263b","415a77","ffffff","ff6f59" */
 }
+.pinned .pinIcon{
+    width: 5%;
+    height: 5%;
+    float: left;
+}
 .post img {
     width: 40%;
     height: auto;
@@ -45,6 +50,9 @@
     display: block;
     color: -webkit-link;
 
+}
+.pinned{
+    background-color: #ff6f59;
 }
 
 .content {
