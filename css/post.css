@@ -94,3 +94,17 @@
 .category {
     margin: auto;
 }
+
+.content {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.expand-collapse {
+    margin: 0 auto;
+    align-items: center;
+}

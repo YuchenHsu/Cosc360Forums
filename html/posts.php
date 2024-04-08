@@ -77,15 +77,37 @@
 
                 $category = $row['category_name'];
                 // display the username of the post and make it link to their profile
-                // echo '<p>Posted by: <a class="post_username" name=' . $row['username'] . ' value=' . $row['username'] . ' href="profile.php?username=' . $row['username'] . '">' . $row['username'] . '</a></p>';
                 echo '<b>Category: '.$category.'</b>';
-                echo '<p class="content">' . nl2br(htmlspecialchars($row['content'])) . '</p>';
+                // echo '<p class="content">' . nl2br(htmlspecialchars($row['content'])) . '</p>';
+                $content = nl2br(htmlspecialchars($row['content']));
+                echo '<p class="content" id="content-'.$post_id.'">' . $content . '</p>';
+                // if the length of the content is greater than 100 characters, display the expand button
+                if (strlen($row['content']) > 100) {
+                    echo '<button class="expand-collapse" id="expand-'.$post_id.'" onclick="expandContent('.$post_id.')"">Expand</button></br>';
+                }
+                echo '<button class="expand-collapse" id="collapse-'.$post_id.'" onclick="collapseContent('.$post_id.')" style="display: none;">Collapse</button></br>';
                 if (!empty($row['image'])) {
                     echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
-                }                 echo '</article>';
+                }
+                echo '</article>';
             }
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
     ?>
+
+    <script>
+        function expandContent(post_id) {
+            document.getElementById('content-'+post_id).style.webkitLineClamp = 'unset';
+            document.getElementById('expand-'+post_id).style.display = 'none';
+            document.getElementById('collapse-'+post_id).style.display = 'block';
+        }
+
+        function collapseContent(post_id) {
+            document.getElementById('content-'+post_id).style.webkitLineClamp = '5';
+            document.getElementById('expand-'+post_id).style.display = 'block';
+            document.getElementById('collapse-'+post_id).style.display = 'none';
+        }
+
+    </script>
 </div>
