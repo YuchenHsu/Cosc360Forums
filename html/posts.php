@@ -60,10 +60,10 @@
                     $total = $up - ceil($down / 2);
                     echo "<p class='vote'>Score: {$total}</p>";
                 }
-                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a>";
+                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>{$title}</a>";
 
                 if($row['pinned'] != 1){
-                    echo("<div class='userinfo'>"); 
+                    echo("<div class='userinfo'>");
                     if (!empty($row['profile_pic'])) {
                         echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['profile_pic'] ) . '"alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
                     } else {
@@ -71,7 +71,7 @@
                     }
 
                     echo("<span class='username'>" . $row['username'] . "</span>");
-                    echo("</div><br>"); 
+                    echo("</div><br>");
 
                 }
 
