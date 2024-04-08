@@ -1,6 +1,6 @@
 <div id="mod-reports">
     <h1>Analytics</h1>
-    <p>Here you can view the analytics for the forum.</p>
+    <p>Here you can view the new user count, post count, and comment count for the past 7 days.</p>
     <!-- <figure>
         <img src="../images/posts.png" alt="New Users Over Time">
         <figcaption>New Users Over Time</figcaption>

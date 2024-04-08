@@ -9,6 +9,7 @@
     text-align: center;
     width: 75%;
     margin: 1em auto;
+    word-wrap: break-word;
 }
 .post_id {
     margin: 1em;

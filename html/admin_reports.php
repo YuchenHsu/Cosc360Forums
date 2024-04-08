@@ -1,6 +1,6 @@
 <div id="mod-reports">
     <h1>Reports</h1>
-    <p>Here you can view the reports for the forum.</p>
+    <p>Here you can view the active users per day, average comments per post, and category popularity for the past 7 days.</p>
     <!-- <?php
     include 'connect.php';
 
