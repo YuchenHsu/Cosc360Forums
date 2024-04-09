@@ -45,6 +45,21 @@
 .topnav-right {
     display: flex;
 }
+#notification-icon {
+    position: relative;
+    height: 1.5em;
+}
+#notification-icon .badge {
+    position: relative;
+    top: -1em;
+    right: -10px;
+    font-size: 0.7em;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    z-index: 1;
+  }
 
 /* CSS for larger screens */
 @media screen and (min-width: 76em) {

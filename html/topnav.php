@@ -25,7 +25,9 @@
             </a>
         </form>
         <div class="topnav-right">
-            <a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification</a>
+            <div id="notification-icon">
+                <a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification<span class="badge">3</span></a>
+            </div>
             <div class="dropdown">
                 <a class = "active">
                     <?php
