@@ -388,9 +388,37 @@ $(document).on("click", "#hot_posts", function(e) {
     e.preventDefault();
     $("#new_posts").css('border', 'none');
     $(this).css('border', '5px solid white');
+    e.preventDefault(); // Prevent the form from submitting via the browser.
+    var formData = $(this).serialize();
+    $.ajax({
+        url: 'posts.php',
+        type: 'GET',
+        data: formData,
+        success: function(data){
+            // alert('Search submitted successfully');
+            $('#search_results').html(data);
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 });
 $(document).on("click", "#new_posts", function(e) {
     e.preventDefault();
     $("#hot_posts").css('border', 'none');
     $(this).css('border', '5px solid white');
+    e.preventDefault(); // Prevent the form from submitting via the browser.
+    var formData = $(this).serialize();
+    $.ajax({
+        url: 'new_post_order.php',
+        type: 'GET',
+        data: formData,
+        success: function(data){
+            // alert('Search submitted successfully');
+            $('#search_results').html(data);
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 });

@@ -3,8 +3,8 @@
 <div class="posts">
     <h1>Welcome to Our Forum!</h1>
     <p>Here are some interesting posts:</p>
-    <button id="hot_posts">Hot Posts</button>
-    <button id="new_posts">New Posts</button>
+    <button id="hot_posts" type="submit" >Hot Posts</button>
+    <button id="new_posts"type="submit" >New Posts</button>
     <?php
         include 'connect.php';
 

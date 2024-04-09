@@ -31,7 +31,7 @@
     margin:0.4em;
     height: 2em;
 }
-#search_form button{
+#search_form #search_btn{
     background-color: #ff6f59;
 }
 #search_form a{
