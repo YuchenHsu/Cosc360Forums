@@ -81,8 +81,9 @@
                 echo '<b>Category: '.$category.'</b>';
                 echo '<p class="content">' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
-                }                 echo '</article>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" alt="post image"/>';
+                }
+                echo '</article>';
             }
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
