@@ -25,10 +25,10 @@
                         printf("<img class=\"profile-pic\" src=\"data:image/jpeg;base64,%s\" alt=\"Profile Picture\">", base64_encode($user['profile_pic']));
                         echo "<h2>User Profile</h2>";
                         echo "<div id=image_div></div>";
-                        echo "<p><strong>Username:</strong> <div id=username_div>" . $user['username'] . "</div></p>";
+                        echo "<p><label for='username'>Username: </label> <div id=username_div>" . $user['username'] . "</div></p>";
                         echo "<p><label for='full_name'>Full Name: </label> <div id=full_name_div>" . $user['full_name'] . "</div></p>";
                         echo "<p><label for='email'>Email: </label><div id=email_div>" . $user['email'] . "</div></p>";
-                        echo "<p><strong>Join Date:</strong> " . $user['created_at'] . "</p>";
+                        echo "<p><label for='join_date'>Join Date: </label>" . $user['created_at'] . "</p>";
                         if (isset($_SESSION['username'])) {
                             if (strcasecmp($_SESSION['username'], $username) == 0) {
                                 echo "<div id='edit_profile_button'>";
