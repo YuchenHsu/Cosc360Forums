@@ -151,7 +151,7 @@ $(document).on("click","#sidebar li a", function(e) {
 
                 var post = '<article class="post" style="width: 70%; padding:0.5em;">';
                 post += '<input type="checkbox" id=' + post_id + 'name= selected[] value=' + post_id +'></input>';
-                post += '<a href="post_detail.php?post_id=' + post_id + '" style="font-size: 1.2em;">Post ' + post_id + ': ' + title + '</a>';
+                post += '<a href="post_detail.php?post_id=' + post_id + '" class="post_id" style="font-size: 1.2em;">Post ' + post_id + ': ' + title + '</a>';
                 post += '<p>' + content.replace(/\n/g, "<br>") + '</p>';
                 post += '<button class="edit_post" style="float: right;" id = ' + post_id +'>Edit Post</button>';
 
