@@ -52,7 +52,6 @@
 #notification-icon .badge {
     position: relative;
     top: -1em;
-    right: -10px;
     font-size: 0.7em;
     padding: 5px 10px;
     border-radius: 50%;

@@ -17,6 +17,22 @@
                 $statement->bindValue(":created_at", date("Y-m-d H:i:s", time() - 28800));
                 $statement->execute();
                 $pdo -> commit();
+
+                // add notification
+                $sql = "SELECT username FROM post WHERE post_id = :post_id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(':post_id', $post_id);
+                $stmt->execute();
+                $post = $stmt->fetch();
+                $post_user = $post['username'];
+
+                $sql = "INSERT INTO notification (username, post_id, content) VALUES (:username, :post_id, :content)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(':username', $post_user);
+                $stmt->bindValue(':post_id', $post_id);
+                $stmt->bindValue(':content', $username . ' commented on your post.');
+                $stmt->execute();
+
             } catch (PDOException $e) {
                 die($e->getMessage());
             }
