@@ -1,6 +1,6 @@
 /* post css */
 
-.posts {
+.posts, .profile_posts {
     margin: 2em;
     padding: 1em;
     border: 0.25em solid black;
@@ -9,6 +9,7 @@
     text-align: center;
     width: 75%;
     margin: 1em auto;
+    word-wrap: break-word;
 }
 .post_id {
     margin: 1em;
@@ -16,6 +17,7 @@
     text-decoration: none;
     font-size: 2em;
     font-weight: bold;
+    word-wrap: break-word;
 }
 .notification {
     margin: 1em;
@@ -99,4 +101,42 @@
 
 .category {
     margin: auto;
+}
+
+.content {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.expand-collapse {
+    margin: 0 auto;
+    align-items: center;
+}
+
+.comment {
+    margin: 2em;
+    padding: 1em;
+    border: 0.25em solid black;
+    background-color: #b0bbd7;
+    color: #0d1b2a;
+    overflow: auto;
+    width: 90%;
+    margin: 2em auto;
+    word-wrap: break-word;
+}
+
+@media screen and (max-width: 55em) {
+    label {
+        display: block;
+    }
+    .comment_created_at {
+        font-size: 1em;
+    }
+    .comment_header {
+        flex-direction: column;
+    }
 }

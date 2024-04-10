@@ -60,32 +60,54 @@
                     $total = $up - ceil($down / 2);
                     echo "<p class='vote'>Score: {$total}</p>";
                 }
-                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$title}</a>";
+                echo "<a class='post_id' href='post_detail.php?post_id={$post_id}'>{$title}</a>";
 
                 if($row['pinned'] != 1){
-                    echo("<div class='userinfo'>"); 
+                    echo("<div class='userinfo'>");
                     if (!empty($row['profile_pic'])) {
                         echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['profile_pic'] ) . '"alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
                     } else {
                         echo '<img src="../images/default_prof_pic.png" alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
                     }
 
-                    echo("<span class='username'>" . $row['username'] . "</span>");
-                    echo("</div><br>"); 
+                    echo("<span class='username'><a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'>" . $row['username'] . "</a></span>");
+                    echo("</div><br>");
 
                 }
 
                 $category = $row['category_name'];
                 // display the username of the post and make it link to their profile
-                // echo '<p>Posted by: <a class="post_username" name=' . $row['username'] . ' value=' . $row['username'] . ' href="profile.php?username=' . $row['username'] . '">' . $row['username'] . '</a></p>';
                 echo '<b>Category: '.$category.'</b>';
-                echo '<p class="content">' . nl2br(htmlspecialchars($row['content'])) . '</p>';
+                // echo '<p class="content">' . nl2br(htmlspecialchars($row['content'])) . '</p>';
+                $content = nl2br(htmlspecialchars($row['content']));
+                echo '<p class="content" id="content-'.$post_id.'">' . $content . '</p>';
+                // if the length of the content is greater than 100 characters, display the expand button
+                if (strlen($row['content']) > 100) {
+                    echo '<button class="expand-collapse" id="expand-'.$post_id.'" onclick="expandContent('.$post_id.')"">Expand</button></br>';
+                }
+                echo '<button class="expand-collapse" id="collapse-'.$post_id.'" onclick="collapseContent('.$post_id.')" style="display: none;">Collapse</button></br>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
-                }                 echo '</article>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" alt="post image"/>';
+                }
+                echo '</article>';
             }
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
     ?>
+
+    <script>
+        function expandContent(post_id) {
+            document.getElementById('content-'+post_id).style.webkitLineClamp = 'unset';
+            document.getElementById('expand-'+post_id).style.display = 'none';
+            document.getElementById('collapse-'+post_id).style.display = 'block';
+        }
+
+        function collapseContent(post_id) {
+            document.getElementById('content-'+post_id).style.webkitLineClamp = '5';
+            document.getElementById('expand-'+post_id).style.display = 'block';
+            document.getElementById('collapse-'+post_id).style.display = 'none';
+        }
+
+    </script>
 </div>

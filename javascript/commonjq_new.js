@@ -93,6 +93,21 @@ $(document).ready(function() {
     });
 });
 
+$(document).on("load", ".posts article .content", function() {
+    var contents = document.getElementsByClassName('content');
+    for (var i = 0; i < contents.length; i++) {
+        var content = contents[i];
+        var span = content.getElementsByTagName('span')[0];
+        var lineHeight = parseInt(window.getComputedStyle(content)['line-height']);
+        var lines = span.offsetHeight / lineHeight;
+        if (lines > 5) {
+            document.getElementById('expand-'+content.id.split('-')[1]).style.display = 'block';
+        } else {
+            document.getElementById('expand-'+content.id.split('-')[1]).style.display = 'none';
+        }
+    }
+});
+
 $(document).on("click", ".edit_post", function(e) {
     e.preventDefault();
     var post_id = $(this).attr("id");
