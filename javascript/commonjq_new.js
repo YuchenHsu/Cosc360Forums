@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Load the post page by default
     $("#content").load("posts.php");
-    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
+    $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Posts");
 
     function reload_posts() {
         $("#content").load("posts.php");
@@ -29,7 +29,7 @@ $(document).ready(function() {
     $(document).on("click", "#breadcrumbs a", function(e) {
         e.preventDefault();
         $("#content").load("posts.php");
-        $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
+        $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Posts");
     });
 
     // Use event delegation to handle click events on the post links
@@ -37,7 +37,7 @@ $(document).ready(function() {
         e.preventDefault();
         var post_id = $(this).attr("href").split("=")[1];
         $("#content").load("post_detail.php?post_id=" + post_id);
-        $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Post > Post: " + post_id);
+        $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Post > Post: " + post_id);
         clearInterval(comment_reload_id);
         comment_reload_id = setInterval(function() {
             $("#content").load("post_detail.php?post_id=" + post_id);
@@ -50,7 +50,7 @@ $(document).ready(function() {
         e.preventDefault();
         var username = $(this).attr("id")
         $("#content").load("profile.php?username=" + username);
-        $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Profile > " + username);
+        $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Profile > " + username);
     });
 
     $(".topnav a").on("click", function(e) {
@@ -58,21 +58,21 @@ $(document).ready(function() {
         $("#content").load(page);
         // add breadcrumbs based on the page loaded
         if (page == "posts.php") {
-            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
+            $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Posts");
         } else if (page == "create_post.php") {
-            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Create Post");
+            $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Create Post");
         } else if (page == "profile.php") {
-            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Profile");
+            $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Profile");
         } else if (page == "admin.php") {
-            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Admin");
+            $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Admin");
         } else if (page == "search.php") {
-            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Search");
+            $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Search");
         } else if (page == "notification.php") {
-            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Notification");
+            $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Notification");
         } else if (page == "login.php") {
-            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Login");
+            $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Login");
         } else if (page == "register.php") {
-            $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Register");
+            $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Register");
         }
     });
     $("#search_form").on('submit', function(e){
@@ -112,19 +112,19 @@ $(document).on("click", ".edit_post", function(e) {
     e.preventDefault();
     var post_id = $(this).attr("id");
     $("#content").load("edit_post.php?post_id=" + post_id);
-    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Edit Post");
+    $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Edit Post");
 });
 
 $(document).on("click", "#register-btn", function(e) {
     e.preventDefault();
     $("#content").load("register.php");
-    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Register");
+    $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Register");
 });
 
 $(document).on("click", "#login-btn", function(e) {
     e.preventDefault();
     $("#content").load("login.php");
-    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Login");
+    $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Login");
 });
 
 $(document).on("click","#sidebar li a", function(e) {
@@ -135,7 +135,7 @@ $(document).on("click","#sidebar li a", function(e) {
             console.log("Error: " + xhr.status + " " + xhr.statusText);
         }
     });
-    $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Admin > " + page.split(".")[0].split("_")[1]);
+    $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Admin > " + page.split(".")[0].split("_")[1]);
     $.ajax({
         url: 'admin_reported_posts.php',
         type: 'GET',
@@ -214,8 +214,8 @@ $(document).on("click", "#logout_form", function(e) {
         type: 'POST',
         success: function() {
             alert('Logout successful');
-            // reload the page and go to base.php
-            window.location.href = 'base.php#';
+            // reload the page and go to index.php
+            window.location.href = 'index.php#';
             location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -256,8 +256,8 @@ $(document).on('submit', '#edit_post_form', function(e){
         data: formData,
         success: function() {
             alert('Post updated successfully');
-            // redirect to base.php and reload the page
-            window.location.href = 'base.php#';
+            // redirect to index.php and reload the page
+            window.location.href = 'index.php#';
             location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -330,8 +330,8 @@ $(document).on("submit", "#create_post_form", function(e) {
         data: formData,
         success: function() {
             alert('Post submitted successfully');
-            // redirect to base.php and reload the page
-            window.location.href = 'base.php#';
+            // redirect to index.php and reload the page
+            window.location.href = 'index.php#';
             location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -371,8 +371,8 @@ $(document).on("submit", "#login-form", function(e) {
         data: $(this).serialize(),
         success: function(data) {
             alert('Login successful');
-            // reload the page and go to base.php
-            window.location.href = 'base.php#';
+            // reload the page and go to index.php
+            window.location.href = 'index.php#';
             location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {

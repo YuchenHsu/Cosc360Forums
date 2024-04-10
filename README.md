@@ -113,4 +113,4 @@ Search for items/posts by keyword without registering
   * Can be seen at the top of each page
   * Please reference commonjq_new.js
 * Error handling (bad navigation)
-  * All pages are loaded using ajax from the base.php file, this allows for it to be next to impossible to naviagate without using buttons
+  * All pages are loaded using ajax from the index.php file, this allows for it to be next to impossible to naviagate without using buttons
