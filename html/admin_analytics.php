@@ -85,7 +85,6 @@
             }
         }
     });
-
     var ctx = document.getElementById('usersChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',

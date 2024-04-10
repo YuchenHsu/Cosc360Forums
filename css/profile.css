@@ -19,6 +19,10 @@
     color: #f2f2f2;
     float: right;
     clear: both;
+    word-wrap: break-word;
+}
+#email_div {
+    word-break: break-all;
 }
 .profile h2 {
     margin-top: 0;
@@ -48,7 +52,7 @@
 #edit_profile_button {
     margin: 1em auto;
     padding: 0%;
-    width: 8em;
+    width: 80%;
     align-items: center;
     display: block;
 }
@@ -78,10 +82,16 @@
         flex-direction: column;
         align-items: center;
         margin: 0 auto;
+        word-wrap: break-word;
+        word-break: break-all;
     }
     .profile-pic {
         width: 30px;
         height: 30px;
+    }
+    #email_div {
+        word-wrap: break-word;
+        word-break: break-all;
     }
     #edit_profile_form {
         width: 60%;
