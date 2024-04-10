@@ -33,8 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $statement = $pdo->prepare($sql);
                 $statement->bindValue(":postid", $post_id);
                 $statement->execute();
-
-
             } else if($action == "upvote_post" || $action == "downvote_post") {
                 if($action == "upvote_post"){
                     $sql = "UPDATE post SET upvotes = upvotes + 1 WHERE post_id = :postid";
@@ -43,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
                 $statement = $pdo->prepare($sql);
                 $statement->bindValue(":postid", $post_id);
-                $statement->execute(); 
+                $statement->execute();
 
                 // $status = $action == "upvote_post" ? "upvote" : "downvote";
                 // Check if userpost already exists
@@ -67,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $statement->bindValue(":username", $_SESSION['username']);
                     $statement->bindValue(":postid", $post_id);
                     $statement->bindValue(":status", $status);
-                    $statement->execute(); 
+                    $statement->execute();
                 } */
             } else {
                 http_response_code(400);
