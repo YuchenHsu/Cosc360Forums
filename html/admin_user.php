@@ -4,6 +4,7 @@
         <p>Here you can view all the users and their information. You can also ban users.</p>
     </span>
     <form method="POST" id="search_users_form">
+        <label for="search_users" style="color:white;" >Search users:</label>
         <input type="text" name="search_users" placeholder="Search users" id="search_users">
         <button type="submit" id="search_users_submit">Search</button>
     </form>
