@@ -82,6 +82,6 @@
         </div>
     </div>
     <div id="breadcrumbs">
-        <a href='base.php#'>Home</a> > Posts
+        <a href='index.php#'>Home</a> > Posts
     </div>
 </div>
