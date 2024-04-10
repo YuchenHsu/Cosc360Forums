@@ -19,6 +19,6 @@
     session_destroy();
 
     // Redirect to home/posts page
-    header("Location: base.php");
+    header("Location: index.php");
     exit;
 ?>
