@@ -54,6 +54,11 @@
                 }finally{
                 $pdo = null;
                 }
+?>
+<script>
+set_notif_badge();
+</script>
+<?php
             } else {
                 echo "<p>Please login to view notifications</p>";
             }

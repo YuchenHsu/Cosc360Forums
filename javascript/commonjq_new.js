@@ -383,3 +383,23 @@ $(document).on("submit", "#post_interaction" , function(e) {
         }
     });
 });
+
+function set_notif_badge() {
+    $.ajax({
+        url: 'notif_number.php',
+        type: 'GET',
+        dataType: 'text',
+        success: function(data) {
+            let notif_number = data;
+            // alert(notif_number);
+            $( ".badge" ).html(notif_number);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        }
+
+    });
+}
+
+post_reload_id = setInterval(set_notif_badge, 5000);
