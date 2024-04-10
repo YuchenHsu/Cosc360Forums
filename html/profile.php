@@ -37,9 +37,13 @@
                                 echo "</form>";
                             }else{
                                 echo "</form>";
+                                // Report button form
+                                echo "<form id='report_form' action='POST'>";
                                 echo "<div id='report_button'>";
-                                echo "<button id=\"report_user\">Report</button>";
+                                echo "<input type='hidden' name='username' value='" . $user['username'] . "'>";
+                                echo "<button type='submit' id=\"report_user\">Report</button>";
                                 echo "</div>";
+                                echo "</form>";
                             }
                         }
                     }else{

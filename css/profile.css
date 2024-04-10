@@ -58,7 +58,7 @@
     width: 80%;
     margin-top: 1em;
 }
-#edit_profile_button {
+#edit_profile_button, #report_button {
     margin: 1em auto;
     padding: 0%;
     width: 80%;
