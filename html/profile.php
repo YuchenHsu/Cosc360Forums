@@ -34,9 +34,14 @@
                                 echo "<div id='edit_profile_button'>";
                                 echo "<button id=\"edit_profile\">Edit Profile</button>";
                                 echo "</div>";
+                                echo "</form>";
+                            }else{
+                                echo "</form>";
+                                echo "<div id='report_button'>";
+                                echo "<button id=\"report_user\">Report</button>";
+                                echo "</div>";
                             }
                         }
-                        echo "</form>";
                     }else{
                         echo "Error: GET request not received.";
                     }
