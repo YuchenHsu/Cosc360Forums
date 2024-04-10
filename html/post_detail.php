@@ -24,15 +24,15 @@
                 echo "<a class='post_id'>{$title}</a>";
 
 
-                echo("<div class='userinfo'>"); 
+                echo("<div class='userinfo'>");
                 if (!empty($row['profile_pic'])) {
                     echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['profile_pic'] ) . '"alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
                 } else {
                     echo '<img src="../images/default_prof_pic.png" alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
                 }
 
-                echo("<span class='username'>" . $row['username'] . "</span>");
-                echo("</div><br>"); 
+                echo("<span class='username'><a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'>" . $row['username'] . "</a></span>");
+                echo("</div><br>");
 
                 echo "<h3 class='category'>Category: {$category}</h3>";
                 echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';

@@ -70,7 +70,7 @@
                         echo '<img src="../images/default_prof_pic.png" alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
                     }
 
-                    echo("<span class='username'>" . $row['username'] . "</span>");
+                    echo("<span class='username'><a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'>" . $row['username'] . "</a></span>");
                     echo("</div><br>");
 
                 }
