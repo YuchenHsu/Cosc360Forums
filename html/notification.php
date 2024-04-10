@@ -43,6 +43,11 @@
                         echo "</tbody>";
                         echo "</table>";
                     }
+                    // mark notifications as read
+                    $sql = "UPDATE notification SET unread = 0 WHERE username = :username";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindValue(':username', $_SESSION['username']);
+                    $stmt->execute();
              
                 } catch (PDOException $e) {
                 die($e->getMessage());
