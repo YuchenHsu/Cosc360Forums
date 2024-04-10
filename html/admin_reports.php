@@ -112,9 +112,9 @@
     }
     ?>
 
-    <canvas id="activeUsersChart"></canvas>
-    <canvas id="postEngagementChart"></canvas>
-    <canvas id="categoryPopularityChart"></canvas>
+    <canvas id="activeUsersChart" aria-label="Chart showing active users"></canvas>
+    <canvas id="postEngagementChart" aria-label="Chart showing post engagement"></canvas>
+    <canvas id="categoryPopularityChart" aria-label="Chart showing category popularity"></canvas>
 
     <script>
     var ctx = document.getElementById('activeUsersChart').getContext('2d');

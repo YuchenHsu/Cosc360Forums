@@ -77,9 +77,9 @@
         die("Error: " . $e->getMessage());
     }
     ?>
-    <canvas id="postsChart"></canvas>
-    <canvas id="commentsChart"></canvas>
-    <canvas id="usersChart"></canvas>
+    <canvas id="postsChart" aria-label="Posts per day for the past 7 days"></canvas>
+    <canvas id="commentsChart" aria-label="Comments per day for the past 7 days"></canvas>
+    <canvas id="usersChart" aria-label="New users per day for the past 7 days"></canvas>
     <script>
     var ctx = document.getElementById('postsChart').getContext('2d');
     var myChart = new Chart(ctx, {
