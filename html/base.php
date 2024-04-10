@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="../css/admin.css">
         <link rel="stylesheet" href="../css/breadcrumbs.css">
         <link rel="icon" href="../favicon.ico" type="image/ico">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
         <?php include "topnav.php"; ?>

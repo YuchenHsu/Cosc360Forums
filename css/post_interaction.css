@@ -81,3 +81,13 @@
     right: 0;
     margin: 0;
 }
+
+.comment_profile_pic {
+    width: 1.5em;
+    margin: auto;
+    border-radius: 50%;
+}
+
+.comment_username {
+    margin: 0.5rem;
+}

@@ -28,7 +28,7 @@
                             $disabled = "Not Disabled";
                         }
                         echo "<p>" . $row['username'] ."-". $reported . "-" . $disabled . "</p>";
-                        echo "<button style='display: inline;'><a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'>View</a></button>";
+                        echo "<a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'><button style='display: inline;'>View</button></a>";
                         echo "<input type=checkbox id=" . $row['username'] . "name= selected[] value=" . $row['username'] ."></input>";
                         echo "</div>";
                     }

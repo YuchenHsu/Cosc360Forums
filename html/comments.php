@@ -34,7 +34,7 @@ include 'connect.php';
 
 try {
     $post_id = $_GET['post_id'];
-    $sql = "SELECT * FROM comment WHERE post_id = :post_id";
+    $sql = "SELECT comment_id, c.username AS username, c.created_at AS created_at, content, profile_pic FROM comment as c JOIN user as u ON c.username = u.username WHERE post_id = :post_id";
     $statement = $pdo->prepare($sql);
     $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
     $statement->execute();
@@ -44,10 +44,11 @@ try {
         $username = $row['username'];
         $created_at = $row['created_at'];
         $content = $row['content'];
+        $profile_pic = base64_encode($row['profile_pic']);
         echo '<article class="comment">';
         echo '<div class="comment_header">';
-        echo "<span class=\"comment_username\">{$username}</span>";
-        echo "<span class=\"comment_created_at\">{$created_at}</span>";
+        echo "<a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'><div class='comment_user'><img class='comment_profile_pic' src='data:image/jpeg;base64,{$profile_pic}' alt=\"{$username}'s profile pic\"><span class='comment_username'>{$username}</span></div></a>";
+        echo "<span class='comment_created_at'>{$created_at}</span>";
         echo '</div>';
         echo '<div class="comment_body">';
         echo $content;

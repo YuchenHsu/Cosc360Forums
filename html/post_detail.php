@@ -6,7 +6,8 @@
 
         try {
             include 'connect.php';
-            $sql = "SELECT title, content, image, post_id, c.name AS category_name, upvotes, downvotes FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE post_id = :post_id";
+            //$sql = "SELECT title, content, image, post_id, c.name AS category_name, upvotes, downvotes FROM post AS p JOIN category AS c ON p.category_id = c.id WHERE post_id = :post_id";
+            $sql = "SELECT title, content, image, post_id, u.username, profile_pic, pinned, upvotes, downvotes, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id JOIN user AS u ON p.username = u.username WHERE post_id = :post_id";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
             $statement->execute();
@@ -21,10 +22,22 @@
                 global $downvotes;
                 echo '<article class="post">';
                 echo "<a class='post_id'>{$title}</a>";
-                echo "<h3>Category: {$category}</h3>";
+
+
+                echo("<div class='userinfo'>");
+                if (!empty($row['profile_pic'])) {
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['profile_pic'] ) . '"alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
+                } else {
+                    echo '<img src="../images/default_prof_pic.png" alt = "' . $row['username'] . ' Profile Pic", class="prof_pic"/>';
+                }
+
+                echo("<span class='username'><a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'>" . $row['username'] . "</a></span>");
+                echo("</div><br>");
+
+                echo "<h3 class='category'>Category: {$category}</h3>";
                 echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" "/>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" alt="post image"/>';
                 }
                 echo '</article>';
             } else {
@@ -66,6 +79,7 @@ $(function() {
     });
     $( ".report_post" ).on( "click", function() {
         action.attr("value", "report_post");
+        alert("Post has been reported.")
         console.log("report");
     });
 });

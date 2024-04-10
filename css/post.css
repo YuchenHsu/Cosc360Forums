@@ -1,6 +1,6 @@
 /* post css */
 
-.posts {
+.posts, .profile_posts {
     margin: 2em;
     padding: 1em;
     border: 0.25em solid black;
@@ -9,6 +9,7 @@
     text-align: center;
     width: 75%;
     margin: 1em auto;
+    word-wrap: break-word;
 }
 .post_id {
     margin: 1em;
@@ -16,6 +17,7 @@
     text-decoration: none;
     font-size: 2em;
     font-weight: bold;
+    word-wrap: break-word;
 }
 .post, .form-container {
     margin: 2em;
@@ -37,6 +39,11 @@
     color: -webkit-link;
     /* "0d1b2a","1b263b","415a77","ffffff","ff6f59" */
 }
+.pinned .pinIcon{
+    width: 5%;
+    height: 5%;
+    float: left;
+}
 .post img {
     width: 40%;
     height: auto;
@@ -45,4 +52,84 @@
     display: block;
     color: -webkit-link;
 
+}
+.pinned{
+    background-color: #ff6f59;
+}
+
+.content {
+    display: -webkit-box;
+    margin: 1em, auto;
+    max-width: 100%;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.vote{
+    float: right;
+    border: 1px #0d1b2a solid;
+    padding: 0.5em;
+}
+
+.userinfo {
+    display: inline-flex;
+    margin: auto;
+    margin-top: -3em;
+    margin-bottom: 1em;
+    /* float: left; */
+    border: 1px solid #000;
+    border-radius: 10%/20%;
+}
+
+.userinfo .prof_pic {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}
+
+.userinfo .username {
+    margin: auto;
+    font-size: 1em;
+}
+
+.category {
+    margin: auto;
+}
+
+.content {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.expand-collapse {
+    margin: 0 auto;
+    align-items: center;
+}
+
+.comment {
+    margin: 2em;
+    padding: 1em;
+    border: 0.25em solid black;
+    background-color: #b0bbd7;
+    color: #0d1b2a;
+    overflow: auto;
+    width: 90%;
+    margin: 2em auto;
+    word-wrap: break-word;
+}
+
+@media screen and (max-width: 55em) {
+    label {
+        display: block;
+    }
+    .comment_created_at {
+        font-size: 1em;
+    }
+    .comment_header {
+        flex-direction: column;
+    }
 }

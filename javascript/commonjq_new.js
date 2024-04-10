@@ -3,6 +3,28 @@ $(document).ready(function() {
     $("#content").load("posts.php");
     $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Posts");
 
+    function reload_posts() {
+        $("#content").load("posts.php");
+    }
+
+    let post_reload_id = setInterval(reload_posts, 10000);
+    let comment_reload_id = 0;
+
+    //stop refreshing of posts
+    $(document).on('click', 'a:not(#post-btn)', function() {
+        clearInterval(post_reload_id);
+    });
+
+    //stop refreshing of comments
+    $(document).on('click', 'a:not(.post_id)', function() {
+        clearInterval(comment_reload_id);
+    });
+
+    $("#post-btn").on('click', function() {
+        clearInterval(post_reload_id);
+        post_reload_id = setInterval(reload_posts, 10000);
+    })
+
     // when clicking on the home in the breadcrumbs, load the posts page
     $(document).on("click", "#breadcrumbs a", function(e) {
         e.preventDefault();
@@ -16,6 +38,11 @@ $(document).ready(function() {
         var post_id = $(this).attr("href").split("=")[1];
         $("#content").load("post_detail.php?post_id=" + post_id);
         $("#breadcrumbs").html("<a href='base.php#'>Home</a> > Post > Post: " + post_id);
+        clearInterval(comment_reload_id);
+        comment_reload_id = setInterval(function() {
+            $("#content").load("post_detail.php?post_id=" + post_id);
+        }, 10000);
+
     });
 
     // load the user profile page when clicking on the username
@@ -64,6 +91,21 @@ $(document).ready(function() {
             processData: false
         });
     });
+});
+
+$(document).on("load", ".posts article .content", function() {
+    var contents = document.getElementsByClassName('content');
+    for (var i = 0; i < contents.length; i++) {
+        var content = contents[i];
+        var span = content.getElementsByTagName('span')[0];
+        var lineHeight = parseInt(window.getComputedStyle(content)['line-height']);
+        var lines = span.offsetHeight / lineHeight;
+        if (lines > 5) {
+            document.getElementById('expand-'+content.id.split('-')[1]).style.display = 'block';
+        } else {
+            document.getElementById('expand-'+content.id.split('-')[1]).style.display = 'none';
+        }
+    }
 });
 
 $(document).on("click", ".edit_post", function(e) {
