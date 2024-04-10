@@ -37,7 +37,7 @@
                 echo "<h3 class='category'>Category: {$category}</h3>";
                 echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" "/>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" alt="post image"/>';
                 }
                 echo '</article>';
             } else {

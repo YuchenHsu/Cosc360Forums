@@ -18,7 +18,7 @@
             echo '<h2 class="post_id">' . htmlspecialchars($row['title']) . '</h2>';
             echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
             if (!empty($row['image'])) {
-                echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '""/>';
+                echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"" alt="profile image"/>';
             }
             echo '</article>';
 

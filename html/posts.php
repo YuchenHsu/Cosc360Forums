@@ -87,7 +87,7 @@
                 }
                 echo '<button class="expand-collapse" id="collapse-'.$post_id.'" onclick="collapseContent('.$post_id.')" style="display: none;">Collapse</button></br>';
                 if (!empty($row['image'])) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '"alt = "Post' . $title . ' Image Content"/>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" alt="post image"/>';
                 }
                 echo '</article>';
             }
