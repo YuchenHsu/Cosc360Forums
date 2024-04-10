@@ -15,9 +15,9 @@
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':username', $username);
         $statement->execute();
-
+        echo '<article class="profile-posts">';
+        echo '<h2>User Posts</h2>';
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            echo '<article class="profile-posts">';
             echo '<article class="post">';
             echo '<button class="edit_post" style="float: right; margin:0;" id = '.$row['post_id'].'>Edit Post</button>';
             echo '<h2 class="post_id">' . htmlspecialchars($row['title']) . '</h2>';
@@ -27,8 +27,9 @@
             }
             echo '</article>';
 
-            echo '</article>';
         }
+        echo '</article>';
+
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
     }
