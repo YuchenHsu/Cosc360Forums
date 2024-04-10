@@ -64,6 +64,7 @@
     width: 80%;
     align-items: center;
     display: block;
+    text-align: center;
 }
 #edit_profile {
     display: block;
