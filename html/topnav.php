@@ -3,7 +3,8 @@
         <a href="#posts" id="post-btn" class="active" data-page="posts.php">Home</a>
         <a href="#create_post" id="create_post_btn" class="active" data-page="create_post.php">Create Post</a>
         <form id="search_form">
-            <input id="search" type="text" name="search">
+            <label for="search" style="display: none;">Search:</label>
+            <input id="search" type="text" name="search" placeholder="search">
             <select name="filter" id="filter">
                 <option value="">All</option>
                 <?php
@@ -25,7 +26,22 @@
             </a>
         </form>
         <div class="topnav-right">
-            <a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification</a>
+            <div id="notification-icon">
+                <?php
+                    if(isset($_SESSION['username'])){
+                        $sql = "SELECT COUNT(notification_id) AS total FROM notification WHERE username = :username AND unread = 1";
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->bindValue(':username', $_SESSION['username']);
+                        $stmt->execute();
+                        $notification = $stmt->fetch();
+                        $count = $notification['total'];
+                        echo '<a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification<span class="badge">' . $count . '</span></a>';
+                    }
+                    else{
+                        echo '<a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification</a>';
+                    }
+                ?>
+            </div>
             <div class="dropdown">
                 <a class = "active">
                     <?php

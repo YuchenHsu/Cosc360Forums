@@ -4,6 +4,7 @@
         <p>Here you can view all the posts and their information. You can also ban posts.</p>
     </span>
     <form method="POST" id="search_posts_form">
+        <label for="search_posts" style="color:white;" >Search posts:</label>
         <input type="text" name="search_posts" placeholder="Search posts" id="search_posts">
         <button type="submit" id="search_posts_submit">Search</button>
     </form>

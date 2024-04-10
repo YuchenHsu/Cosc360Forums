@@ -19,6 +19,13 @@
     font-weight: bold;
     word-wrap: break-word;
 }
+.notification {
+    margin: 1em;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+}
 .post, .form-container {
     margin: 2em;
     padding: 1em;

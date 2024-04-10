@@ -23,6 +23,7 @@
 .topnav a.active {
     background-color: #0D1B2A;
     color: white;
+    text-align: center;
 }
 #search_form {
     display: flex;
@@ -45,6 +46,22 @@
 .topnav-right {
     display: flex;
 }
+#notification-icon {
+    position: relative;
+    height: 1.5em;
+    padding: 0;
+    margin: 0;
+}
+#notification-icon .badge {
+    position: relative;
+    top: -1em;
+    font-size: 0.7em;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    z-index: 1;
+  }
 
 /* CSS for larger screens */
 @media screen and (min-width: 76em) {
@@ -72,6 +89,9 @@
         align-items: flex-end;
         margin: 0 auto;
     }
+    #notification-icon {
+        height: 50%;
+    }
 }
 
 /* CSS for smaller screens */
@@ -85,6 +105,8 @@
     .topnav-right {
         align-items: center;
     }
-
+    #notification-icon {
+        height: 50%;
+    }
 }
 
