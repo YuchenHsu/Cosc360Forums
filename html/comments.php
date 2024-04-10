@@ -47,7 +47,7 @@ try {
         $profile_pic = base64_encode($row['profile_pic']);
         echo '<article class="comment">';
         echo '<div class="comment_header">';
-        echo "<div class='comment_user'><img class='comment_profile_pic' src='data:image/jpeg;base64,{$profile_pic}' alt=\"{$username}'s profile pic\"><span class='comment_username'>{$username}</span></div>";
+        echo "<a href='profile.php?username={$row['username']}' class='searched_user' style='text-decoration: none; color: inherit;'><div class='comment_user'><img class='comment_profile_pic' src='data:image/jpeg;base64,{$profile_pic}' alt=\"{$username}'s profile pic\"><span class='comment_username'>{$username}</span></div></a>";
         echo "<span class='comment_created_at'>{$created_at}</span>";
         echo '</div>';
         echo '<div class="comment_body">';
