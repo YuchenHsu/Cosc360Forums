@@ -1,45 +1,6 @@
 <div id="mod-reports">
     <h1>Analytics</h1>
     <p>Here you can view the new user count, post count, and comment count for the past 7 days.</p>
-    <!-- <figure>
-        <img src="../images/posts.png" alt="New Users Over Time">
-        <figcaption>New Users Over Time</figcaption>
-    </figure>
-    <figure>
-        <img src="../images/posts.png" alt="Posts Over Time">
-        <figcaption>Posts Over Time</figcaption>
-    </figure> -->
-    <!-- <?php
-        include 'connect.php';
-
-        try {
-            // Get posts per day for the past 7 days
-            $sql = "SELECT DATE(created_at) as date, COUNT(*) as count FROM post WHERE created_at >= NOW() - INTERVAL 7 DAY GROUP BY DATE(created_at)";
-            $statement = $pdo->prepare($sql);
-            $statement->execute();
-
-            echo "<article class='admin_analytics'>";
-            echo "<h2>Posts per day for the past 7 days:</h2><br>";
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                echo "Date: " . $row['date'] . ", Count: " . $row['count'] . "<br>";
-            }
-            echo "</article>";
-
-            // Get comments per day for the past 7 days
-            $sql = "SELECT DATE(created_at) as date, COUNT(*) as count FROM comment WHERE created_at >= NOW() - INTERVAL 7 DAY GROUP BY DATE(created_at)";
-            $statement = $pdo->prepare($sql);
-            $statement->execute();
-
-            echo "<article class='admin_analytics'>";
-            echo "<h2>Comments per day for the past 7 days:</h2><br>";
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                echo "Date: " . $row['date'] . ", Count: " . $row['count'] . "<br>";
-            }
-            echo "</article>";
-        } catch (PDOException $e) {
-            die("Error: " . $e->getMessage());
-        }
-    ?> -->
     <?php
     include 'connect.php';
 
