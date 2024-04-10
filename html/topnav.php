@@ -3,7 +3,8 @@
         <a href="#posts" id="post-btn" class="active" data-page="posts.php">Home</a>
         <a href="#create_post" id="create_post_btn" class="active" data-page="create_post.php">Create Post</a>
         <form id="search_form">
-            <input id="search" type="text" name="search">
+            <label for="search" style="display: none;">Search:</label>
+            <input id="search" type="text" name="search" placeholder="search">
             <select name="filter" id="filter">
                 <option value="">All</option>
                 <?php
