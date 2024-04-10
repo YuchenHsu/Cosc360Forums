@@ -23,6 +23,7 @@
 .topnav a.active {
     background-color: #0D1B2A;
     color: white;
+    text-align: center;
 }
 #search_form {
     display: flex;
@@ -88,6 +89,9 @@
         align-items: flex-end;
         margin: 0 auto;
     }
+    #notification-icon {
+        height: 50%;
+    }
 }
 
 /* CSS for smaller screens */
@@ -101,6 +105,8 @@
     .topnav-right {
         align-items: center;
     }
-
+    #notification-icon {
+        height: 50%;
+    }
 }
 
