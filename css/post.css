@@ -9,6 +9,7 @@
     text-align: center;
     width: 75%;
     margin: 1em auto;
+    word-wrap: break-word;
 }
 .post_id {
     margin: 1em;
@@ -92,4 +93,18 @@
 
 .category {
     margin: auto;
+}
+
+.content {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.expand-collapse {
+    margin: 0 auto;
+    align-items: center;
 }

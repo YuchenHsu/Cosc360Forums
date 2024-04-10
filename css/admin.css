@@ -83,6 +83,43 @@ li {
     float: left;
 }
 
+.admin_analytics {
+    display: block;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin: 1em;
+    color: whitesmoke;
+    background-color: #0D1B2A;
+}
+
+.admin_analytics article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    padding: 1em;
+    border: 1px solid #0D1B2A;
+    background-color: #b0bbd7;
+}
+
+#mod-reports {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 70%;
+    margin: 1em;
+    color: whitesmoke;
+    background-color: #0D1B2A;
+    text-align: center;
+}
+
+#mod-reports canvas {
+    width: 100%;
+    height: auto;
+    border: 1px solid #b0bbd7;
+    margin: 1em;
+}
 
 @media screen and (max-width: 55em) {
     #moderating {
@@ -102,5 +139,47 @@ li {
     }
     #moderating form div button {
         margin: 0 auto;
+    }
+    #sidebar {
+        clear: both;
+    }
+    #admin_content {
+        clear: both;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #0D1B2A;
+        padding: 1em;
+        margin: 1em;
+    }
+    #mod-reports {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+        margin: 1em;
+        color: whitesmoke;
+        background-color: #0D1B2A;
+        text-align: center;
+        overflow: auto;
+    }
+    #mod-reports canvas {
+        width: 100%;
+        height: auto;
+        border: 1px solid #b0bbd7;
+        font: optional;
+        font-size: 0.5em;
+    }
+    .user_disp{
+        width: 100%;
+    }
+    .container{
+        width: 100%;
+    }
+    #delete_posts_form, #reported_users_form, #conflicts_form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
 }
