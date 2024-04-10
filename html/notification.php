@@ -32,7 +32,7 @@
                             $stmt->execute();
                             $post = $stmt->fetch();
                             $post_title = $post['title'];
-                            $post_link = "<a class='post_id notification' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$post_title}</a>";
+                            $post_link = "<a class='post_id notification' href='post_detail.php?post_id={$post_id}'>{$post_title}</a>";
 
                             echo "<tr>";
                             echo "<td>{$notification['created_at']}</td>";
