@@ -228,9 +228,9 @@ $(document).on("click", "#logout_form", function(e) {
 // toggles the edit profile form
 $(document).on("click", "#edit_profile", function(e) {
     e.preventDefault();
-    $("#image_div").html("<input type='file' name='profile_img' accept='image/png, image/jpeg, image/jpg'>");
-    $("#full_name_div").html("<input id='full_name_input' type='text' name='full_name' value='" + $("#full_name_div").text() + "' required>");
-    $("#email_div").html("<input id='email_input' type='text' name='email' value='" + $("#email_div").text() + "' required>");
+    $("#image_div").html("<label for='profile_img'>Profile Image: </label><input type='file' name='profile_img' accept='image/png, image/jpeg, image/jpg'>");
+    $("#full_name_div").html("<input type='text' name='full_name' value='" + $("#full_name_div").text() + "' required>");
+    $("#email_div").html("<input type='text' name='email' value='" + $("#email_div").text() + "' required>");
     $("#edit_profile_button").html("<button type='submit' id='submit_profile'>Save</button>");
     $(".profile-posts").hide();
     $(".profile").css({

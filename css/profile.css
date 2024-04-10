@@ -32,14 +32,23 @@
     height: 50px;
     border-radius: 50%;
 }
+.profile label{
+    display: block;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
 #edit_profile_form {
     display: flex;
     flex-direction: column;
     word-wrap: break-word;
     align-items: center;
+    text-align: center;
 }
 #edit_profile_form p {
     display: block;
+    font-size: 1em;
 }
 #edit_profile_form p div {
     display: block;
