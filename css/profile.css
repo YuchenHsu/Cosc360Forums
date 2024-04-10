@@ -44,6 +44,7 @@
     flex-direction: column;
     word-wrap: break-word;
     align-items: center;
+    text-align: center;
 }
 #edit_profile_form p {
     display: block;
