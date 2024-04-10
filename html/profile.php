@@ -26,8 +26,8 @@
                         echo "<h2>User Profile</h2>";
                         echo "<div id=image_div></div>";
                         echo "<p><strong>Username:</strong> <div id=username_div>" . $user['username'] . "</div></p>";
-                        echo "<p><strong>Full Name:</strong> <div id=full_name_div>" . $user['full_name'] . "</div></p>";
-                        echo "<p><strong>Email:</strong><div id=email_div>" . $user['email'] . "</div></p>";
+                        echo "<p><label for='full_name'>Full Name: </label> <div id=full_name_div>" . $user['full_name'] . "</div></p>";
+                        echo "<p><label for='email'>Email: </label><div id=email_div>" . $user['email'] . "</div></p>";
                         echo "<p><strong>Join Date:</strong> " . $user['created_at'] . "</p>";
                         if (isset($_SESSION['username'])) {
                             if (strcasecmp($_SESSION['username'], $username) == 0) {
