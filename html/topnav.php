@@ -26,7 +26,20 @@
         </form>
         <div class="topnav-right">
             <div id="notification-icon">
-                <a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification<span class="badge">3</span></a>
+                <?php
+                    if(isset($_SESSION['username'])){
+                        $sql = "SELECT COUNT(notification_id) AS total FROM notification WHERE username = :username AND unread = 1";
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->bindValue(':username', $_SESSION['username']);
+                        $stmt->execute();
+                        $notification = $stmt->fetch();
+                        $count = $notification['total'];
+                        echo '<a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification<span class="badge">' . $count . '</span></a>';
+                    }
+                    else{
+                        echo '<a href="#notification" class="active" id="notif-btn" data-page="notification.php">Notification</a>';
+                    }
+                ?>
             </div>
             <div class="dropdown">
                 <a class = "active">
