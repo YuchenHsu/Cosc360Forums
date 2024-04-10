@@ -30,7 +30,7 @@
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindValue(':username', $post_user);
                 $stmt->bindValue(':post_id', $post_id);
-                $stmt->bindValue(':content', $username . ' commented on your post.');
+                $stmt->bindValue(':content', $username . ' commented on your post: ');
                 $stmt->execute();
 
             } catch (PDOException $e) {

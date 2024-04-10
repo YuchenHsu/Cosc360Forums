@@ -25,9 +25,19 @@
                         echo "</tr>";
                         echo "<tbody>";
                         foreach ($notifications as $notification) {
+                            $post_id = $notification['post_id'];
+                            $sql = "SELECT title FROM post WHERE post_id = :post_id";
+                            $stmt = $pdo->prepare($sql);
+                            $stmt->bindValue(':post_id', $post_id);
+                            $stmt->execute();
+                            $post = $stmt->fetch();
+                            $post_title = $post['title'];
+                            $post_link = "<a class='post_id notification' href='post_detail.php?post_id={$post_id}'>Post {$post_id}: {$post_title}</a>";
+
                             echo "<tr>";
                             echo "<td>{$notification['created_at']}</td>";
-                            echo "<td>{$notification['content']}</td>";
+                            echo "<td>{$notification['content']}" . $post_link . "</td>";
+                            
                             echo "</tr>";
                         }
                         echo "</tbody>";
