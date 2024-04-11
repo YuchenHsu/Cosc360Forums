@@ -19,7 +19,9 @@
         echo '<h2>User Posts</h2>';
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             echo '<article class="post">';
-            echo '<button class="edit_post" style="float: right; margin:0;" id = '.$row['post_id'].'>Edit Post</button>';
+            if(isset($_SESSION['username']) && $row['username'] == $_SESSION['username']){
+                echo '<button class="edit_post" style="float: right; margin:0;" id = '.$row['post_id'].'>Edit Post</button>';
+            }
             echo '<h2 class="post_id">' . htmlspecialchars($row['title']) . '</h2>';
             echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
             if (!empty($row['image'])) {
