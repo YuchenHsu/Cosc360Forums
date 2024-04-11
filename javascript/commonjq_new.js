@@ -40,7 +40,10 @@ $(document).ready(function() {
         $("#breadcrumbs").html("<a href='index.php#'>Home</a> > Post > Post: " + post_id);
         clearInterval(comment_reload_id);
         comment_reload_id = setInterval(function() {
+            let comment_text = $("textarea#comment_content").val();
+            console.log(comment_text);
             $("#content").load("post_detail.php?post_id=" + post_id);
+            $("textarea#comment_content").val(comment_text);
         }, 10000);
 
     });

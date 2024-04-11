@@ -62,7 +62,6 @@
     </form>
     <section class="comment_container">
         <h2>Comments</h2>
-        <div id="comment_content"></div>
         <?php include "comments.php"; ?>
     </section>
 </div>
