@@ -373,6 +373,7 @@ $(document).on("submit", "#register-form", function(e) {
         type: 'POST',
         data: formData,
         success: function(data) {
+            alert("Registration successful!")
             $("#content").load("login.php");
         },
         error: function(jqXHR, textStatus, errorThrown) {
