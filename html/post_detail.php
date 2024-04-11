@@ -57,7 +57,11 @@
             <!-- <button type="submit" id="downvote" name="downvote_post">↓</button><span><?=$downvotes?></span> -->
         </span>
         <!-- <span class="report_post"> -->
-        <button class="report_post" type="submit" name="report_post">Report</button>
+        <?php
+            if(isset($_SESSION['username'])){
+            echo('<button class="report_post" type="submit" name="report_post">Report</button>');
+        }
+        ?>
         <!-- </span> -->
     </form>
     <section class="comment_container">
