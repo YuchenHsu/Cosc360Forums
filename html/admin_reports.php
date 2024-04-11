@@ -78,7 +78,7 @@
         data: {
             labels: [<?php echo '"' . implode('","', array_column($postEngagementData, 'title')) . '"'; ?>],
             datasets: [{
-                label: 'Average comments per post for the past 7 days',
+                label: 'Comment count per post for the past 7 days',
                 data: [<?php echo implode(',', array_column($postEngagementData, 'comment_count')); ?>],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
