@@ -52,8 +52,9 @@
         <input type="hidden" id="post_id_interact" name="post_id" value="<?=$post_id?>">
         <input type="hidden" name="action" id="action">
         <span class="votes">
-            <button type="submit" id="upvote" name="upvote_post">↑</button><span><?=$upvotes?></span>
-            <button type="submit" id="downvote" name="downvote_post">↓</button><span><?=$downvotes?></span>
+            <div id="upvotes"><button type="submit" id="upvote" name="upvote_post">↑</button><span><?=$upvotes?></span></div>
+            <div id="downvotes"><button type="submit" id="downvote" name="downvote_post">↓</button><span><?=$downvotes?></span></div>
+            <!-- <button type="submit" id="downvote" name="downvote_post">↓</button><span><?=$downvotes?></span> -->
         </span>
         <!-- <span class="report_post"> -->
         <button class="report_post" type="submit" name="report_post">Report</button>
