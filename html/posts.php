@@ -14,7 +14,7 @@
                     // Check if search and filter are not empty
                     if(!empty($_GET['search']) && !empty($_GET['filter'])){
                         $search = '%' . strtolower($_GET['search']) . '%';
-                        $filter = '%' . $_GET['filter'] . '%';
+                        $filter = $_GET['filter'];
                         $sql = "SELECT title, content, image, post_id, u.username, profile_pic, pinned, upvotes, downvotes, p.category_id AS category_id, c.name AS category_name FROM post AS p JOIN category AS c ON p.category_id = c.id JOIN user AS u ON p.username = u.username WHERE ((LOWER(title) LIKE :search OR LOWER(content) LIKE :search) AND category_id = :filter) AND pinned = 0 ORDER BY upvotes DESC, p.created_at DESC";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':search', $search);
