@@ -42,31 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $statement = $pdo->prepare($sql);
                 $statement->bindValue(":postid", $post_id);
                 $statement->execute();
-
-                // $status = $action == "upvote_post" ? "upvote" : "downvote";
-                // Check if userpost already exists
-                /* $sql = "SELECT * FROM userpost WHERE username = :username AND post_id = :postid ";
-                $statement = $pdo->prepare($sql);
-                $statement->bindValue(":username", $_SESSION['username']);
-                $statement->bindValue(":postid", $post_id);
-                $statement->execute();
-                $userPostExists = $statement->fetch(PDO::FETCH_ASSOC);
-
-                if (!$userPostExists) {
-                    $sql = "INSERT INTO userpost(username, post_id, status) VALUES(:username, :postid, :status);";
-                    $statement = $pdo->prepare($sql);
-                    $statement->bindValue(":username", $_SESSION['username']);
-                    $statement->bindValue(":postid", $post_id);
-                    $statement->bindValue(":status", $status);
-                    $statement->execute();
-                } else {
-                    $sql = "UPDATE userpost SET status = :status WHERE username = :username AND post_id = :postid;";
-                    $statement = $pdo->prepare($sql);
-                    $statement->bindValue(":username", $_SESSION['username']);
-                    $statement->bindValue(":postid", $post_id);
-                    $statement->bindValue(":status", $status);
-                    $statement->execute();
-                } */
             } else {
                 http_response_code(400);
                 die("Invalid post operation.");
