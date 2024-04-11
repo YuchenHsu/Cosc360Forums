@@ -35,6 +35,9 @@ CREATE TABLE IF NOT EXISTS post (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- insert into the post with the title 'Pinned Post', content 'This is a pinned post', category_id 1, username 'adminusr', created_at '2021-03-22 00:00:00', pinned true
+-- INSERT INTO post (title, content, category_id, username, created_at, pinned) VALUES ('Pinned Post', 'This is a pinned post', 1, 'adminusr', '2021-03-22 00:00:00', true);
 /*
 CREATE VIEW IF NOT EXISTS post_view AS SELECT title, content, image, post_id, p.category_id AS category_id, c.name AS category_name, upvotes, downvotes, reported, pinned, username, created_at FROM post AS p JOIN category AS c ON p.category_id = c.id;
 
@@ -65,10 +68,10 @@ FOR EACH ROW
 BEGIN
     DECLARE old_status ENUM('unset', 'upvote', 'downvote');
     DECLARE new_status ENUM('unset', 'upvote', 'downvote');
-    
+
     SET old_status = OLD.status;
     SET new_status = NEW.status;
-    
+
     IF old_status = 'upvote' AND new_status = 'downvote' THEN
         UPDATE post SET upvotes = upvotes - 1, downvotes = downvotes + 1 WHERE post.post_id = NEW.post_id;
     ELSEIF old_status = 'downvote' AND new_status = 'upvote' THEN
