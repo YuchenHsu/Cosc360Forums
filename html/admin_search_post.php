@@ -27,7 +27,7 @@
 
                         echo '<article class="post" style="width: 70%; padding:0.5em;">';
                         echo'<input type="checkbox" id=' . $post_id . 'name= selected[] value='. $post_id . '></input>';
-                        echo'<a href="post_detail.php?post_id=' . $post_id . '" style="font-size: 1.2em;">Post ' . $post_id . ': ' . $title . '</a>';
+                        echo'<a href="post_detail.php?post_id=' . $post_id . '" style="font-size: 1.2em;">' . $title . '</a>';
                         echo'<span>' . $reported . '</span>';
                         echo'<p>' . $content .'</p>';
                         echo '<button class="edit_post" id = '.$row['post_id'].'>Edit Post</button>';
