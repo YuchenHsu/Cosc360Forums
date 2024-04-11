@@ -290,6 +290,27 @@ $(document).on("submit", "#edit_profile_form", function(e) {
         contentType: false,
         processData: false
     });
+});
+// submits the report user form
+$(document).on("submit", "#report_form", function(e) {
+    e.preventDefault();
+    let formData = new FormData(this);
+    $.ajax({
+        url: 'report_users.php',
+        type: 'POST',
+        data: formData,
+        success: function() {
+            alert('User Reported successfully');
+            // location.reload();
+            // $("content").load("profile.php");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error response from the server
+            alert(jqXHR.responseText);
+        },
+        contentType: false,
+        processData: false
+    });
     /* $(".profile-posts").show();
     $(".profile").css({
         float: 'right',
